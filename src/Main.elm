@@ -206,6 +206,537 @@ ores =
             , skill = "Crokite Reprocessing"
             }
           )
+        , ( "Dark Ochre"
+          , { name = "Dark Ochre"
+            , refineQuantity = 100
+            , volume = 8.0
+            , products =
+                [ { product = "Tritanium", quantity = 10000 }
+                , { product = "Isogen", quantity = 1600 }
+                , { product = "Nocxium", quantity = 120 }
+                ]
+            , skill = "Dark Ochre Reprocessing"
+            }
+          )
+        , ( "Onyx Ochre"
+          , { name = "Onyx Ochre"
+            , refineQuantity = 100
+            , volume = 8.0
+            , products =
+                [ { product = "Tritanium", quantity = 10500 }
+                , { product = "Isogen", quantity = 1680 }
+                , { product = "Nocxium", quantity = 126 }
+                ]
+            , skill = "Dark Ochre Reprocessing"
+            }
+          )
+        , ( "Obsidian Ochre"
+          , { name = "Obsidian Ochre"
+            , refineQuantity = 100
+            , volume = 8.0
+            , products =
+                [ { product = "Tritanium", quantity = 11000 }
+                , { product = "Isogen", quantity = 1760 }
+                , { product = "Nocxium", quantity = 132 }
+                ]
+            , skill = "Dark Ochre Reprocessing"
+            }
+          )
+        , ( "Jet Ochre"
+          , { name = "Jet Ochre"
+            , refineQuantity = 100
+            , volume = 8.0
+            , products =
+                [ { product = "Tritanium", quantity = 11500 }
+                , { product = "Isogen", quantity = 1840 }
+                , { product = "Nocxium", quantity = 138 }
+                ]
+            , skill = "Dark Ochre Reprocessing"
+            }
+          )
+        , ( "Gneiss"
+          , { name = "Gneiss"
+            , refineQuantity = 100
+            , volume = 5.0
+            , products =
+                [ { product = "Pyerite", quantity = 2200 }
+                , { product = "Mexallon", quantity = 2400 }
+                , { product = "Isogen", quantity = 300 }
+                ]
+            , skill = "Gneiss Reprocessing"
+            }
+          )
+        , ( "Iridescent Gneiss"
+          , { name = "Iridescent Gneiss"
+            , refineQuantity = 100
+            , volume = 5.0
+            , products =
+                [ { product = "Pyerite", quantity = 2310 }
+                , { product = "Mexallon", quantity = 2520 }
+                , { product = "Isogen", quantity = 315 }
+                ]
+            , skill = "Gneiss Reprocessing"
+            }
+          )
+        , ( "Prismatic Gneiss"
+          , { name = "Prismatic Gneiss"
+            , refineQuantity = 100
+            , volume = 5.0
+            , products =
+                [ { product = "Pyerite", quantity = 2420 }
+                , { product = "Mexallon", quantity = 2640 }
+                , { product = "Isogen", quantity = 330 }
+                ]
+            , skill = "Gneiss Reprocessing"
+            }
+          )
+        , ( "Brilliant Gneiss"
+          , { name = "Brilliant Gneiss"
+            , refineQuantity = 100
+            , volume = 5.0
+            , products =
+                [ { product = "Pyerite", quantity = 2530 }
+                , { product = "Mexallon", quantity = 2760 }
+                , { product = "Isogen", quantity = 345 }
+                ]
+            , skill = "Gneiss Reprocessing"
+            }
+          )
+        , ( "Hedbergite"
+          , { name = "Hedbergite"
+            , refineQuantity = 100
+            , volume = 3.0
+            , products =
+                [ { product = "Pyerite", quantity = 1000 }
+                , { product = "Isogen", quantity = 200 }
+                , { product = "Nocxium", quantity = 100 }
+                , { product = "Zydrine", quantity = 19 }
+                ]
+            , skill = "Hedbergite Reprocessing"
+            }
+          )
+        , ( "Vitric Hedbergite"
+          , { name = "Vitric Hedbergite"
+            , refineQuantity = 100
+            , volume = 3.0
+            , products =
+                [ { product = "Pyerite", quantity = 1050 }
+                , { product = "Isogen", quantity = 210 }
+                , { product = "Nocxium", quantity = 105 }
+                , { product = "Zydrine", quantity = 20 }
+                ]
+            , skill = "Hedbergite Reprocessing"
+            }
+          )
+        , ( "Glazed Hedbergite"
+          , { name = "Glazed Hedbergite"
+            , refineQuantity = 100
+            , volume = 3.0
+            , products =
+                [ { product = "Pyerite", quantity = 1100 }
+                , { product = "Isogen", quantity = 220 }
+                , { product = "Nocxium", quantity = 110 }
+                , { product = "Zydrine", quantity = 21 }
+                ]
+            , skill = "Hedbergite Reprocessing"
+            }
+          )
+        , ( "Lustrous Hedbergite"
+          , { name = "Lustrous Hedbergite"
+            , refineQuantity = 100
+            , volume = 3.0
+            , products =
+                [ { product = "Pyerite", quantity = 1150 }
+                , { product = "Isogen", quantity = 230 }
+                , { product = "Nocxium", quantity = 115 }
+                , { product = "Zydrine", quantity = 22 }
+                ]
+            , skill = "Hedbergite Reprocessing"
+            }
+          )
+        , ( "Hemorphite"
+          , { name = "Hemorphite"
+            , refineQuantity = 100
+            , volume = 3.0
+            , products =
+                [ { product = "Tritanium", quantity = 2200 }
+                , { product = "Isogen", quantity = 100 }
+                , { product = "Nocxium", quantity = 120 }
+                , { product = "Zydrine", quantity = 15 }
+                ]
+            , skill = "Hemorphite Reprocessing"
+            }
+          )
+        , ( "Vivid Hemorphite"
+          , { name = "Vivid Hemorphite"
+            , refineQuantity = 100
+            , volume = 3.0
+            , products =
+                [ { product = "Tritanium", quantity = 2310 }
+                , { product = "Isogen", quantity = 105 }
+                , { product = "Nocxium", quantity = 126 }
+                , { product = "Zydrine", quantity = 16 }
+                ]
+            , skill = "Hemorphite Reprocessing"
+            }
+          )
+        , ( "Radiant Hemorphite"
+          , { name = "Radiant Hemorphite"
+            , refineQuantity = 100
+            , volume = 3.0
+            , products =
+                [ { product = "Tritanium", quantity = 2420 }
+                , { product = "Isogen", quantity = 110 }
+                , { product = "Nocxium", quantity = 132 }
+                , { product = "Zydrine", quantity = 17 }
+                ]
+            , skill = "Hemorphite Reprocessing"
+            }
+          )
+        , ( "Scintillating Hemorphite"
+          , { name = "Scintillating Hemorphite"
+            , refineQuantity = 100
+            , volume = 3.0
+            , products =
+                [ { product = "Tritanium", quantity = 2530 }
+                , { product = "Isogen", quantity = 115 }
+                , { product = "Nocxium", quantity = 138 }
+                , { product = "Zydrine", quantity = 17 }
+                ]
+            , skill = "Hemorphite Reprocessing"
+            }
+          )
+        , ( "Jaspet"
+          , { name = "Jaspet"
+            , refineQuantity = 100
+            , volume = 2.0
+            , products =
+                [ { product = "Mexallon", quantity = 350 }
+                , { product = "Nocxium", quantity = 75 }
+                , { product = "Zydrine", quantity = 8 }
+                ]
+            , skill = "Jaspet Reprocessing"
+            }
+          )
+        , ( "Pure Jaspet"
+          , { name = "Pure Jaspet"
+            , refineQuantity = 100
+            , volume = 2.0
+            , products =
+                [ { product = "Mexallon", quantity = 368 }
+                , { product = "Nocxium", quantity = 79 }
+                , { product = "Zydrine", quantity = 8 }
+                ]
+            , skill = "Jaspet Reprocessing"
+            }
+          )
+        , ( "Pristine Jaspet"
+          , { name = "Pristine Jaspet"
+            , refineQuantity = 100
+            , volume = 2.0
+            , products =
+                [ { product = "Mexallon", quantity = 385 }
+                , { product = "Nocxium", quantity = 83 }
+                , { product = "Zydrine", quantity = 9 }
+                ]
+            , skill = "Jaspet Reprocessing"
+            }
+          )
+        , ( "Immaculate Jaspet"
+          , { name = "Immaculate Jaspet"
+            , refineQuantity = 100
+            , volume = 2.0
+            , products =
+                [ { product = "Mexallon", quantity = 403 }
+                , { product = "Nocxium", quantity = 86 }
+                , { product = "Zydrine", quantity = 9 }
+                ]
+            , skill = "Jaspet Reprocessing"
+            }
+          )
+        , ( "Kernite"
+          , { name = "Kernite"
+            , refineQuantity = 100
+            , volume = 1.2
+            , products =
+                [ { product = "Tritanium", quantity = 134 }
+                , { product = "Mexallon", quantity = 267 }
+                , { product = "Isogen", quantity = 134 }
+                ]
+            , skill = "Kernite Reprocessing"
+            }
+          )
+        , ( "Luminous Kernite"
+          , { name = "Luminous Kernite"
+            , refineQuantity = 100
+            , volume = 1.2
+            , products =
+                [ { product = "Tritanium", quantity = 141 }
+                , { product = "Mexallon", quantity = 281 }
+                , { product = "Isogen", quantity = 141 }
+                ]
+            , skill = "Kernite Reprocessing"
+            }
+          )
+        , ( "Fiery Kernite"
+          , { name = "Fiery Kernite"
+            , refineQuantity = 100
+            , volume = 1.2
+            , products =
+                [ { product = "Tritanium", quantity = 148 }
+                , { product = "Mexallon", quantity = 294 }
+                , { product = "Isogen", quantity = 148 }
+                ]
+            , skill = "Kernite Reprocessing"
+            }
+          )
+        , ( "Resplendant Kernite"
+          , { name = "Resplendant Kernite"
+            , refineQuantity = 100
+            , volume = 1.2
+            , products =
+                [ { product = "Tritanium", quantity = 154 }
+                , { product = "Mexallon", quantity = 307 }
+                , { product = "Isogen", quantity = 154 }
+                ]
+            , skill = "Kernite Reprocessing"
+            }
+          )
+        , ( "Mercoxit"
+          , { name = "Mercoxit"
+            , refineQuantity = 100
+            , volume = 40.0
+            , products =
+                [ { product = "Morphite", quantity = 300 } ]
+            , skill = "Mercoxit Reprocessing"
+            }
+          )
+        , ( "Magma Mercoxit"
+          , { name = "Magma Mercoxit"
+            , refineQuantity = 100
+            , volume = 40.0
+            , products =
+                [ { product = "Morphite", quantity = 315 } ]
+            , skill = "Mercoxit Reprocessing"
+            }
+          )
+        , ( "Vitreous Mercoxit"
+          , { name = "Vitreous Mercoxit"
+            , refineQuantity = 100
+            , volume = 40.0
+            , products =
+                [ { product = "Morphite", quantity = 330 } ]
+            , skill = "Mercoxit Reprocessing"
+            }
+          )
+        , ( "Omber"
+          , { name = "Omber"
+            , refineQuantity = 100
+            , volume = 0.6
+            , products =
+                [ { product = "Tritanium", quantity = 800 }
+                , { product = "Pyerite", quantity = 100 }
+                , { product = "Isogen", quantity = 85 }
+                ]
+            , skill = "Omber Reprocessing"
+            }
+          )
+        , ( "Silvery Omber"
+          , { name = "Silvery Omber"
+            , refineQuantity = 100
+            , volume = 0.6
+            , products =
+                [ { product = "Tritanium", quantity = 840 }
+                , { product = "Pyerite", quantity = 105 }
+                , { product = "Isogen", quantity = 90 }
+                ]
+            , skill = "Omber Reprocessing"
+            }
+          )
+        , ( "Golden Omber"
+          , { name = "Golden Omber"
+            , refineQuantity = 100
+            , volume = 0.6
+            , products =
+                [ { product = "Tritanium", quantity = 880 }
+                , { product = "Pyerite", quantity = 110 }
+                , { product = "Isogen", quantity = 94 }
+                ]
+            , skill = "Omber Reprocessing"
+            }
+          )
+        , ( "Platinoid Omber"
+          , { name = "Platinoid Omber"
+            , refineQuantity = 100
+            , volume = 0.6
+            , products =
+                [ { product = "Tritanium", quantity = 920 }
+                , { product = "Pyerite", quantity = 115 }
+                , { product = "Isogen", quantity = 98 }
+                ]
+            , skill = "Omber Reprocessing"
+            }
+          )
+        , ( "Plagioclase"
+          , { name = "Plagioclase"
+            , refineQuantity = 100
+            , volume = 0.35
+            , products =
+                [ { product = "Tritanium", quantity = 107 }
+                , { product = "Pyerite", quantity = 213 }
+                , { product = "Mexallon", quantity = 107 }
+                ]
+            , skill = "Plagioclase Reprocessing"
+            }
+          )
+        , ( "Azure Plagioclase"
+          , { name = "Azure Plagioclase"
+            , refineQuantity = 100
+            , volume = 0.35
+            , products =
+                [ { product = "Tritanium", quantity = 113 }
+                , { product = "Pyerite", quantity = 224 }
+                , { product = "Mexallon", quantity = 113 }
+                ]
+            , skill = "Plagioclase Reprocessing"
+            }
+          )
+        , ( "Rich Plagioclase"
+          , { name = "Rich Plagioclase"
+            , refineQuantity = 100
+            , volume = 0.35
+            , products =
+                [ { product = "Tritanium", quantity = 118 }
+                , { product = "Pyerite", quantity = 235 }
+                , { product = "Mexallon", quantity = 118 }
+                ]
+            , skill = "Plagioclase Reprocessing"
+            }
+          )
+        , ( "Sparkling Plagioclase"
+          , { name = "Sparkling Plagioclase"
+            , refineQuantity = 100
+            , volume = 0.35
+            , products =
+                [ { product = "Tritanium", quantity = 123 }
+                , { product = "Pyerite", quantity = 245 }
+                , { product = "Mexallon", quantity = 123 }
+                ]
+            , skill = "Plagioclase Reprocessing"
+            }
+          )
+        , ( "Pyroxeres"
+          , { name = "Pyroxeres"
+            , refineQuantity = 100
+            , volume = 0.3
+            , products =
+                [ { product = "Tritanium", quantity = 351 }
+                , { product = "Pyerite", quantity = 25 }
+                , { product = "Mexallon", quantity = 50 }
+                , { product = "Nocxium", quantity = 5 }
+                ]
+            , skill = "Pyroxeres Reprocessing"
+            }
+          )
+        , ( "Solid Pyroxeres"
+          , { name = "Solid Pyroxeres"
+            , refineQuantity = 100
+            , volume = 0.3
+            , products =
+                [ { product = "Tritanium", quantity = 369 }
+                , { product = "Pyerite", quantity = 26 }
+                , { product = "Mexallon", quantity = 53 }
+                , { product = "Nocxium", quantity = 5 }
+                ]
+            , skill = "Pyroxeres Reprocessing"
+            }
+          )
+        , ( "Viscous Pyroxeres"
+          , { name = "Viscous Pyroxeres"
+            , refineQuantity = 100
+            , volume = 0.3
+            , products =
+                [ { product = "Tritanium", quantity = 387 }
+                , { product = "Pyerite", quantity = 27 }
+                , { product = "Mexallon", quantity = 55 }
+                , { product = "Nocxium", quantity = 5 }
+                ]
+            , skill = "Pyroxeres Reprocessing"
+            }
+          )
+        , ( "Opulent Pyroxeres"
+          , { name = "Opulent Pyroxeres"
+            , refineQuantity = 100
+            , volume = 0.3
+            , products =
+                [ { product = "Tritanium", quantity = 404 }
+                , { product = "Pyerite", quantity = 29 }
+                , { product = "Mexallon", quantity = 58 }
+                , { product = "Nocxium", quantity = 6 }
+                ]
+            , skill = "Pyroxeres Reprocessing"
+            }
+          )
+        , ( "Rakovene"
+          , { name = "Rakovene"
+            , refineQuantity = 100
+            , volume = 16.0
+            , products =
+                [ { product = "Tritanium", quantity = 2200 }
+                , { product = "Pyerite", quantity = 7200 }
+                , { product = "Mexallon", quantity = 855 }
+                , { product = "Nocxium", quantity = 450 }
+                , { product = "Zydrine", quantity = 270 }
+                , { product = "Megacyte", quantity = 83 }
+                , { product = "Morphite", quantity = 2 }
+                ]
+            , skill = "Scordite Reprocessing"
+            }
+          )
+        , ( "Scordite"
+          , { name = "Scordite"
+            , refineQuantity = 100
+            , volume = 0.15
+            , products =
+                [ { product = "Tritanium", quantity = 346 }
+                , { product = "Pyerite", quantity = 173 }
+                ]
+            , skill = "Scordite Reprocessing"
+            }
+          )
+        , ( "Condensed Scordite"
+          , { name = "Condensed Scordite"
+            , refineQuantity = 100
+            , volume = 0.15
+            , products =
+                [ { product = "Tritanium", quantity = 364 }
+                , { product = "Pyerite", quantity = 182 }
+                ]
+            , skill = "Scordite Reprocessing"
+            }
+          )
+        , ( "Massive Scordite"
+          , { name = "Massive Scordite"
+            , refineQuantity = 100
+            , volume = 0.15
+            , products =
+                [ { product = "Tritanium", quantity = 381 }
+                , { product = "Pyerite", quantity = 190 }
+                ]
+            , skill = "Scordite Reprocessing"
+            }
+          )
+        , ( "Glossy Scordite"
+          , { name = "Glossy Scordite"
+            , refineQuantity = 100
+            , volume = 0.15
+            , products =
+                [ { product = "Tritanium", quantity = 398 }
+                , { product = "Pyerite", quantity = 199 }
+                ]
+            , skill = "Scordite Reprocessing"
+            }
+          )
         , ( "Spodumain"
           , { name = "Spodumain"
             , refineQuantity = 100
