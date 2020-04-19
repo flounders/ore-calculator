@@ -5422,40 +5422,16 @@ var $author$project$Main$update = F2(
 				return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
 		}
 	});
-var $author$project$Main$Athanor = {$: 'Athanor'};
-var $author$project$Main$Failure = {$: 'Failure'};
-var $author$project$Main$Low = {$: 'Low'};
-var $author$project$Main$Null = {$: 'Null'};
-var $author$project$Main$SetImplant = function (a) {
-	return {$: 'SetImplant', a: a};
-};
-var $author$project$Main$SetNPC = {$: 'SetNPC'};
-var $author$project$Main$SetRig = function (a) {
-	return {$: 'SetRig', a: a};
-};
-var $author$project$Main$SetSecurityStatus = function (a) {
-	return {$: 'SetSecurityStatus', a: a};
-};
-var $author$project$Main$SetUpwell = function (a) {
-	return {$: 'SetUpwell', a: a};
-};
-var $author$project$Main$SkillSelection = function (a) {
-	return {$: 'SkillSelection', a: a};
-};
-var $author$project$Main$Tatara = {$: 'Tatara'};
-var $author$project$Main$UpdatePrice = function (a) {
-	return {$: 'UpdatePrice', a: a};
-};
-var $author$project$Main$UpdateSkill = function (a) {
-	return {$: 'UpdateSkill', a: a};
-};
-var $elm$html$Html$br = _VirtualDom_node('br');
+var $elm$html$Html$div = _VirtualDom_node('div');
+var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
+var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $elm$core$Basics$composeL = F3(
 	function (g, f, x) {
 		return g(
 			f(x));
 	});
-var $elm$html$Html$div = _VirtualDom_node('div');
+var $elm$core$String$fromFloat = _String_fromNumber;
+var $elm$html$Html$h4 = _VirtualDom_node('h4');
 var $elm$json$Json$Encode$string = _Json_wrap;
 var $elm$html$Html$Attributes$stringProperty = F2(
 	function (key, string) {
@@ -5464,8 +5440,17 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 			key,
 			$elm$json$Json$Encode$string(string));
 	});
-var $elm$html$Html$Attributes$for = $elm$html$Html$Attributes$stringProperty('htmlFor');
-var $elm$core$String$fromFloat = _String_fromNumber;
+var $elm$html$Html$Attributes$id = $elm$html$Html$Attributes$stringProperty('id');
+var $elm$html$Html$p = _VirtualDom_node('p');
+var $elm$core$Maybe$andThen = F2(
+	function (callback, maybeValue) {
+		if (maybeValue.$ === 'Just') {
+			var value = maybeValue.a;
+			return callback(value);
+		} else {
+			return $elm$core$Maybe$Nothing;
+		}
+	});
 var $elm$core$Dict$get = F2(
 	function (targetKey, dict) {
 		get:
@@ -5495,70 +5480,6 @@ var $elm$core$Dict$get = F2(
 						continue get;
 				}
 			}
-		}
-	});
-var $elm$html$Html$h1 = _VirtualDom_node('h1');
-var $elm$html$Html$h2 = _VirtualDom_node('h2');
-var $elm$html$Html$h4 = _VirtualDom_node('h4');
-var $elm$html$Html$Attributes$id = $elm$html$Html$Attributes$stringProperty('id');
-var $elm$html$Html$input = _VirtualDom_node('input');
-var $elm$html$Html$label = _VirtualDom_node('label');
-var $elm$core$Maybe$map = F2(
-	function (f, maybe) {
-		if (maybe.$ === 'Just') {
-			var value = maybe.a;
-			return $elm$core$Maybe$Just(
-				f(value));
-		} else {
-			return $elm$core$Maybe$Nothing;
-		}
-	});
-var $elm$html$Html$Attributes$max = $elm$html$Html$Attributes$stringProperty('max');
-var $elm$html$Html$Attributes$min = $elm$html$Html$Attributes$stringProperty('min');
-var $elm$html$Html$Attributes$name = $elm$html$Html$Attributes$stringProperty('name');
-var $elm$html$Html$Events$alwaysStop = function (x) {
-	return _Utils_Tuple2(x, true);
-};
-var $elm$virtual_dom$VirtualDom$MayStopPropagation = function (a) {
-	return {$: 'MayStopPropagation', a: a};
-};
-var $elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
-var $elm$html$Html$Events$stopPropagationOn = F2(
-	function (event, decoder) {
-		return A2(
-			$elm$virtual_dom$VirtualDom$on,
-			event,
-			$elm$virtual_dom$VirtualDom$MayStopPropagation(decoder));
-	});
-var $elm$json$Json$Decode$field = _Json_decodeField;
-var $elm$json$Json$Decode$at = F2(
-	function (fields, decoder) {
-		return A3($elm$core$List$foldr, $elm$json$Json$Decode$field, decoder, fields);
-	});
-var $elm$json$Json$Decode$string = _Json_decodeString;
-var $elm$html$Html$Events$targetValue = A2(
-	$elm$json$Json$Decode$at,
-	_List_fromArray(
-		['target', 'value']),
-	$elm$json$Json$Decode$string);
-var $elm$html$Html$Events$onInput = function (tagger) {
-	return A2(
-		$elm$html$Html$Events$stopPropagationOn,
-		'input',
-		A2(
-			$elm$json$Json$Decode$map,
-			$elm$html$Html$Events$alwaysStop,
-			A2($elm$json$Json$Decode$map, tagger, $elm$html$Html$Events$targetValue)));
-};
-var $elm$html$Html$p = _VirtualDom_node('p');
-var $elm$html$Html$Attributes$placeholder = $elm$html$Html$Attributes$stringProperty('placeholder');
-var $elm$core$Maybe$andThen = F2(
-	function (callback, maybeValue) {
-		if (maybeValue.$ === 'Just') {
-			var value = maybeValue.a;
-			return callback(value);
-		} else {
-			return $elm$core$Maybe$Nothing;
 		}
 	});
 var $author$project$Main$ores = $elm$core$Dict$fromList(
@@ -6561,7 +6482,11 @@ var $author$project$Main$reprocessingPercentage = F2(
 		var implant = 0.01 * model.implant;
 		return (((((1 + (0.03 * reprocessing)) * (1 + (0.02 * reprocessing_efficiency))) * (1 + (0.02 * ore_skill_level))) * (1 + implant)) * (model.stationAttributes.npc ? 50 : (((50 + model.stationAttributes.rig) * (1 + structure_mod)) * (1 + security_mod)))) / 100;
 	});
-var $elm$html$Html$select = _VirtualDom_node('select');
+var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
+var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
+var $author$project$Main$SetImplant = function (a) {
+	return {$: 'SetImplant', a: a};
+};
 var $elm$json$Json$Encode$bool = _Json_wrap;
 var $elm$html$Html$Attributes$boolProperty = F2(
 	function (key, bool) {
@@ -6570,31 +6495,203 @@ var $elm$html$Html$Attributes$boolProperty = F2(
 			key,
 			$elm$json$Json$Encode$bool(bool));
 	});
-var $elm$html$Html$Attributes$selected = $elm$html$Html$Attributes$boolProperty('selected');
-var $elm$html$Html$span = _VirtualDom_node('span');
-var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
-var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
-var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
-var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
-var $elm$core$String$toFloat = _String_toFloat;
+var $elm$html$Html$Attributes$checked = $elm$html$Html$Attributes$boolProperty('checked');
+var $elm$html$Html$Attributes$for = $elm$html$Html$Attributes$stringProperty('htmlFor');
+var $elm$html$Html$h1 = _VirtualDom_node('h1');
+var $elm$html$Html$input = _VirtualDom_node('input');
+var $elm$html$Html$label = _VirtualDom_node('label');
+var $elm$html$Html$Attributes$name = $elm$html$Html$Attributes$stringProperty('name');
+var $elm$html$Html$Events$alwaysStop = function (x) {
+	return _Utils_Tuple2(x, true);
+};
+var $elm$virtual_dom$VirtualDom$MayStopPropagation = function (a) {
+	return {$: 'MayStopPropagation', a: a};
+};
+var $elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
+var $elm$html$Html$Events$stopPropagationOn = F2(
+	function (event, decoder) {
+		return A2(
+			$elm$virtual_dom$VirtualDom$on,
+			event,
+			$elm$virtual_dom$VirtualDom$MayStopPropagation(decoder));
+	});
+var $elm$json$Json$Decode$field = _Json_decodeField;
+var $elm$json$Json$Decode$at = F2(
+	function (fields, decoder) {
+		return A3($elm$core$List$foldr, $elm$json$Json$Decode$field, decoder, fields);
+	});
+var $elm$json$Json$Decode$string = _Json_decodeString;
+var $elm$html$Html$Events$targetValue = A2(
+	$elm$json$Json$Decode$at,
+	_List_fromArray(
+		['target', 'value']),
+	$elm$json$Json$Decode$string);
+var $elm$html$Html$Events$onInput = function (tagger) {
+	return A2(
+		$elm$html$Html$Events$stopPropagationOn,
+		'input',
+		A2(
+			$elm$json$Json$Decode$map,
+			$elm$html$Html$Events$alwaysStop,
+			A2($elm$json$Json$Decode$map, tagger, $elm$html$Html$Events$targetValue)));
+};
 var $elm$html$Html$Attributes$type_ = $elm$html$Html$Attributes$stringProperty('type');
 var $elm$html$Html$Attributes$value = $elm$html$Html$Attributes$stringProperty('value');
-var $elm$html$Html$Attributes$step = function (n) {
-	return A2($elm$html$Html$Attributes$stringProperty, 'step', n);
+var $author$project$Main$viewImplantConfiguration = function (model) {
+	return A2(
+		$elm$html$Html$div,
+		_List_Nil,
+		_List_fromArray(
+			[
+				A2(
+				$elm$html$Html$h1,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text('Implant')
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$input,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$type_('radio'),
+								$elm$html$Html$Attributes$id('no_implant'),
+								$elm$html$Html$Attributes$name('implant'),
+								$elm$html$Html$Attributes$value('no_implant'),
+								$elm$html$Html$Events$onInput(
+								function (_v0) {
+									return $author$project$Main$SetImplant(0);
+								}),
+								$elm$html$Html$Attributes$checked(!model.implant)
+							]),
+						_List_Nil),
+						A2(
+						$elm$html$Html$label,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$for('no_implant')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('No implant')
+							]))
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$input,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$type_('radio'),
+								$elm$html$Html$Attributes$id('one_implant'),
+								$elm$html$Html$Attributes$name('implant'),
+								$elm$html$Html$Attributes$value('one_implant'),
+								$elm$html$Html$Events$onInput(
+								function (_v1) {
+									return $author$project$Main$SetImplant(1);
+								}),
+								$elm$html$Html$Attributes$checked(model.implant === 1)
+							]),
+						_List_Nil),
+						A2(
+						$elm$html$Html$label,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$for('one_implant')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('1% Implant')
+							]))
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$input,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$type_('radio'),
+								$elm$html$Html$Attributes$id('two_implant'),
+								$elm$html$Html$Attributes$name('implant'),
+								$elm$html$Html$Attributes$value('two_implant'),
+								$elm$html$Html$Events$onInput(
+								function (_v2) {
+									return $author$project$Main$SetImplant(2);
+								}),
+								$elm$html$Html$Attributes$checked(model.implant === 2)
+							]),
+						_List_Nil),
+						A2(
+						$elm$html$Html$label,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$for('two_implant')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('2% Implant')
+							]))
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$input,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$type_('radio'),
+								$elm$html$Html$Attributes$id('four_implant'),
+								$elm$html$Html$Attributes$name('implant'),
+								$elm$html$Html$Attributes$value('four_implant'),
+								$elm$html$Html$Events$onInput(
+								function (_v3) {
+									return $author$project$Main$SetImplant(4);
+								}),
+								$elm$html$Html$Attributes$checked(model.implant === 4)
+							]),
+						_List_Nil),
+						A2(
+						$elm$html$Html$label,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$for('four_implant')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('4% Implant')
+							]))
+					]))
+			]));
 };
-var $author$project$Main$viewNumberInput = F4(
-	function (t, p, v, toMsg) {
-		return A2(
-			$elm$html$Html$input,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$type_(t),
-					$elm$html$Html$Attributes$placeholder(p),
-					$elm$html$Html$Attributes$step('0.01'),
-					$elm$html$Html$Attributes$value(v),
-					$elm$html$Html$Events$onInput(toMsg)
-				]),
-			_List_Nil);
+var $author$project$Main$Failure = {$: 'Failure'};
+var $author$project$Main$ProductSelection = function (a) {
+	return {$: 'ProductSelection', a: a};
+};
+var $author$project$Main$UpdatePrice = function (a) {
+	return {$: 'UpdatePrice', a: a};
+};
+var $elm$core$Maybe$map = F2(
+	function (f, maybe) {
+		if (maybe.$ === 'Just') {
+			var value = maybe.a;
+			return $elm$core$Maybe$Just(
+				f(value));
+		} else {
+			return $elm$core$Maybe$Nothing;
+		}
 	});
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
 	return {$: 'Normal', a: a};
@@ -6613,20 +6710,576 @@ var $elm$html$Html$Events$onClick = function (msg) {
 		$elm$json$Json$Decode$succeed(msg));
 };
 var $elm$html$Html$option = _VirtualDom_node('option');
-var $author$project$Main$viewOption = F2(
-	function (s, m) {
+var $elm$html$Html$select = _VirtualDom_node('select');
+var $elm$html$Html$Attributes$selected = $elm$html$Html$Attributes$boolProperty('selected');
+var $elm$core$String$toFloat = _String_toFloat;
+var $elm$html$Html$Attributes$placeholder = $elm$html$Html$Attributes$stringProperty('placeholder');
+var $elm$html$Html$Attributes$step = function (n) {
+	return A2($elm$html$Html$Attributes$stringProperty, 'step', n);
+};
+var $author$project$Main$viewNumberInput = F4(
+	function (t, p, v, toMsg) {
 		return A2(
-			$elm$html$Html$option,
+			$elm$html$Html$input,
 			_List_fromArray(
 				[
-					$elm$html$Html$Attributes$value(s),
-					$elm$html$Html$Events$onClick(m)
+					$elm$html$Html$Attributes$type_(t),
+					$elm$html$Html$Attributes$placeholder(p),
+					$elm$html$Html$Attributes$step('0.01'),
+					$elm$html$Html$Attributes$value(v),
+					$elm$html$Html$Events$onInput(toMsg)
 				]),
-			_List_fromArray(
-				[
-					$elm$html$Html$text(s)
-				]));
+			_List_Nil);
 	});
+var $author$project$Main$viewPricesConfiguration = function (model) {
+	return A2(
+		$elm$html$Html$div,
+		_List_Nil,
+		_List_fromArray(
+			[
+				A2(
+				$elm$html$Html$h1,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text('Refine Product Prices')
+					])),
+				A2(
+				$elm$html$Html$select,
+				_List_Nil,
+				A2(
+					$elm$core$List$map,
+					function (x) {
+						return A2(
+							$elm$html$Html$option,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$value(x),
+									$elm$html$Html$Events$onClick(
+									$author$project$Main$ProductSelection(x)),
+									$elm$html$Html$Attributes$selected(
+									_Utils_eq(model.product, x))
+								]),
+							_List_fromArray(
+								[
+									$elm$html$Html$text(x)
+								]));
+					},
+					$elm$core$Dict$keys(model.productPrices))),
+				function () {
+				var _v0 = A2($elm$core$Dict$get, model.product, model.productPrices);
+				if (_v0.$ === 'Just') {
+					var price = _v0.a;
+					return A4(
+						$author$project$Main$viewNumberInput,
+						'number',
+						'Price',
+						$elm$core$String$fromFloat(price),
+						A2(
+							$elm$core$Basics$composeL,
+							A2(
+								$elm$core$Basics$composeL,
+								$elm$core$Maybe$withDefault($author$project$Main$Failure),
+								$elm$core$Maybe$map($author$project$Main$UpdatePrice)),
+							$elm$core$String$toFloat));
+				} else {
+					return A2(
+						$elm$html$Html$p,
+						_List_Nil,
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Failed to get selected refine product price.')
+							]));
+				}
+			}()
+			]));
+};
+var $author$project$Main$SkillSelection = function (a) {
+	return {$: 'SkillSelection', a: a};
+};
+var $author$project$Main$UpdateSkill = function (a) {
+	return {$: 'UpdateSkill', a: a};
+};
+var $elm$html$Html$Attributes$max = $elm$html$Html$Attributes$stringProperty('max');
+var $elm$html$Html$Attributes$min = $elm$html$Html$Attributes$stringProperty('min');
+var $author$project$Main$viewSkillsConfiguration = function (model) {
+	return A2(
+		$elm$html$Html$div,
+		_List_Nil,
+		_List_fromArray(
+			[
+				A2(
+				$elm$html$Html$h1,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text('Reprocessing Skills')
+					])),
+				A2(
+				$elm$html$Html$select,
+				_List_Nil,
+				A2(
+					$elm$core$List$map,
+					function (x) {
+						return A2(
+							$elm$html$Html$option,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$value(x),
+									$elm$html$Html$Events$onClick(
+									$author$project$Main$SkillSelection(x)),
+									$elm$html$Html$Attributes$selected(
+									_Utils_eq(model.skillSelection, x))
+								]),
+							_List_fromArray(
+								[
+									$elm$html$Html$text(x)
+								]));
+					},
+					$elm$core$Dict$keys(model.skills))),
+				function () {
+				var _v0 = A2($elm$core$Dict$get, model.skillSelection, model.skills);
+				if (_v0.$ === 'Just') {
+					var level = _v0.a;
+					return A2(
+						$elm$html$Html$input,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$type_('number'),
+								$elm$html$Html$Attributes$placeholder('Level'),
+								$elm$html$Html$Attributes$min('0'),
+								$elm$html$Html$Attributes$max('5'),
+								$elm$html$Html$Attributes$value(
+								$elm$core$String$fromInt(level)),
+								$elm$html$Html$Events$onInput(
+								A2(
+									$elm$core$Basics$composeL,
+									A2(
+										$elm$core$Basics$composeL,
+										$elm$core$Maybe$withDefault($author$project$Main$Failure),
+										$elm$core$Maybe$map($author$project$Main$UpdateSkill)),
+									$elm$core$String$toInt))
+							]),
+						_List_Nil);
+				} else {
+					return A2(
+						$elm$html$Html$p,
+						_List_Nil,
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Failed to get selected skill level.')
+							]));
+				}
+			}()
+			]));
+};
+var $author$project$Main$Athanor = {$: 'Athanor'};
+var $author$project$Main$Low = {$: 'Low'};
+var $author$project$Main$Null = {$: 'Null'};
+var $author$project$Main$SetNPC = {$: 'SetNPC'};
+var $author$project$Main$SetRig = function (a) {
+	return {$: 'SetRig', a: a};
+};
+var $author$project$Main$SetSecurityStatus = function (a) {
+	return {$: 'SetSecurityStatus', a: a};
+};
+var $author$project$Main$SetUpwell = function (a) {
+	return {$: 'SetUpwell', a: a};
+};
+var $author$project$Main$Tatara = {$: 'Tatara'};
+var $elm$html$Html$h2 = _VirtualDom_node('h2');
+var $author$project$Main$viewStationConfiguration = function (model) {
+	return A2(
+		$elm$html$Html$div,
+		_List_Nil,
+		_List_fromArray(
+			[
+				A2(
+				$elm$html$Html$h1,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text('Station Attributes')
+					])),
+				A2(
+				$elm$html$Html$h2,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text('Station Type')
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$input,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$type_('radio'),
+								$elm$html$Html$Attributes$id('npc'),
+								$elm$html$Html$Attributes$name('station_type'),
+								$elm$html$Html$Attributes$value('npc'),
+								$elm$html$Html$Events$onInput(
+								function (_v0) {
+									return $author$project$Main$SetNPC;
+								}),
+								$elm$html$Html$Attributes$checked(model.stationAttributes.npc)
+							]),
+						_List_Nil),
+						A2(
+						$elm$html$Html$label,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$for('npc')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('NPC')
+							]))
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$input,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$type_('radio'),
+								$elm$html$Html$Attributes$id('other'),
+								$elm$html$Html$Attributes$name('station_type'),
+								$elm$html$Html$Attributes$value('other'),
+								$elm$html$Html$Events$onInput(
+								function (_v1) {
+									return $author$project$Main$SetUpwell($author$project$Main$Other);
+								}),
+								$elm$html$Html$Attributes$checked(
+								_Utils_eq(model.stationAttributes.upwellType, $author$project$Main$Other) && (!model.stationAttributes.npc))
+							]),
+						_List_Nil),
+						A2(
+						$elm$html$Html$label,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$for('other')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Other')
+							]))
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$input,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$type_('radio'),
+								$elm$html$Html$Attributes$id('athanor'),
+								$elm$html$Html$Attributes$name('station_type'),
+								$elm$html$Html$Attributes$value('athanor'),
+								$elm$html$Html$Events$onInput(
+								function (_v2) {
+									return $author$project$Main$SetUpwell($author$project$Main$Athanor);
+								}),
+								$elm$html$Html$Attributes$checked(
+								_Utils_eq(model.stationAttributes.upwellType, $author$project$Main$Athanor) && (!model.stationAttributes.npc))
+							]),
+						_List_Nil),
+						A2(
+						$elm$html$Html$label,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$for('athanor')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Athanor')
+							]))
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$input,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$type_('radio'),
+								$elm$html$Html$Attributes$id('tatara'),
+								$elm$html$Html$Attributes$name('station_type'),
+								$elm$html$Html$Attributes$value('tatara'),
+								$elm$html$Html$Events$onInput(
+								function (_v3) {
+									return $author$project$Main$SetUpwell($author$project$Main$Tatara);
+								}),
+								$elm$html$Html$Attributes$checked(
+								_Utils_eq(model.stationAttributes.upwellType, $author$project$Main$Tatara) && (!model.stationAttributes.npc))
+							]),
+						_List_Nil),
+						A2(
+						$elm$html$Html$label,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$for('tatara')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Tatara')
+							]))
+					])),
+				A2(
+				$elm$html$Html$h2,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text('Security Status')
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$input,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$type_('radio'),
+								$elm$html$Html$Attributes$id('high'),
+								$elm$html$Html$Attributes$name('security_status'),
+								$elm$html$Html$Attributes$value('high'),
+								$elm$html$Html$Events$onInput(
+								function (_v4) {
+									return $author$project$Main$SetSecurityStatus($author$project$Main$High);
+								}),
+								$elm$html$Html$Attributes$checked(
+								_Utils_eq(model.stationAttributes.securityStatus, $author$project$Main$High))
+							]),
+						_List_Nil),
+						A2(
+						$elm$html$Html$label,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$for('high')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('High')
+							]))
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$input,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$type_('radio'),
+								$elm$html$Html$Attributes$id('low'),
+								$elm$html$Html$Attributes$name('security_status'),
+								$elm$html$Html$Attributes$value('low'),
+								$elm$html$Html$Events$onInput(
+								function (_v5) {
+									return $author$project$Main$SetSecurityStatus($author$project$Main$Low);
+								}),
+								$elm$html$Html$Attributes$checked(
+								_Utils_eq(model.stationAttributes.securityStatus, $author$project$Main$Low))
+							]),
+						_List_Nil),
+						A2(
+						$elm$html$Html$label,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$for('low')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Low')
+							]))
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$input,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$type_('radio'),
+								$elm$html$Html$Attributes$id('null'),
+								$elm$html$Html$Attributes$name('security_status'),
+								$elm$html$Html$Attributes$value('null'),
+								$elm$html$Html$Events$onInput(
+								function (_v6) {
+									return $author$project$Main$SetSecurityStatus($author$project$Main$Null);
+								}),
+								$elm$html$Html$Attributes$checked(
+								_Utils_eq(model.stationAttributes.securityStatus, $author$project$Main$Null))
+							]),
+						_List_Nil),
+						A2(
+						$elm$html$Html$label,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$for('null')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Null')
+							]))
+					])),
+				A2(
+				$elm$html$Html$h2,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text('Rig')
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$input,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$type_('radio'),
+								$elm$html$Html$Attributes$id('none'),
+								$elm$html$Html$Attributes$name('rig'),
+								$elm$html$Html$Attributes$value('none'),
+								$elm$html$Html$Events$onInput(
+								function (_v7) {
+									return $author$project$Main$SetRig(0);
+								}),
+								$elm$html$Html$Attributes$checked(!model.stationAttributes.rig)
+							]),
+						_List_Nil),
+						A2(
+						$elm$html$Html$label,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$for('none')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('No Rig')
+							]))
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$input,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$type_('radio'),
+								$elm$html$Html$Attributes$id('t1'),
+								$elm$html$Html$Attributes$name('rig'),
+								$elm$html$Html$Attributes$value('t1'),
+								$elm$html$Html$Events$onInput(
+								function (_v8) {
+									return $author$project$Main$SetRig(1);
+								}),
+								$elm$html$Html$Attributes$checked(model.stationAttributes.rig === 1)
+							]),
+						_List_Nil),
+						A2(
+						$elm$html$Html$label,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$for('t1')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('T1')
+							]))
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$input,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$type_('radio'),
+								$elm$html$Html$Attributes$id('t2'),
+								$elm$html$Html$Attributes$name('rig'),
+								$elm$html$Html$Attributes$value('t2'),
+								$elm$html$Html$Events$onInput(
+								function (_v9) {
+									return $author$project$Main$SetRig(2);
+								}),
+								$elm$html$Html$Attributes$checked(model.stationAttributes.rig === 2)
+							]),
+						_List_Nil),
+						A2(
+						$elm$html$Html$label,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$for('t2')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('T2')
+							]))
+					]))
+			]));
+};
+var $author$project$Main$viewConfiguration = function (model) {
+	return A2(
+		$elm$html$Html$div,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$id('configuration'),
+				A2($elm$html$Html$Attributes$style, 'float', 'left')
+			]),
+		_List_fromArray(
+			[
+				$author$project$Main$viewPricesConfiguration(model),
+				$author$project$Main$viewSkillsConfiguration(model),
+				$author$project$Main$viewStationConfiguration(model),
+				$author$project$Main$viewImplantConfiguration(model),
+				A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$h4,
+						_List_Nil,
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Test Reprocessing Percentage')
+							])),
+						A2(
+						$elm$html$Html$p,
+						_List_Nil,
+						_List_fromArray(
+							[
+								A3(
+								$elm$core$Basics$composeL,
+								$elm$html$Html$text,
+								$elm$core$String$fromFloat,
+								A2($author$project$Main$reprocessingPercentage, model, 'Veldspar'))
+							]))
+					]))
+			]));
+};
 var $elm$core$Basics$round = _Basics_round;
 var $author$project$Main$roundHundredths = function (n) {
 	return A3(
@@ -6945,15 +7598,6 @@ var $author$project$Main$viewOreData = function (model) {
 					]))
 			]));
 };
-var $author$project$Main$ProductSelection = function (a) {
-	return {$: 'ProductSelection', a: a};
-};
-var $author$project$Main$viewProductSelection = function (p) {
-	return A2(
-		$author$project$Main$viewOption,
-		p,
-		$author$project$Main$ProductSelection(p));
-};
 var $author$project$Main$view = function (model) {
 	return {
 		body: _List_fromArray(
@@ -6967,798 +7611,7 @@ var $author$project$Main$view = function (model) {
 					]),
 				_List_fromArray(
 					[
-						A2(
-						$elm$html$Html$div,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$id('configuration'),
-								A2($elm$html$Html$Attributes$style, 'float', 'left')
-							]),
-						_List_fromArray(
-							[
-								A2(
-								$elm$html$Html$div,
-								_List_Nil,
-								_List_fromArray(
-									[
-										A2(
-										$elm$html$Html$h1,
-										_List_Nil,
-										_List_fromArray(
-											[
-												$elm$html$Html$text('Refine Product Prices')
-											])),
-										A2(
-										$elm$html$Html$select,
-										_List_Nil,
-										A2(
-											$elm$core$List$map,
-											$author$project$Main$viewProductSelection,
-											$elm$core$Dict$keys(model.productPrices))),
-										function () {
-										var _v0 = A2($elm$core$Dict$get, model.product, model.productPrices);
-										if (_v0.$ === 'Just') {
-											var price = _v0.a;
-											return A4(
-												$author$project$Main$viewNumberInput,
-												'number',
-												'Price',
-												$elm$core$String$fromFloat(price),
-												A2(
-													$elm$core$Basics$composeL,
-													A2(
-														$elm$core$Basics$composeL,
-														$elm$core$Maybe$withDefault($author$project$Main$Failure),
-														$elm$core$Maybe$map($author$project$Main$UpdatePrice)),
-													$elm$core$String$toFloat));
-										} else {
-											return A2(
-												$elm$html$Html$p,
-												_List_Nil,
-												_List_fromArray(
-													[
-														$elm$html$Html$text('Failed to get selected refine product price.')
-													]));
-										}
-									}(),
-										A2(
-										$elm$html$Html$div,
-										_List_Nil,
-										_List_fromArray(
-											[
-												A2(
-												$elm$html$Html$p,
-												_List_Nil,
-												_List_fromArray(
-													[
-														$elm$html$Html$text(model.product)
-													])),
-												A2(
-												$elm$html$Html$p,
-												_List_Nil,
-												_List_fromArray(
-													[
-														$elm$html$Html$text(
-														A3(
-															$elm$core$Basics$composeL,
-															$elm$core$Maybe$withDefault('Error loading refine product price.'),
-															$elm$core$Maybe$map($elm$core$String$fromFloat),
-															A2($elm$core$Dict$get, model.product, model.productPrices)))
-													]))
-											]))
-									])),
-								A2(
-								$elm$html$Html$div,
-								_List_Nil,
-								_List_fromArray(
-									[
-										A2(
-										$elm$html$Html$h1,
-										_List_Nil,
-										_List_fromArray(
-											[
-												$elm$html$Html$text('Reprocessing Skills')
-											])),
-										A2(
-										$elm$html$Html$select,
-										_List_Nil,
-										A2(
-											$elm$core$List$map,
-											function (x) {
-												return A2(
-													$author$project$Main$viewOption,
-													x,
-													$author$project$Main$SkillSelection(x));
-											},
-											$elm$core$Dict$keys(model.skills))),
-										function () {
-										var _v1 = A2($elm$core$Dict$get, model.skillSelection, model.skills);
-										if (_v1.$ === 'Just') {
-											var level = _v1.a;
-											return A2(
-												$elm$html$Html$input,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$type_('number'),
-														$elm$html$Html$Attributes$placeholder('Level'),
-														$elm$html$Html$Attributes$min('0'),
-														$elm$html$Html$Attributes$max('5'),
-														$elm$html$Html$Attributes$value(
-														$elm$core$String$fromInt(level)),
-														$elm$html$Html$Events$onInput(
-														A2(
-															$elm$core$Basics$composeL,
-															A2(
-																$elm$core$Basics$composeL,
-																$elm$core$Maybe$withDefault($author$project$Main$Failure),
-																$elm$core$Maybe$map($author$project$Main$UpdateSkill)),
-															$elm$core$String$toInt))
-													]),
-												_List_Nil);
-										} else {
-											return A2(
-												$elm$html$Html$p,
-												_List_Nil,
-												_List_fromArray(
-													[
-														$elm$html$Html$text('Failed to get selected skill level.')
-													]));
-										}
-									}(),
-										A2(
-										$elm$html$Html$div,
-										_List_Nil,
-										_List_fromArray(
-											[
-												A2(
-												$elm$html$Html$p,
-												_List_Nil,
-												_List_fromArray(
-													[
-														$elm$html$Html$text(model.skillSelection)
-													])),
-												A2(
-												$elm$html$Html$p,
-												_List_Nil,
-												_List_fromArray(
-													[
-														$elm$html$Html$text(
-														A3(
-															$elm$core$Basics$composeL,
-															$elm$core$Maybe$withDefault('Error loading skill level.'),
-															$elm$core$Maybe$map($elm$core$String$fromInt),
-															A2($elm$core$Dict$get, model.skillSelection, model.skills)))
-													]))
-											]))
-									])),
-								A2(
-								$elm$html$Html$div,
-								_List_Nil,
-								_List_fromArray(
-									[
-										A2(
-										$elm$html$Html$h1,
-										_List_Nil,
-										_List_fromArray(
-											[
-												$elm$html$Html$text('Station Attributes')
-											])),
-										A2(
-										$elm$html$Html$h2,
-										_List_Nil,
-										_List_fromArray(
-											[
-												$elm$html$Html$text('Station Type')
-											])),
-										A2(
-										$elm$html$Html$div,
-										_List_Nil,
-										_List_fromArray(
-											[
-												A2(
-												$elm$html$Html$input,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$type_('radio'),
-														$elm$html$Html$Attributes$id('npc'),
-														$elm$html$Html$Attributes$name('station_type'),
-														$elm$html$Html$Attributes$value('npc'),
-														$elm$html$Html$Events$onInput(
-														function (_v2) {
-															return $author$project$Main$SetNPC;
-														}),
-														$elm$html$Html$Attributes$selected(model.stationAttributes.npc)
-													]),
-												_List_Nil),
-												A2(
-												$elm$html$Html$label,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$for('npc')
-													]),
-												_List_fromArray(
-													[
-														$elm$html$Html$text('NPC')
-													]))
-											])),
-										A2(
-										$elm$html$Html$div,
-										_List_Nil,
-										_List_fromArray(
-											[
-												A2(
-												$elm$html$Html$input,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$type_('radio'),
-														$elm$html$Html$Attributes$id('other'),
-														$elm$html$Html$Attributes$name('station_type'),
-														$elm$html$Html$Attributes$value('other'),
-														$elm$html$Html$Events$onInput(
-														function (_v3) {
-															return $author$project$Main$SetUpwell($author$project$Main$Other);
-														})
-													]),
-												_List_Nil),
-												A2(
-												$elm$html$Html$label,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$for('other')
-													]),
-												_List_fromArray(
-													[
-														$elm$html$Html$text('Other')
-													]))
-											])),
-										A2(
-										$elm$html$Html$div,
-										_List_Nil,
-										_List_fromArray(
-											[
-												A2(
-												$elm$html$Html$input,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$type_('radio'),
-														$elm$html$Html$Attributes$id('athanor'),
-														$elm$html$Html$Attributes$name('station_type'),
-														$elm$html$Html$Attributes$value('athanor'),
-														$elm$html$Html$Events$onInput(
-														function (_v4) {
-															return $author$project$Main$SetUpwell($author$project$Main$Athanor);
-														})
-													]),
-												_List_Nil),
-												A2(
-												$elm$html$Html$label,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$for('athanor')
-													]),
-												_List_fromArray(
-													[
-														$elm$html$Html$text('Athanor')
-													]))
-											])),
-										A2(
-										$elm$html$Html$div,
-										_List_Nil,
-										_List_fromArray(
-											[
-												A2(
-												$elm$html$Html$input,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$type_('radio'),
-														$elm$html$Html$Attributes$id('tatara'),
-														$elm$html$Html$Attributes$name('station_type'),
-														$elm$html$Html$Attributes$value('tatara'),
-														$elm$html$Html$Events$onInput(
-														function (_v5) {
-															return $author$project$Main$SetUpwell($author$project$Main$Tatara);
-														})
-													]),
-												_List_Nil),
-												A2(
-												$elm$html$Html$label,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$for('tatara')
-													]),
-												_List_fromArray(
-													[
-														$elm$html$Html$text('Tatara')
-													]))
-											])),
-										A2(
-										$elm$html$Html$h2,
-										_List_Nil,
-										_List_fromArray(
-											[
-												$elm$html$Html$text('Security Status')
-											])),
-										A2(
-										$elm$html$Html$div,
-										_List_Nil,
-										_List_fromArray(
-											[
-												A2(
-												$elm$html$Html$input,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$type_('radio'),
-														$elm$html$Html$Attributes$id('high'),
-														$elm$html$Html$Attributes$name('security_status'),
-														$elm$html$Html$Attributes$value('high'),
-														$elm$html$Html$Events$onInput(
-														function (_v6) {
-															return $author$project$Main$SetSecurityStatus($author$project$Main$High);
-														})
-													]),
-												_List_Nil),
-												A2(
-												$elm$html$Html$label,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$for('high')
-													]),
-												_List_fromArray(
-													[
-														$elm$html$Html$text('High')
-													]))
-											])),
-										A2(
-										$elm$html$Html$div,
-										_List_Nil,
-										_List_fromArray(
-											[
-												A2(
-												$elm$html$Html$input,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$type_('radio'),
-														$elm$html$Html$Attributes$id('low'),
-														$elm$html$Html$Attributes$name('security_status'),
-														$elm$html$Html$Attributes$value('low'),
-														$elm$html$Html$Events$onInput(
-														function (_v7) {
-															return $author$project$Main$SetSecurityStatus($author$project$Main$Low);
-														})
-													]),
-												_List_Nil),
-												A2(
-												$elm$html$Html$label,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$for('low')
-													]),
-												_List_fromArray(
-													[
-														$elm$html$Html$text('Low')
-													]))
-											])),
-										A2(
-										$elm$html$Html$div,
-										_List_Nil,
-										_List_fromArray(
-											[
-												A2(
-												$elm$html$Html$input,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$type_('radio'),
-														$elm$html$Html$Attributes$id('null'),
-														$elm$html$Html$Attributes$name('security_status'),
-														$elm$html$Html$Attributes$value('null'),
-														$elm$html$Html$Events$onInput(
-														function (_v8) {
-															return $author$project$Main$SetSecurityStatus($author$project$Main$Null);
-														})
-													]),
-												_List_Nil),
-												A2(
-												$elm$html$Html$label,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$for('null')
-													]),
-												_List_fromArray(
-													[
-														$elm$html$Html$text('Null')
-													]))
-											])),
-										A2(
-										$elm$html$Html$h2,
-										_List_Nil,
-										_List_fromArray(
-											[
-												$elm$html$Html$text('Rig')
-											])),
-										A2(
-										$elm$html$Html$div,
-										_List_Nil,
-										_List_fromArray(
-											[
-												A2(
-												$elm$html$Html$input,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$type_('radio'),
-														$elm$html$Html$Attributes$id('none'),
-														$elm$html$Html$Attributes$name('rig'),
-														$elm$html$Html$Attributes$value('none'),
-														$elm$html$Html$Events$onInput(
-														function (_v9) {
-															return $author$project$Main$SetRig(0);
-														})
-													]),
-												_List_Nil),
-												A2(
-												$elm$html$Html$label,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$for('none')
-													]),
-												_List_fromArray(
-													[
-														$elm$html$Html$text('No Rig')
-													]))
-											])),
-										A2(
-										$elm$html$Html$div,
-										_List_Nil,
-										_List_fromArray(
-											[
-												A2(
-												$elm$html$Html$input,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$type_('radio'),
-														$elm$html$Html$Attributes$id('t1'),
-														$elm$html$Html$Attributes$name('rig'),
-														$elm$html$Html$Attributes$value('t1'),
-														$elm$html$Html$Events$onInput(
-														function (_v10) {
-															return $author$project$Main$SetRig(1);
-														})
-													]),
-												_List_Nil),
-												A2(
-												$elm$html$Html$label,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$for('t1')
-													]),
-												_List_fromArray(
-													[
-														$elm$html$Html$text('T1')
-													]))
-											])),
-										A2(
-										$elm$html$Html$div,
-										_List_Nil,
-										_List_fromArray(
-											[
-												A2(
-												$elm$html$Html$input,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$type_('radio'),
-														$elm$html$Html$Attributes$id('t2'),
-														$elm$html$Html$Attributes$name('rig'),
-														$elm$html$Html$Attributes$value('t2'),
-														$elm$html$Html$Events$onInput(
-														function (_v11) {
-															return $author$project$Main$SetRig(2);
-														})
-													]),
-												_List_Nil),
-												A2(
-												$elm$html$Html$label,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$for('t2')
-													]),
-												_List_fromArray(
-													[
-														$elm$html$Html$text('T2')
-													]))
-											]))
-									])),
-								A2(
-								$elm$html$Html$div,
-								_List_Nil,
-								_List_fromArray(
-									[
-										A2(
-										$elm$html$Html$h1,
-										_List_Nil,
-										_List_fromArray(
-											[
-												$elm$html$Html$text('Implant')
-											])),
-										A2(
-										$elm$html$Html$div,
-										_List_Nil,
-										_List_fromArray(
-											[
-												A2(
-												$elm$html$Html$input,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$type_('radio'),
-														$elm$html$Html$Attributes$id('no_implant'),
-														$elm$html$Html$Attributes$name('implant'),
-														$elm$html$Html$Attributes$value('no_implant'),
-														$elm$html$Html$Events$onInput(
-														function (_v12) {
-															return $author$project$Main$SetImplant(0);
-														})
-													]),
-												_List_Nil),
-												A2(
-												$elm$html$Html$label,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$for('no_implant')
-													]),
-												_List_fromArray(
-													[
-														$elm$html$Html$text('No implant')
-													]))
-											])),
-										A2(
-										$elm$html$Html$div,
-										_List_Nil,
-										_List_fromArray(
-											[
-												A2(
-												$elm$html$Html$input,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$type_('radio'),
-														$elm$html$Html$Attributes$id('one_implant'),
-														$elm$html$Html$Attributes$name('implant'),
-														$elm$html$Html$Attributes$value('one_implant'),
-														$elm$html$Html$Events$onInput(
-														function (_v13) {
-															return $author$project$Main$SetImplant(1);
-														})
-													]),
-												_List_Nil),
-												A2(
-												$elm$html$Html$label,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$for('one_implant')
-													]),
-												_List_fromArray(
-													[
-														$elm$html$Html$text('1% Implant')
-													]))
-											])),
-										A2(
-										$elm$html$Html$div,
-										_List_Nil,
-										_List_fromArray(
-											[
-												A2(
-												$elm$html$Html$input,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$type_('radio'),
-														$elm$html$Html$Attributes$id('two_implant'),
-														$elm$html$Html$Attributes$name('implant'),
-														$elm$html$Html$Attributes$value('two_implant'),
-														$elm$html$Html$Events$onInput(
-														function (_v14) {
-															return $author$project$Main$SetImplant(2);
-														})
-													]),
-												_List_Nil),
-												A2(
-												$elm$html$Html$label,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$for('two_implant')
-													]),
-												_List_fromArray(
-													[
-														$elm$html$Html$text('2% Implant')
-													]))
-											])),
-										A2(
-										$elm$html$Html$div,
-										_List_Nil,
-										_List_fromArray(
-											[
-												A2(
-												$elm$html$Html$input,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$type_('radio'),
-														$elm$html$Html$Attributes$id('four_implant'),
-														$elm$html$Html$Attributes$name('implant'),
-														$elm$html$Html$Attributes$value('four_implant'),
-														$elm$html$Html$Events$onInput(
-														function (_v15) {
-															return $author$project$Main$SetImplant(4);
-														})
-													]),
-												_List_Nil),
-												A2(
-												$elm$html$Html$label,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$for('four_implant')
-													]),
-												_List_fromArray(
-													[
-														$elm$html$Html$text('4% Implant')
-													]))
-											]))
-									])),
-								A2(
-								$elm$html$Html$div,
-								_List_Nil,
-								_List_fromArray(
-									[
-										A2(
-										$elm$html$Html$span,
-										_List_Nil,
-										_List_fromArray(
-											[
-												$elm$html$Html$text('Station Type: ')
-											])),
-										function () {
-										var _v16 = model.stationAttributes.npc;
-										if (_v16) {
-											return A2(
-												$elm$html$Html$span,
-												_List_Nil,
-												_List_fromArray(
-													[
-														$elm$html$Html$text('NPC')
-													]));
-										} else {
-											var _v17 = model.stationAttributes.upwellType;
-											switch (_v17.$) {
-												case 'Other':
-													return A2(
-														$elm$html$Html$span,
-														_List_Nil,
-														_List_fromArray(
-															[
-																$elm$html$Html$text('Other Upwell')
-															]));
-												case 'Athanor':
-													return A2(
-														$elm$html$Html$span,
-														_List_Nil,
-														_List_fromArray(
-															[
-																$elm$html$Html$text('Athanor')
-															]));
-												default:
-													return A2(
-														$elm$html$Html$span,
-														_List_Nil,
-														_List_fromArray(
-															[
-																$elm$html$Html$text('Tatara')
-															]));
-											}
-										}
-									}(),
-										A2($elm$html$Html$br, _List_Nil, _List_Nil),
-										A2(
-										$elm$html$Html$span,
-										_List_Nil,
-										_List_fromArray(
-											[
-												$elm$html$Html$text('Security Status: ')
-											])),
-										function () {
-										var _v18 = model.stationAttributes.securityStatus;
-										switch (_v18.$) {
-											case 'High':
-												return A2(
-													$elm$html$Html$span,
-													_List_Nil,
-													_List_fromArray(
-														[
-															$elm$html$Html$text('High')
-														]));
-											case 'Low':
-												return A2(
-													$elm$html$Html$span,
-													_List_Nil,
-													_List_fromArray(
-														[
-															$elm$html$Html$text('Low')
-														]));
-											default:
-												return A2(
-													$elm$html$Html$span,
-													_List_Nil,
-													_List_fromArray(
-														[
-															$elm$html$Html$text('Null')
-														]));
-										}
-									}(),
-										A2($elm$html$Html$br, _List_Nil, _List_Nil),
-										A2(
-										$elm$html$Html$span,
-										_List_Nil,
-										_List_fromArray(
-											[
-												$elm$html$Html$text('Rig: ')
-											])),
-										function () {
-										var _v19 = model.stationAttributes.rig;
-										switch (_v19) {
-											case 0:
-												return A2(
-													$elm$html$Html$span,
-													_List_Nil,
-													_List_fromArray(
-														[
-															$elm$html$Html$text('No rig.')
-														]));
-											case 1:
-												return A2(
-													$elm$html$Html$span,
-													_List_Nil,
-													_List_fromArray(
-														[
-															$elm$html$Html$text('T1 Rig.')
-														]));
-											case 2:
-												return A2(
-													$elm$html$Html$span,
-													_List_Nil,
-													_List_fromArray(
-														[
-															$elm$html$Html$text('T2 Rig.')
-														]));
-											default:
-												return A2(
-													$elm$html$Html$span,
-													_List_Nil,
-													_List_fromArray(
-														[
-															$elm$html$Html$text('Unexpected rig value.')
-														]));
-										}
-									}()
-									])),
-								A2(
-								$elm$html$Html$div,
-								_List_Nil,
-								_List_fromArray(
-									[
-										A2(
-										$elm$html$Html$h4,
-										_List_Nil,
-										_List_fromArray(
-											[
-												$elm$html$Html$text('Test Reprocessing Percentage')
-											])),
-										A2(
-										$elm$html$Html$p,
-										_List_Nil,
-										_List_fromArray(
-											[
-												A3(
-												$elm$core$Basics$composeL,
-												$elm$html$Html$text,
-												$elm$core$String$fromFloat,
-												A2($author$project$Main$reprocessingPercentage, model, 'Veldspar'))
-											]))
-									]))
-							])),
+						$author$project$Main$viewConfiguration(model),
 						$author$project$Main$viewOreData(model)
 					]))
 			]),
