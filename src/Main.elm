@@ -1407,48 +1407,6 @@ viewConfiguration model =
         , viewStationConfiguration model
         , viewImplantConfiguration model
         , div []
-            [ span [] [ text "Station Type: " ]
-            , case model.stationAttributes.npc of
-                True ->
-                    span [] [ text "NPC" ]
-
-                False ->
-                    case model.stationAttributes.upwellType of
-                        Other ->
-                            span [] [ text "Other Upwell" ]
-
-                        Athanor ->
-                            span [] [ text "Athanor" ]
-
-                        Tatara ->
-                            span [] [ text "Tatara" ]
-            , br [] []
-            , span [] [ text "Security Status: " ]
-            , case model.stationAttributes.securityStatus of
-                High ->
-                    span [] [ text "High" ]
-
-                Low ->
-                    span [] [ text "Low" ]
-
-                Null ->
-                    span [] [ text "Null" ]
-            , br [] []
-            , span [] [ text "Rig: " ]
-            , case model.stationAttributes.rig of
-                0 ->
-                    span [] [ text "No rig." ]
-
-                1 ->
-                    span [] [ text "T1 Rig." ]
-
-                2 ->
-                    span [] [ text "T2 Rig." ]
-
-                _ ->
-                    span [] [ text "Unexpected rig value." ]
-            ]
-        , div []
             [ h4 [] [ text "Test Reprocessing Percentage" ]
             , p [] [ text << String.fromFloat <| reprocessingPercentage model "Veldspar" ]
             ]
