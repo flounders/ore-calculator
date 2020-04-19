@@ -15,7 +15,6 @@ module Main exposing
     , reprocessingPercentage
     , update
     , view
-    , viewInput
     , yieldPriceM3
     , yieldPriceUnit
     , yield_price
@@ -1146,11 +1145,6 @@ view model =
     }
 
 
-viewInput : String -> String -> String -> (String -> msg) -> Html msg
-viewInput t p v toMsg =
-    input [ type_ t, placeholder p, value v, onInput toMsg ] []
-
-
 viewNumberInput : String -> String -> String -> (String -> msg) -> Html msg
 viewNumberInput t p v toMsg =
     input [ type_ t, placeholder p, step "0.01", value v, onInput toMsg ] []
@@ -1229,7 +1223,7 @@ viewStationConfiguration model =
                 , name "station_type"
                 , value "npc"
                 , onInput (\_ -> SetNPC)
-                , selected model.stationAttributes.npc
+                , checked model.stationAttributes.npc
                 ]
                 []
             , label [ for "npc" ] [ text "NPC" ]
