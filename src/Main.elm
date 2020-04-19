@@ -1181,17 +1181,6 @@ viewPricesConfiguration model =
 
             Nothing ->
                 p [] [ text "Failed to get selected refine product price." ]
-        , div []
-            [ p [] [ text model.product ]
-            , p []
-                [ text
-                    (Maybe.withDefault "Error loading refine product price."
-                        << Maybe.map String.fromFloat
-                     <|
-                        Dict.get model.product model.productPrices
-                    )
-                ]
-            ]
         ]
 
 
@@ -1225,17 +1214,6 @@ viewSkillsConfiguration model =
 
             Nothing ->
                 p [] [ text "Failed to get selected skill level." ]
-        , div []
-            [ p [] [ text model.skillSelection ]
-            , p []
-                [ text
-                    (Maybe.withDefault "Error loading skill level."
-                        << Maybe.map String.fromInt
-                     <|
-                        Dict.get model.skillSelection model.skills
-                    )
-                ]
-            ]
         ]
 
 
