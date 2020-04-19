@@ -1235,6 +1235,7 @@ viewStationConfiguration model =
                 , name "station_type"
                 , value "other"
                 , onInput (\_ -> SetUpwell Other)
+                , checked (model.stationAttributes.upwellType == Other && model.stationAttributes.npc == False)
                 ]
                 []
             , label [ for "other" ] [ text "Other" ]
@@ -1246,6 +1247,7 @@ viewStationConfiguration model =
                 , name "station_type"
                 , value "athanor"
                 , onInput (\_ -> SetUpwell Athanor)
+                , checked (model.stationAttributes.upwellType == Athanor && model.stationAttributes.npc == False)
                 ]
                 []
             , label [ for "athanor" ] [ text "Athanor" ]
@@ -1257,6 +1259,7 @@ viewStationConfiguration model =
                 , name "station_type"
                 , value "tatara"
                 , onInput (\_ -> SetUpwell Tatara)
+                , checked (model.stationAttributes.upwellType == Tatara && model.stationAttributes.npc == False)
                 ]
                 []
             , label [ for "tatara" ] [ text "Tatara" ]
@@ -1269,6 +1272,7 @@ viewStationConfiguration model =
                 , name "security_status"
                 , value "high"
                 , onInput (\_ -> SetSecurityStatus High)
+                , checked (model.stationAttributes.securityStatus == High)
                 ]
                 []
             , label [ for "high" ] [ text "High" ]
@@ -1280,6 +1284,7 @@ viewStationConfiguration model =
                 , name "security_status"
                 , value "low"
                 , onInput (\_ -> SetSecurityStatus Low)
+                , checked (model.stationAttributes.securityStatus == Low)
                 ]
                 []
             , label [ for "low" ] [ text "Low" ]
@@ -1291,6 +1296,7 @@ viewStationConfiguration model =
                 , name "security_status"
                 , value "null"
                 , onInput (\_ -> SetSecurityStatus Null)
+                , checked (model.stationAttributes.securityStatus == Null)
                 ]
                 []
             , label [ for "null" ] [ text "Null" ]
@@ -1303,6 +1309,7 @@ viewStationConfiguration model =
                 , name "rig"
                 , value "none"
                 , onInput (\_ -> SetRig 0)
+                , checked (model.stationAttributes.rig == 0)
                 ]
                 []
             , label [ for "none" ] [ text "No Rig" ]
@@ -1314,6 +1321,7 @@ viewStationConfiguration model =
                 , name "rig"
                 , value "t1"
                 , onInput (\_ -> SetRig 1)
+                , checked (model.stationAttributes.rig == 1)
                 ]
                 []
             , label [ for "t1" ] [ text "T1" ]
@@ -1325,6 +1333,7 @@ viewStationConfiguration model =
                 , name "rig"
                 , value "t2"
                 , onInput (\_ -> SetRig 2)
+                , checked (model.stationAttributes.rig == 2)
                 ]
                 []
             , label [ for "t2" ] [ text "T2" ]
@@ -1343,6 +1352,7 @@ viewImplantConfiguration model =
                 , name "implant"
                 , value "no_implant"
                 , onInput (\_ -> SetImplant 0)
+                , checked (model.implant == 0)
                 ]
                 []
             , label [ for "no_implant" ] [ text "No implant" ]
@@ -1354,6 +1364,7 @@ viewImplantConfiguration model =
                 , name "implant"
                 , value "one_implant"
                 , onInput (\_ -> SetImplant 1)
+                , checked (model.implant == 1)
                 ]
                 []
             , label [ for "one_implant" ] [ text "1% Implant" ]
@@ -1365,6 +1376,7 @@ viewImplantConfiguration model =
                 , name "implant"
                 , value "two_implant"
                 , onInput (\_ -> SetImplant 2)
+                , checked (model.implant == 2)
                 ]
                 []
             , label [ for "two_implant" ] [ text "2% Implant" ]
@@ -1376,6 +1388,7 @@ viewImplantConfiguration model =
                 , name "implant"
                 , value "four_implant"
                 , onInput (\_ -> SetImplant 4)
+                , checked (model.implant == 4)
                 ]
                 []
             , label [ for "four_implant" ] [ text "4% Implant" ]
