@@ -1156,22 +1156,22 @@ viewNumberInput t p v toMsg =
     input [ type_ t, placeholder p, step "0.01", value v, onInput toMsg ] []
 
 
-viewOption : String -> msg -> Html msg
-viewOption s m =
-    option [ value s, onClick m ] [ text s ]
-
-
-viewProductSelection : String -> Html Msg
-viewProductSelection p =
-    viewOption p (ProductSelection p)
-
-
 viewPricesConfiguration : Model -> Html Msg
 viewPricesConfiguration model =
     div []
         [ h1 [] [ text "Refine Product Prices" ]
         , select []
-            (List.map viewProductSelection (Dict.keys model.productPrices))
+            (List.map
+                (\x ->
+                    option
+                        [ value x
+                        , onClick (ProductSelection x)
+                        , selected (model.product == x)
+                        ]
+                        [ text x ]
+                )
+                (Dict.keys model.productPrices)
+            )
         , case Dict.get model.product model.productPrices of
             Just price ->
                 viewNumberInput "number"
@@ -1201,7 +1201,14 @@ viewSkillsConfiguration model =
         [ h1 [] [ text "Reprocessing Skills" ]
         , select []
             (List.map
-                (\x -> viewOption x (SkillSelection x))
+                (\x ->
+                    option
+                        [ value x
+                        , onClick (SkillSelection x)
+                        , selected (model.skillSelection == x)
+                        ]
+                        [ text x ]
+                )
                 (Dict.keys model.skills)
             )
         , case Dict.get model.skillSelection model.skills of
