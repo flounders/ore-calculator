@@ -1139,279 +1139,7 @@ view model =
             [ style "float" "left"
             , style "width" "100%"
             ]
-            [ div
-                [ id "configuration"
-                , style "float" "left"
-                ]
-                [ div []
-                    [ h1 [] [ text "Refine Product Prices" ]
-                    , select []
-                        (List.map viewProductSelection (Dict.keys model.productPrices))
-                    , case Dict.get model.product model.productPrices of
-                        Just price ->
-                            viewNumberInput "number"
-                                "Price"
-                                (String.fromFloat price)
-                                (Maybe.withDefault Failure << Maybe.map UpdatePrice << String.toFloat)
-
-                        Nothing ->
-                            p [] [ text "Failed to get selected refine product price." ]
-                    , div []
-                        [ p [] [ text model.product ]
-                        , p []
-                            [ text
-                                (Maybe.withDefault "Error loading refine product price."
-                                    << Maybe.map String.fromFloat
-                                 <|
-                                    Dict.get model.product model.productPrices
-                                )
-                            ]
-                        ]
-                    ]
-                , div []
-                    [ h1 [] [ text "Reprocessing Skills" ]
-                    , select []
-                        (List.map
-                            (\x -> viewOption x (SkillSelection x))
-                            (Dict.keys model.skills)
-                        )
-                    , case Dict.get model.skillSelection model.skills of
-                        Just level ->
-                            input
-                                [ type_ "number"
-                                , placeholder "Level"
-                                , Html.Attributes.min "0"
-                                , Html.Attributes.max "5"
-                                , value (String.fromInt level)
-                                , onInput (Maybe.withDefault Failure << Maybe.map UpdateSkill << String.toInt)
-                                ]
-                                []
-
-                        Nothing ->
-                            p [] [ text "Failed to get selected skill level." ]
-                    , div []
-                        [ p [] [ text model.skillSelection ]
-                        , p []
-                            [ text
-                                (Maybe.withDefault "Error loading skill level."
-                                    << Maybe.map String.fromInt
-                                 <|
-                                    Dict.get model.skillSelection model.skills
-                                )
-                            ]
-                        ]
-                    ]
-                , div []
-                    [ h1 [] [ text "Station Attributes" ]
-                    , h2 [] [ text "Station Type" ]
-                    , div []
-                        [ input
-                            [ type_ "radio"
-                            , id "npc"
-                            , name "station_type"
-                            , value "npc"
-                            , onInput (\_ -> SetNPC)
-                            , selected model.stationAttributes.npc
-                            ]
-                            []
-                        , label [ for "npc" ] [ text "NPC" ]
-                        ]
-                    , div []
-                        [ input
-                            [ type_ "radio"
-                            , id "other"
-                            , name "station_type"
-                            , value "other"
-                            , onInput (\_ -> SetUpwell Other)
-                            ]
-                            []
-                        , label [ for "other" ] [ text "Other" ]
-                        ]
-                    , div []
-                        [ input
-                            [ type_ "radio"
-                            , id "athanor"
-                            , name "station_type"
-                            , value "athanor"
-                            , onInput (\_ -> SetUpwell Athanor)
-                            ]
-                            []
-                        , label [ for "athanor" ] [ text "Athanor" ]
-                        ]
-                    , div []
-                        [ input
-                            [ type_ "radio"
-                            , id "tatara"
-                            , name "station_type"
-                            , value "tatara"
-                            , onInput (\_ -> SetUpwell Tatara)
-                            ]
-                            []
-                        , label [ for "tatara" ] [ text "Tatara" ]
-                        ]
-                    , h2 [] [ text "Security Status" ]
-                    , div []
-                        [ input
-                            [ type_ "radio"
-                            , id "high"
-                            , name "security_status"
-                            , value "high"
-                            , onInput (\_ -> SetSecurityStatus High)
-                            ]
-                            []
-                        , label [ for "high" ] [ text "High" ]
-                        ]
-                    , div []
-                        [ input
-                            [ type_ "radio"
-                            , id "low"
-                            , name "security_status"
-                            , value "low"
-                            , onInput (\_ -> SetSecurityStatus Low)
-                            ]
-                            []
-                        , label [ for "low" ] [ text "Low" ]
-                        ]
-                    , div []
-                        [ input
-                            [ type_ "radio"
-                            , id "null"
-                            , name "security_status"
-                            , value "null"
-                            , onInput (\_ -> SetSecurityStatus Null)
-                            ]
-                            []
-                        , label [ for "null" ] [ text "Null" ]
-                        ]
-                    , h2 [] [ text "Rig" ]
-                    , div []
-                        [ input
-                            [ type_ "radio"
-                            , id "none"
-                            , name "rig"
-                            , value "none"
-                            , onInput (\_ -> SetRig 0)
-                            ]
-                            []
-                        , label [ for "none" ] [ text "No Rig" ]
-                        ]
-                    , div []
-                        [ input
-                            [ type_ "radio"
-                            , id "t1"
-                            , name "rig"
-                            , value "t1"
-                            , onInput (\_ -> SetRig 1)
-                            ]
-                            []
-                        , label [ for "t1" ] [ text "T1" ]
-                        ]
-                    , div []
-                        [ input
-                            [ type_ "radio"
-                            , id "t2"
-                            , name "rig"
-                            , value "t2"
-                            , onInput (\_ -> SetRig 2)
-                            ]
-                            []
-                        , label [ for "t2" ] [ text "T2" ]
-                        ]
-                    ]
-                , div []
-                    [ h1 [] [ text "Implant" ]
-                    , div []
-                        [ input
-                            [ type_ "radio"
-                            , id "no_implant"
-                            , name "implant"
-                            , value "no_implant"
-                            , onInput (\_ -> SetImplant 0)
-                            ]
-                            []
-                        , label [ for "no_implant" ] [ text "No implant" ]
-                        ]
-                    , div []
-                        [ input
-                            [ type_ "radio"
-                            , id "one_implant"
-                            , name "implant"
-                            , value "one_implant"
-                            , onInput (\_ -> SetImplant 1)
-                            ]
-                            []
-                        , label [ for "one_implant" ] [ text "1% Implant" ]
-                        ]
-                    , div []
-                        [ input
-                            [ type_ "radio"
-                            , id "two_implant"
-                            , name "implant"
-                            , value "two_implant"
-                            , onInput (\_ -> SetImplant 2)
-                            ]
-                            []
-                        , label [ for "two_implant" ] [ text "2% Implant" ]
-                        ]
-                    , div []
-                        [ input
-                            [ type_ "radio"
-                            , id "four_implant"
-                            , name "implant"
-                            , value "four_implant"
-                            , onInput (\_ -> SetImplant 4)
-                            ]
-                            []
-                        , label [ for "four_implant" ] [ text "4% Implant" ]
-                        ]
-                    ]
-                , div []
-                    [ span [] [ text "Station Type: " ]
-                    , case model.stationAttributes.npc of
-                        True ->
-                            span [] [ text "NPC" ]
-
-                        False ->
-                            case model.stationAttributes.upwellType of
-                                Other ->
-                                    span [] [ text "Other Upwell" ]
-
-                                Athanor ->
-                                    span [] [ text "Athanor" ]
-
-                                Tatara ->
-                                    span [] [ text "Tatara" ]
-                    , br [] []
-                    , span [] [ text "Security Status: " ]
-                    , case model.stationAttributes.securityStatus of
-                        High ->
-                            span [] [ text "High" ]
-
-                        Low ->
-                            span [] [ text "Low" ]
-
-                        Null ->
-                            span [] [ text "Null" ]
-                    , br [] []
-                    , span [] [ text "Rig: " ]
-                    , case model.stationAttributes.rig of
-                        0 ->
-                            span [] [ text "No rig." ]
-
-                        1 ->
-                            span [] [ text "T1 Rig." ]
-
-                        2 ->
-                            span [] [ text "T2 Rig." ]
-
-                        _ ->
-                            span [] [ text "Unexpected rig value." ]
-                    ]
-                , div []
-                    [ h4 [] [ text "Test Reprocessing Percentage" ]
-                    , p [] [ text << String.fromFloat <| reprocessingPercentage model "Veldspar" ]
-                    ]
-                ]
+            [ viewConfiguration model
             , viewOreData model
             ]
         ]
@@ -1436,6 +1164,303 @@ viewOption s m =
 viewProductSelection : String -> Html Msg
 viewProductSelection p =
     viewOption p (ProductSelection p)
+
+
+viewPricesConfiguration : Model -> Html Msg
+viewPricesConfiguration model =
+    div []
+        [ h1 [] [ text "Refine Product Prices" ]
+        , select []
+            (List.map viewProductSelection (Dict.keys model.productPrices))
+        , case Dict.get model.product model.productPrices of
+            Just price ->
+                viewNumberInput "number"
+                    "Price"
+                    (String.fromFloat price)
+                    (Maybe.withDefault Failure << Maybe.map UpdatePrice << String.toFloat)
+
+            Nothing ->
+                p [] [ text "Failed to get selected refine product price." ]
+        , div []
+            [ p [] [ text model.product ]
+            , p []
+                [ text
+                    (Maybe.withDefault "Error loading refine product price."
+                        << Maybe.map String.fromFloat
+                     <|
+                        Dict.get model.product model.productPrices
+                    )
+                ]
+            ]
+        ]
+
+
+viewSkillsConfiguration : Model -> Html Msg
+viewSkillsConfiguration model =
+    div []
+        [ h1 [] [ text "Reprocessing Skills" ]
+        , select []
+            (List.map
+                (\x -> viewOption x (SkillSelection x))
+                (Dict.keys model.skills)
+            )
+        , case Dict.get model.skillSelection model.skills of
+            Just level ->
+                input
+                    [ type_ "number"
+                    , placeholder "Level"
+                    , Html.Attributes.min "0"
+                    , Html.Attributes.max "5"
+                    , value (String.fromInt level)
+                    , onInput (Maybe.withDefault Failure << Maybe.map UpdateSkill << String.toInt)
+                    ]
+                    []
+
+            Nothing ->
+                p [] [ text "Failed to get selected skill level." ]
+        , div []
+            [ p [] [ text model.skillSelection ]
+            , p []
+                [ text
+                    (Maybe.withDefault "Error loading skill level."
+                        << Maybe.map String.fromInt
+                     <|
+                        Dict.get model.skillSelection model.skills
+                    )
+                ]
+            ]
+        ]
+
+
+viewStationConfiguration : Model -> Html Msg
+viewStationConfiguration model =
+    div []
+        [ h1 [] [ text "Station Attributes" ]
+        , h2 [] [ text "Station Type" ]
+        , div []
+            [ input
+                [ type_ "radio"
+                , id "npc"
+                , name "station_type"
+                , value "npc"
+                , onInput (\_ -> SetNPC)
+                , selected model.stationAttributes.npc
+                ]
+                []
+            , label [ for "npc" ] [ text "NPC" ]
+            ]
+        , div []
+            [ input
+                [ type_ "radio"
+                , id "other"
+                , name "station_type"
+                , value "other"
+                , onInput (\_ -> SetUpwell Other)
+                ]
+                []
+            , label [ for "other" ] [ text "Other" ]
+            ]
+        , div []
+            [ input
+                [ type_ "radio"
+                , id "athanor"
+                , name "station_type"
+                , value "athanor"
+                , onInput (\_ -> SetUpwell Athanor)
+                ]
+                []
+            , label [ for "athanor" ] [ text "Athanor" ]
+            ]
+        , div []
+            [ input
+                [ type_ "radio"
+                , id "tatara"
+                , name "station_type"
+                , value "tatara"
+                , onInput (\_ -> SetUpwell Tatara)
+                ]
+                []
+            , label [ for "tatara" ] [ text "Tatara" ]
+            ]
+        , h2 [] [ text "Security Status" ]
+        , div []
+            [ input
+                [ type_ "radio"
+                , id "high"
+                , name "security_status"
+                , value "high"
+                , onInput (\_ -> SetSecurityStatus High)
+                ]
+                []
+            , label [ for "high" ] [ text "High" ]
+            ]
+        , div []
+            [ input
+                [ type_ "radio"
+                , id "low"
+                , name "security_status"
+                , value "low"
+                , onInput (\_ -> SetSecurityStatus Low)
+                ]
+                []
+            , label [ for "low" ] [ text "Low" ]
+            ]
+        , div []
+            [ input
+                [ type_ "radio"
+                , id "null"
+                , name "security_status"
+                , value "null"
+                , onInput (\_ -> SetSecurityStatus Null)
+                ]
+                []
+            , label [ for "null" ] [ text "Null" ]
+            ]
+        , h2 [] [ text "Rig" ]
+        , div []
+            [ input
+                [ type_ "radio"
+                , id "none"
+                , name "rig"
+                , value "none"
+                , onInput (\_ -> SetRig 0)
+                ]
+                []
+            , label [ for "none" ] [ text "No Rig" ]
+            ]
+        , div []
+            [ input
+                [ type_ "radio"
+                , id "t1"
+                , name "rig"
+                , value "t1"
+                , onInput (\_ -> SetRig 1)
+                ]
+                []
+            , label [ for "t1" ] [ text "T1" ]
+            ]
+        , div []
+            [ input
+                [ type_ "radio"
+                , id "t2"
+                , name "rig"
+                , value "t2"
+                , onInput (\_ -> SetRig 2)
+                ]
+                []
+            , label [ for "t2" ] [ text "T2" ]
+            ]
+        ]
+
+
+viewImplantConfiguration : Model -> Html Msg
+viewImplantConfiguration model =
+    div []
+        [ h1 [] [ text "Implant" ]
+        , div []
+            [ input
+                [ type_ "radio"
+                , id "no_implant"
+                , name "implant"
+                , value "no_implant"
+                , onInput (\_ -> SetImplant 0)
+                ]
+                []
+            , label [ for "no_implant" ] [ text "No implant" ]
+            ]
+        , div []
+            [ input
+                [ type_ "radio"
+                , id "one_implant"
+                , name "implant"
+                , value "one_implant"
+                , onInput (\_ -> SetImplant 1)
+                ]
+                []
+            , label [ for "one_implant" ] [ text "1% Implant" ]
+            ]
+        , div []
+            [ input
+                [ type_ "radio"
+                , id "two_implant"
+                , name "implant"
+                , value "two_implant"
+                , onInput (\_ -> SetImplant 2)
+                ]
+                []
+            , label [ for "two_implant" ] [ text "2% Implant" ]
+            ]
+        , div []
+            [ input
+                [ type_ "radio"
+                , id "four_implant"
+                , name "implant"
+                , value "four_implant"
+                , onInput (\_ -> SetImplant 4)
+                ]
+                []
+            , label [ for "four_implant" ] [ text "4% Implant" ]
+            ]
+        ]
+
+
+viewConfiguration : Model -> Html Msg
+viewConfiguration model =
+    div
+        [ id "configuration"
+        , style "float" "left"
+        ]
+        [ viewPricesConfiguration model
+        , viewSkillsConfiguration model
+        , viewStationConfiguration model
+        , viewImplantConfiguration model
+        , div []
+            [ span [] [ text "Station Type: " ]
+            , case model.stationAttributes.npc of
+                True ->
+                    span [] [ text "NPC" ]
+
+                False ->
+                    case model.stationAttributes.upwellType of
+                        Other ->
+                            span [] [ text "Other Upwell" ]
+
+                        Athanor ->
+                            span [] [ text "Athanor" ]
+
+                        Tatara ->
+                            span [] [ text "Tatara" ]
+            , br [] []
+            , span [] [ text "Security Status: " ]
+            , case model.stationAttributes.securityStatus of
+                High ->
+                    span [] [ text "High" ]
+
+                Low ->
+                    span [] [ text "Low" ]
+
+                Null ->
+                    span [] [ text "Null" ]
+            , br [] []
+            , span [] [ text "Rig: " ]
+            , case model.stationAttributes.rig of
+                0 ->
+                    span [] [ text "No rig." ]
+
+                1 ->
+                    span [] [ text "T1 Rig." ]
+
+                2 ->
+                    span [] [ text "T2 Rig." ]
+
+                _ ->
+                    span [] [ text "Unexpected rig value." ]
+            ]
+        , div []
+            [ h4 [] [ text "Test Reprocessing Percentage" ]
+            , p [] [ text << String.fromFloat <| reprocessingPercentage model "Veldspar" ]
+            ]
+        ]
 
 
 viewOreData : Model -> Html msg
