@@ -23,6 +23,8 @@ module Main exposing
 import Basics exposing (..)
 import Browser exposing (Document)
 import Dict exposing (Dict)
+import FormatNumber exposing (format)
+import FormatNumber.Locales exposing (Decimals(..), usLocale)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick, onInput)
@@ -1442,7 +1444,7 @@ viewOreData model =
                             [ td [] [ text x ]
                             , td []
                                 [ text
-                                    << String.fromFloat
+                                    << format { usLocale | decimals = Exact 2 }
                                     << roundHundredths
                                     << Result.withDefault 0.0
                                   <|
@@ -1450,7 +1452,7 @@ viewOreData model =
                                 ]
                             , td []
                                 [ text
-                                    << String.fromFloat
+                                    << format { usLocale | decimals = Exact 2 }
                                     << roundHundredths
                                     << Result.withDefault 0.0
                                   <|
@@ -1458,7 +1460,7 @@ viewOreData model =
                                 ]
                             , td []
                                 [ text
-                                    << String.fromFloat
+                                    << format { usLocale | decimals = Exact 2 }
                                     << roundHundredths
                                     << Result.withDefault 0.0
                                   <|
@@ -1466,7 +1468,7 @@ viewOreData model =
                                 ]
                             , td []
                                 [ text
-                                    << String.fromFloat
+                                    << format { usLocale | decimals = Exact 2 }
                                     << roundHundredths
                                     << Result.withDefault 0.0
                                   <|
