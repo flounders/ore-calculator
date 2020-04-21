@@ -888,7 +888,22 @@ type alias Model =
     , skills : Dict String Int
     , stationAttributes : StationAttributes
     , implant : Int
+    , sortField : Sorter
     }
+
+
+type alias OreData =
+    { name : String
+    , ppu : Float
+    , ppuLarge : Float
+    , ppm : Float
+    , ppmLarge : Float
+    }
+
+
+type Sorter
+    = S (OreData -> String)
+    | F (OreData -> Float)
 
 
 reprocessingPercentage : Model -> String -> Float
@@ -1057,6 +1072,7 @@ init _ =
         )
         (StationAttributes True Other High 0)
         0
+        (S .name)
     , Cmd.none
     )
 
@@ -1075,6 +1091,7 @@ type Msg
     | SetSecurityStatus SecurityStatus
     | SetRig Int
     | SetImplant Int
+    | SortField Sorter
     | Failure
 
 
@@ -1123,6 +1140,9 @@ update msg model =
 
         SetImplant implant ->
             ( { model | implant = implant }, Cmd.none )
+
+        SortField accessor ->
+            ( { model | sortField = accessor }, Cmd.none )
 
         Failure ->
             ( model, Cmd.none )
@@ -1415,8 +1435,28 @@ viewConfiguration model =
         ]
 
 
-viewOreData : Model -> Html msg
+viewOreData : Model -> Html Msg
 viewOreData model =
+    let
+        oreData =
+            List.map
+                (\x ->
+                    OreData x
+                        (roundHundredths << Result.withDefault 0.0 <| yieldPriceUnit model x 100)
+                        (roundHundredths << Result.withDefault 0.0 <| yieldPriceUnit model x 10000)
+                        (roundHundredths << Result.withDefault 0.0 <| yieldPriceM3 model x 100)
+                        (roundHundredths << Result.withDefault 0.0 <| yieldPriceM3 model x 10000)
+                )
+                (Dict.keys ores)
+
+        sortData =
+            case model.sortField of
+                S x ->
+                    List.sortBy x
+
+                F x ->
+                    List.sortBy x
+    in
     div
         [ id "ore-data"
         , style "float" "right"
@@ -1430,53 +1470,45 @@ viewOreData model =
                 ]
             , thead []
                 [ tr []
-                    [ th [] [ text "Name" ]
-                    , th [] [ text "Price Per Unit (100)" ]
-                    , th [] [ text "Price Per Unit (10000)" ]
-                    , th [] [ text "Price Per m3 (100)" ]
-                    , th [] [ text "Price Per m3 (10000)" ]
+                    [ th [ onClick (SortField (S .name)) ] [ text "Name" ]
+                    , th [ onClick (SortField (F .ppu)) ] [ text "Price Per Unit (100)" ]
+                    , th [ onClick (SortField (F .ppuLarge)) ] [ text "Price Per Unit (10000)" ]
+                    , th [ onClick (SortField (F .ppm)) ] [ text "Price Per m3 (100)" ]
+                    , th [ onClick (SortField (F .ppmLarge)) ] [ text "Price Per m3 (10000)" ]
                     ]
                 ]
             , tbody []
                 (List.map
                     (\x ->
                         tr []
-                            [ td [] [ text x ]
+                            [ td [] [ text x.name ]
                             , td []
                                 [ text
                                     << format { usLocale | decimals = Exact 2 }
-                                    << roundHundredths
-                                    << Result.withDefault 0.0
                                   <|
-                                    yieldPriceUnit model x 100
+                                    x.ppu
                                 ]
                             , td []
                                 [ text
                                     << format { usLocale | decimals = Exact 2 }
-                                    << roundHundredths
-                                    << Result.withDefault 0.0
                                   <|
-                                    yieldPriceUnit model x 10000
+                                    x.ppuLarge
                                 ]
                             , td []
                                 [ text
                                     << format { usLocale | decimals = Exact 2 }
-                                    << roundHundredths
-                                    << Result.withDefault 0.0
                                   <|
-                                    yieldPriceM3 model x 100
+                                    x.ppm
                                 ]
                             , td []
                                 [ text
                                     << format { usLocale | decimals = Exact 2 }
-                                    << roundHundredths
-                                    << Result.withDefault 0.0
                                   <|
-                                    yieldPriceM3 model x 10000
+                                    x.ppmLarge
                                 ]
                             ]
                     )
-                    (Dict.keys ores)
+                    (sortData oreData)
                 )
             ]
         ]

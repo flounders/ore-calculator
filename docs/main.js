@@ -5182,11 +5182,14 @@ var $elm$core$Task$perform = F2(
 	});
 var $elm$browser$Browser$document = _Browser_document;
 var $author$project$Main$High = {$: 'High'};
-var $author$project$Main$Model = F7(
-	function (name, product, productPrices, skillSelection, skills, stationAttributes, implant) {
-		return {implant: implant, name: name, product: product, productPrices: productPrices, skillSelection: skillSelection, skills: skills, stationAttributes: stationAttributes};
+var $author$project$Main$Model = F8(
+	function (name, product, productPrices, skillSelection, skills, stationAttributes, implant, sortField) {
+		return {implant: implant, name: name, product: product, productPrices: productPrices, skillSelection: skillSelection, skills: skills, sortField: sortField, stationAttributes: stationAttributes};
 	});
 var $author$project$Main$Other = {$: 'Other'};
+var $author$project$Main$S = function (a) {
+	return {$: 'S', a: a};
+};
 var $author$project$Main$StationAttributes = F4(
 	function (npc, upwellType, securityStatus, rig) {
 		return {npc: npc, rig: rig, securityStatus: securityStatus, upwellType: upwellType};
@@ -5318,7 +5321,7 @@ var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $author$project$Main$init = function (_v0) {
 	return _Utils_Tuple2(
-		A7(
+		A8(
 			$author$project$Main$Model,
 			'',
 			'Tritanium',
@@ -5358,7 +5361,11 @@ var $author$project$Main$init = function (_v0) {
 						_Utils_Tuple2('Veldspar Reprocessing', 0)
 					])),
 			A4($author$project$Main$StationAttributes, true, $author$project$Main$Other, $author$project$Main$High, 0),
-			0),
+			0,
+			$author$project$Main$S(
+				function ($) {
+					return $.name;
+				})),
 		$elm$core$Platform$Cmd$none);
 };
 var $elm$core$Platform$Sub$batch = _Platform_batch;
@@ -5454,6 +5461,13 @@ var $author$project$Main$update = F2(
 					_Utils_update(
 						model,
 						{implant: implant}),
+					$elm$core$Platform$Cmd$none);
+			case 'SortField':
+				var accessor = msg.a;
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{sortField: accessor}),
 					$elm$core$Platform$Cmd$none);
 			default:
 				return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
@@ -7320,6 +7334,16 @@ var $author$project$Main$viewConfiguration = function (model) {
 var $cuducos$elm_format_number$FormatNumber$Locales$Exact = function (a) {
 	return {$: 'Exact', a: a};
 };
+var $author$project$Main$F = function (a) {
+	return {$: 'F', a: a};
+};
+var $author$project$Main$OreData = F5(
+	function (name, ppu, ppuLarge, ppm, ppmLarge) {
+		return {name: name, ppm: ppm, ppmLarge: ppmLarge, ppu: ppu, ppuLarge: ppuLarge};
+	});
+var $author$project$Main$SortField = function (a) {
+	return {$: 'SortField', a: a};
+};
 var $elm$virtual_dom$VirtualDom$attribute = F2(
 	function (key, value) {
 		return A2(
@@ -7795,6 +7819,7 @@ var $author$project$Main$roundHundredths = function (n) {
 		$elm$core$Basics$toFloat,
 		$elm$core$Basics$round(n * 100));
 };
+var $elm$core$List$sortBy = _List_sortBy;
 var $elm$html$Html$table = _VirtualDom_node('table');
 var $elm$html$Html$tbody = _VirtualDom_node('tbody');
 var $elm$html$Html$td = _VirtualDom_node('td');
@@ -7976,6 +8001,44 @@ var $author$project$Main$yieldPriceM3 = F3(
 			A3($author$project$Main$yieldPriceUnit, model, ore_name, total_ore_quantity));
 	});
 var $author$project$Main$viewOreData = function (model) {
+	var sortData = function () {
+		var _v0 = model.sortField;
+		if (_v0.$ === 'S') {
+			var x = _v0.a;
+			return $elm$core$List$sortBy(x);
+		} else {
+			var x = _v0.a;
+			return $elm$core$List$sortBy(x);
+		}
+	}();
+	var oreData = A2(
+		$elm$core$List$map,
+		function (x) {
+			return A5(
+				$author$project$Main$OreData,
+				x,
+				A3(
+					$elm$core$Basics$composeL,
+					$author$project$Main$roundHundredths,
+					$elm$core$Result$withDefault(0.0),
+					A3($author$project$Main$yieldPriceUnit, model, x, 100)),
+				A3(
+					$elm$core$Basics$composeL,
+					$author$project$Main$roundHundredths,
+					$elm$core$Result$withDefault(0.0),
+					A3($author$project$Main$yieldPriceUnit, model, x, 10000)),
+				A3(
+					$elm$core$Basics$composeL,
+					$author$project$Main$roundHundredths,
+					$elm$core$Result$withDefault(0.0),
+					A3($author$project$Main$yieldPriceM3, model, x, 100)),
+				A3(
+					$elm$core$Basics$composeL,
+					$author$project$Main$roundHundredths,
+					$elm$core$Result$withDefault(0.0),
+					A3($author$project$Main$yieldPriceM3, model, x, 10000)));
+		},
+		$elm$core$Dict$keys($author$project$Main$ores));
 	return A2(
 		$elm$html$Html$div,
 		_List_fromArray(
@@ -8032,35 +8095,75 @@ var $author$project$Main$viewOreData = function (model) {
 									[
 										A2(
 										$elm$html$Html$th,
-										_List_Nil,
+										_List_fromArray(
+											[
+												$elm$html$Html$Events$onClick(
+												$author$project$Main$SortField(
+													$author$project$Main$S(
+														function ($) {
+															return $.name;
+														})))
+											]),
 										_List_fromArray(
 											[
 												$elm$html$Html$text('Name')
 											])),
 										A2(
 										$elm$html$Html$th,
-										_List_Nil,
+										_List_fromArray(
+											[
+												$elm$html$Html$Events$onClick(
+												$author$project$Main$SortField(
+													$author$project$Main$F(
+														function ($) {
+															return $.ppu;
+														})))
+											]),
 										_List_fromArray(
 											[
 												$elm$html$Html$text('Price Per Unit (100)')
 											])),
 										A2(
 										$elm$html$Html$th,
-										_List_Nil,
+										_List_fromArray(
+											[
+												$elm$html$Html$Events$onClick(
+												$author$project$Main$SortField(
+													$author$project$Main$F(
+														function ($) {
+															return $.ppuLarge;
+														})))
+											]),
 										_List_fromArray(
 											[
 												$elm$html$Html$text('Price Per Unit (10000)')
 											])),
 										A2(
 										$elm$html$Html$th,
-										_List_Nil,
+										_List_fromArray(
+											[
+												$elm$html$Html$Events$onClick(
+												$author$project$Main$SortField(
+													$author$project$Main$F(
+														function ($) {
+															return $.ppm;
+														})))
+											]),
 										_List_fromArray(
 											[
 												$elm$html$Html$text('Price Per m3 (100)')
 											])),
 										A2(
 										$elm$html$Html$th,
-										_List_Nil,
+										_List_fromArray(
+											[
+												$elm$html$Html$Events$onClick(
+												$author$project$Main$SortField(
+													$author$project$Main$F(
+														function ($) {
+															return $.ppmLarge;
+														})))
+											]),
 										_List_fromArray(
 											[
 												$elm$html$Html$text('Price Per m3 (10000)')
@@ -8083,7 +8186,7 @@ var $author$project$Main$viewOreData = function (model) {
 											_List_Nil,
 											_List_fromArray(
 												[
-													$elm$html$Html$text(x)
+													$elm$html$Html$text(x.name)
 												])),
 											A2(
 											$elm$html$Html$td,
@@ -8092,20 +8195,14 @@ var $author$project$Main$viewOreData = function (model) {
 												[
 													A3(
 													$elm$core$Basics$composeL,
-													A2(
-														$elm$core$Basics$composeL,
-														A2(
-															$elm$core$Basics$composeL,
-															$elm$html$Html$text,
-															$cuducos$elm_format_number$FormatNumber$format(
-																_Utils_update(
-																	$cuducos$elm_format_number$FormatNumber$Locales$usLocale,
-																	{
-																		decimals: $cuducos$elm_format_number$FormatNumber$Locales$Exact(2)
-																	}))),
-														$author$project$Main$roundHundredths),
-													$elm$core$Result$withDefault(0.0),
-													A3($author$project$Main$yieldPriceUnit, model, x, 100))
+													$elm$html$Html$text,
+													$cuducos$elm_format_number$FormatNumber$format(
+														_Utils_update(
+															$cuducos$elm_format_number$FormatNumber$Locales$usLocale,
+															{
+																decimals: $cuducos$elm_format_number$FormatNumber$Locales$Exact(2)
+															})),
+													x.ppu)
 												])),
 											A2(
 											$elm$html$Html$td,
@@ -8114,20 +8211,14 @@ var $author$project$Main$viewOreData = function (model) {
 												[
 													A3(
 													$elm$core$Basics$composeL,
-													A2(
-														$elm$core$Basics$composeL,
-														A2(
-															$elm$core$Basics$composeL,
-															$elm$html$Html$text,
-															$cuducos$elm_format_number$FormatNumber$format(
-																_Utils_update(
-																	$cuducos$elm_format_number$FormatNumber$Locales$usLocale,
-																	{
-																		decimals: $cuducos$elm_format_number$FormatNumber$Locales$Exact(2)
-																	}))),
-														$author$project$Main$roundHundredths),
-													$elm$core$Result$withDefault(0.0),
-													A3($author$project$Main$yieldPriceUnit, model, x, 10000))
+													$elm$html$Html$text,
+													$cuducos$elm_format_number$FormatNumber$format(
+														_Utils_update(
+															$cuducos$elm_format_number$FormatNumber$Locales$usLocale,
+															{
+																decimals: $cuducos$elm_format_number$FormatNumber$Locales$Exact(2)
+															})),
+													x.ppuLarge)
 												])),
 											A2(
 											$elm$html$Html$td,
@@ -8136,20 +8227,14 @@ var $author$project$Main$viewOreData = function (model) {
 												[
 													A3(
 													$elm$core$Basics$composeL,
-													A2(
-														$elm$core$Basics$composeL,
-														A2(
-															$elm$core$Basics$composeL,
-															$elm$html$Html$text,
-															$cuducos$elm_format_number$FormatNumber$format(
-																_Utils_update(
-																	$cuducos$elm_format_number$FormatNumber$Locales$usLocale,
-																	{
-																		decimals: $cuducos$elm_format_number$FormatNumber$Locales$Exact(2)
-																	}))),
-														$author$project$Main$roundHundredths),
-													$elm$core$Result$withDefault(0.0),
-													A3($author$project$Main$yieldPriceM3, model, x, 100))
+													$elm$html$Html$text,
+													$cuducos$elm_format_number$FormatNumber$format(
+														_Utils_update(
+															$cuducos$elm_format_number$FormatNumber$Locales$usLocale,
+															{
+																decimals: $cuducos$elm_format_number$FormatNumber$Locales$Exact(2)
+															})),
+													x.ppm)
 												])),
 											A2(
 											$elm$html$Html$td,
@@ -8158,24 +8243,18 @@ var $author$project$Main$viewOreData = function (model) {
 												[
 													A3(
 													$elm$core$Basics$composeL,
-													A2(
-														$elm$core$Basics$composeL,
-														A2(
-															$elm$core$Basics$composeL,
-															$elm$html$Html$text,
-															$cuducos$elm_format_number$FormatNumber$format(
-																_Utils_update(
-																	$cuducos$elm_format_number$FormatNumber$Locales$usLocale,
-																	{
-																		decimals: $cuducos$elm_format_number$FormatNumber$Locales$Exact(2)
-																	}))),
-														$author$project$Main$roundHundredths),
-													$elm$core$Result$withDefault(0.0),
-													A3($author$project$Main$yieldPriceM3, model, x, 10000))
+													$elm$html$Html$text,
+													$cuducos$elm_format_number$FormatNumber$format(
+														_Utils_update(
+															$cuducos$elm_format_number$FormatNumber$Locales$usLocale,
+															{
+																decimals: $cuducos$elm_format_number$FormatNumber$Locales$Exact(2)
+															})),
+													x.ppmLarge)
 												]))
 										]));
 							},
-							$elm$core$Dict$keys($author$project$Main$ores)))
+							sortData(oreData)))
 					]))
 			]));
 };
