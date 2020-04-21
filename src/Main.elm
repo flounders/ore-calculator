@@ -1428,10 +1428,6 @@ viewConfiguration model =
         , viewSkillsConfiguration model
         , viewStationConfiguration model
         , viewImplantConfiguration model
-        , div []
-            [ h4 [] [ text "Test Reprocessing Percentage" ]
-            , p [] [ text << String.fromFloat <| reprocessingPercentage model "Veldspar" ]
-            ]
         ]
 
 
