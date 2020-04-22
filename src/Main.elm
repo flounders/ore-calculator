@@ -1176,36 +1176,42 @@ view model =
     }
 
 
-viewNumberInput : String -> String -> String -> (String -> msg) -> Html msg
-viewNumberInput t p v toMsg =
-    input [ type_ t, placeholder p, step "0.01", value v, onInput toMsg ] []
-
-
 viewPricesConfiguration : Model -> Html Msg
 viewPricesConfiguration model =
     div []
         [ h1 [] [ text "Refine Product Prices" ]
-        , select []
-            (List.map
-                (\x ->
-                    option
-                        [ value x
-                        , onClick (ProductSelection x)
-                        , selected (model.product == x)
-                        ]
-                        [ text x ]
+        , div []
+            [ label [ for "productSelector" ] [ text "Product" ]
+            , select [ id "productSelector" ]
+                (List.map
+                    (\x ->
+                        option
+                            [ value x
+                            , onClick (ProductSelection x)
+                            , selected (model.product == x)
+                            ]
+                            [ text x ]
+                    )
+                    (Dict.keys model.productPrices)
                 )
-                (Dict.keys model.productPrices)
-            )
-        , case Dict.get model.product model.productPrices of
-            Just price ->
-                viewNumberInput "number"
-                    "Price"
-                    (String.fromFloat price)
-                    (Maybe.withDefault Failure << Maybe.map UpdatePrice << String.toFloat)
+            ]
+        , div []
+            [ label [ for "priceSelector" ] [ text "Price" ]
+            , case Dict.get model.product model.productPrices of
+                Just price ->
+                    input
+                        [ type_ "number"
+                        , id "priceSelector"
+                        , placeholder "Price"
+                        , step "0.01"
+                        , value (String.fromFloat price)
+                        , onInput (Maybe.withDefault Failure << Maybe.map UpdatePrice << String.toFloat)
+                        ]
+                        []
 
-            Nothing ->
-                p [] [ text "Failed to get selected refine product price." ]
+                Nothing ->
+                    p [] [ text "Failed to get selected refine product price." ]
+            ]
         ]
 
 
@@ -1213,32 +1219,39 @@ viewSkillsConfiguration : Model -> Html Msg
 viewSkillsConfiguration model =
     div []
         [ h1 [] [ text "Reprocessing Skills" ]
-        , select []
-            (List.map
-                (\x ->
-                    option
-                        [ value x
-                        , onClick (SkillSelection x)
-                        , selected (model.skillSelection == x)
-                        ]
-                        [ text x ]
+        , div []
+            [ label [ for "skillSelector" ] [ text "Skill" ]
+            , select [ id "skillSelector" ]
+                (List.map
+                    (\x ->
+                        option
+                            [ value x
+                            , onClick (SkillSelection x)
+                            , selected (model.skillSelection == x)
+                            ]
+                            [ text x ]
+                    )
+                    (Dict.keys model.skills)
                 )
-                (Dict.keys model.skills)
-            )
-        , case Dict.get model.skillSelection model.skills of
-            Just level ->
-                input
-                    [ type_ "number"
-                    , placeholder "Level"
-                    , Html.Attributes.min "0"
-                    , Html.Attributes.max "5"
-                    , value (String.fromInt level)
-                    , onInput (Maybe.withDefault Failure << Maybe.map UpdateSkill << String.toInt)
-                    ]
-                    []
+            ]
+        , div []
+            [ label [ for "levelSelector" ] [ text "Level" ]
+            , case Dict.get model.skillSelection model.skills of
+                Just level ->
+                    input
+                        [ type_ "number"
+                        , id "levelSelector"
+                        , placeholder "Level"
+                        , Html.Attributes.min "0"
+                        , Html.Attributes.max "5"
+                        , value (String.fromInt level)
+                        , onInput (Maybe.withDefault Failure << Maybe.map UpdateSkill << String.toInt)
+                        ]
+                        []
 
-            Nothing ->
-                p [] [ text "Failed to get selected skill level." ]
+                Nothing ->
+                    p [] [ text "Failed to get selected skill level." ]
+            ]
         ]
 
 
