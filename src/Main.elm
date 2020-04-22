@@ -1115,7 +1115,16 @@ update msg model =
                 currentAttributes =
                     model.stationAttributes
             in
-            ( { model | stationAttributes = { currentAttributes | npc = True } }, Cmd.none )
+            ( { model
+                | stationAttributes =
+                    { currentAttributes
+                        | npc = True
+                        , rig = 0
+                        , securityStatus = High
+                    }
+              }
+            , Cmd.none
+            )
 
         SetUpwell upwell ->
             let
