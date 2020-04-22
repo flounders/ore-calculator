@@ -1237,136 +1237,142 @@ viewStationConfiguration : Model -> Html Msg
 viewStationConfiguration model =
     div []
         [ h1 [] [ text "Station Attributes" ]
-        , h2 [] [ text "Station Type" ]
-        , div []
-            [ input
-                [ type_ "radio"
-                , id "npc"
-                , name "station_type"
-                , value "npc"
-                , onInput (\_ -> SetNPC)
-                , checked model.stationAttributes.npc
+        , fieldset []
+            [ legend [] [ text "Station Type" ]
+            , div []
+                [ input
+                    [ type_ "radio"
+                    , id "npc"
+                    , name "station_type"
+                    , value "npc"
+                    , onInput (\_ -> SetNPC)
+                    , checked model.stationAttributes.npc
+                    ]
+                    []
+                , label [ for "npc" ] [ text "NPC" ]
                 ]
-                []
-            , label [ for "npc" ] [ text "NPC" ]
+            , div []
+                [ input
+                    [ type_ "radio"
+                    , id "other"
+                    , name "station_type"
+                    , value "other"
+                    , onInput (\_ -> SetUpwell Other)
+                    , checked (model.stationAttributes.upwellType == Other && model.stationAttributes.npc == False)
+                    ]
+                    []
+                , label [ for "other" ] [ text "Other" ]
+                ]
+            , div []
+                [ input
+                    [ type_ "radio"
+                    , id "athanor"
+                    , name "station_type"
+                    , value "athanor"
+                    , onInput (\_ -> SetUpwell Athanor)
+                    , checked (model.stationAttributes.upwellType == Athanor && model.stationAttributes.npc == False)
+                    ]
+                    []
+                , label [ for "athanor" ] [ text "Athanor" ]
+                ]
+            , div []
+                [ input
+                    [ type_ "radio"
+                    , id "tatara"
+                    , name "station_type"
+                    , value "tatara"
+                    , onInput (\_ -> SetUpwell Tatara)
+                    , checked (model.stationAttributes.upwellType == Tatara && model.stationAttributes.npc == False)
+                    ]
+                    []
+                , label [ for "tatara" ] [ text "Tatara" ]
+                ]
             ]
-        , div []
-            [ input
-                [ type_ "radio"
-                , id "other"
-                , name "station_type"
-                , value "other"
-                , onInput (\_ -> SetUpwell Other)
-                , checked (model.stationAttributes.upwellType == Other && model.stationAttributes.npc == False)
+        , fieldset []
+            [ legend [] [ text "Security Status" ]
+            , div []
+                [ input
+                    [ type_ "radio"
+                    , id "high"
+                    , name "security_status"
+                    , value "high"
+                    , onInput (\_ -> SetSecurityStatus High)
+                    , checked (model.stationAttributes.securityStatus == High)
+                    ]
+                    []
+                , label [ for "high" ] [ text "High" ]
                 ]
-                []
-            , label [ for "other" ] [ text "Other" ]
+            , div []
+                [ input
+                    [ type_ "radio"
+                    , id "low"
+                    , name "security_status"
+                    , value "low"
+                    , onInput (\_ -> SetSecurityStatus Low)
+                    , checked (model.stationAttributes.securityStatus == Low)
+                    ]
+                    []
+                , label [ for "low" ] [ text "Low" ]
+                ]
+            , div []
+                [ input
+                    [ type_ "radio"
+                    , id "null"
+                    , name "security_status"
+                    , value "null"
+                    , onInput (\_ -> SetSecurityStatus Null)
+                    , checked (model.stationAttributes.securityStatus == Null)
+                    ]
+                    []
+                , label [ for "null" ] [ text "Null" ]
+                ]
             ]
-        , div []
-            [ input
-                [ type_ "radio"
-                , id "athanor"
-                , name "station_type"
-                , value "athanor"
-                , onInput (\_ -> SetUpwell Athanor)
-                , checked (model.stationAttributes.upwellType == Athanor && model.stationAttributes.npc == False)
+        , fieldset []
+            [ legend [] [ text "Rig" ]
+            , div []
+                [ input
+                    [ type_ "radio"
+                    , id "none"
+                    , name "rig"
+                    , value "none"
+                    , onInput (\_ -> SetRig 0)
+                    , checked (model.stationAttributes.rig == 0)
+                    ]
+                    []
+                , label [ for "none" ] [ text "No Rig" ]
                 ]
-                []
-            , label [ for "athanor" ] [ text "Athanor" ]
-            ]
-        , div []
-            [ input
-                [ type_ "radio"
-                , id "tatara"
-                , name "station_type"
-                , value "tatara"
-                , onInput (\_ -> SetUpwell Tatara)
-                , checked (model.stationAttributes.upwellType == Tatara && model.stationAttributes.npc == False)
+            , div []
+                [ input
+                    [ type_ "radio"
+                    , id "t1"
+                    , name "rig"
+                    , value "t1"
+                    , onInput (\_ -> SetRig 1)
+                    , checked (model.stationAttributes.rig == 1)
+                    ]
+                    []
+                , label [ for "t1" ] [ text "T1" ]
                 ]
-                []
-            , label [ for "tatara" ] [ text "Tatara" ]
-            ]
-        , h2 [] [ text "Security Status" ]
-        , div []
-            [ input
-                [ type_ "radio"
-                , id "high"
-                , name "security_status"
-                , value "high"
-                , onInput (\_ -> SetSecurityStatus High)
-                , checked (model.stationAttributes.securityStatus == High)
+            , div []
+                [ input
+                    [ type_ "radio"
+                    , id "t2"
+                    , name "rig"
+                    , value "t2"
+                    , onInput (\_ -> SetRig 2)
+                    , checked (model.stationAttributes.rig == 2)
+                    ]
+                    []
+                , label [ for "t2" ] [ text "T2" ]
                 ]
-                []
-            , label [ for "high" ] [ text "High" ]
-            ]
-        , div []
-            [ input
-                [ type_ "radio"
-                , id "low"
-                , name "security_status"
-                , value "low"
-                , onInput (\_ -> SetSecurityStatus Low)
-                , checked (model.stationAttributes.securityStatus == Low)
-                ]
-                []
-            , label [ for "low" ] [ text "Low" ]
-            ]
-        , div []
-            [ input
-                [ type_ "radio"
-                , id "null"
-                , name "security_status"
-                , value "null"
-                , onInput (\_ -> SetSecurityStatus Null)
-                , checked (model.stationAttributes.securityStatus == Null)
-                ]
-                []
-            , label [ for "null" ] [ text "Null" ]
-            ]
-        , h2 [] [ text "Rig" ]
-        , div []
-            [ input
-                [ type_ "radio"
-                , id "none"
-                , name "rig"
-                , value "none"
-                , onInput (\_ -> SetRig 0)
-                , checked (model.stationAttributes.rig == 0)
-                ]
-                []
-            , label [ for "none" ] [ text "No Rig" ]
-            ]
-        , div []
-            [ input
-                [ type_ "radio"
-                , id "t1"
-                , name "rig"
-                , value "t1"
-                , onInput (\_ -> SetRig 1)
-                , checked (model.stationAttributes.rig == 1)
-                ]
-                []
-            , label [ for "t1" ] [ text "T1" ]
-            ]
-        , div []
-            [ input
-                [ type_ "radio"
-                , id "t2"
-                , name "rig"
-                , value "t2"
-                , onInput (\_ -> SetRig 2)
-                , checked (model.stationAttributes.rig == 2)
-                ]
-                []
-            , label [ for "t2" ] [ text "T2" ]
             ]
         ]
 
 
 viewImplantConfiguration : Model -> Html Msg
 viewImplantConfiguration model =
-    div []
-        [ h1 [] [ text "Implant" ]
+    fieldset []
+        [ legend [] [ text "Implant" ]
         , div []
             [ input
                 [ type_ "radio"
