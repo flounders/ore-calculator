@@ -5476,13 +5476,6 @@ var $author$project$Main$update = F2(
 var $elm$html$Html$div = _VirtualDom_node('div');
 var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
 var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
-var $elm$core$Basics$composeL = F3(
-	function (g, f, x) {
-		return g(
-			f(x));
-	});
-var $elm$core$String$fromFloat = _String_fromNumber;
-var $elm$html$Html$h4 = _VirtualDom_node('h4');
 var $elm$json$Json$Encode$string = _Json_wrap;
 var $elm$html$Html$Attributes$stringProperty = F2(
 	function (key, string) {
@@ -5492,16 +5485,214 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 			$elm$json$Json$Encode$string(string));
 	});
 var $elm$html$Html$Attributes$id = $elm$html$Html$Attributes$stringProperty('id');
-var $elm$html$Html$p = _VirtualDom_node('p');
-var $elm$core$Maybe$andThen = F2(
-	function (callback, maybeValue) {
-		if (maybeValue.$ === 'Just') {
-			var value = maybeValue.a;
-			return callback(value);
-		} else {
-			return $elm$core$Maybe$Nothing;
-		}
+var $author$project$Main$SetImplant = function (a) {
+	return {$: 'SetImplant', a: a};
+};
+var $elm$json$Json$Encode$bool = _Json_wrap;
+var $elm$html$Html$Attributes$boolProperty = F2(
+	function (key, bool) {
+		return A2(
+			_VirtualDom_property,
+			key,
+			$elm$json$Json$Encode$bool(bool));
 	});
+var $elm$html$Html$Attributes$checked = $elm$html$Html$Attributes$boolProperty('checked');
+var $elm$html$Html$fieldset = _VirtualDom_node('fieldset');
+var $elm$html$Html$Attributes$for = $elm$html$Html$Attributes$stringProperty('htmlFor');
+var $elm$html$Html$input = _VirtualDom_node('input');
+var $elm$html$Html$label = _VirtualDom_node('label');
+var $elm$html$Html$legend = _VirtualDom_node('legend');
+var $elm$html$Html$Attributes$name = $elm$html$Html$Attributes$stringProperty('name');
+var $elm$html$Html$Events$alwaysStop = function (x) {
+	return _Utils_Tuple2(x, true);
+};
+var $elm$virtual_dom$VirtualDom$MayStopPropagation = function (a) {
+	return {$: 'MayStopPropagation', a: a};
+};
+var $elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
+var $elm$html$Html$Events$stopPropagationOn = F2(
+	function (event, decoder) {
+		return A2(
+			$elm$virtual_dom$VirtualDom$on,
+			event,
+			$elm$virtual_dom$VirtualDom$MayStopPropagation(decoder));
+	});
+var $elm$json$Json$Decode$field = _Json_decodeField;
+var $elm$json$Json$Decode$at = F2(
+	function (fields, decoder) {
+		return A3($elm$core$List$foldr, $elm$json$Json$Decode$field, decoder, fields);
+	});
+var $elm$json$Json$Decode$string = _Json_decodeString;
+var $elm$html$Html$Events$targetValue = A2(
+	$elm$json$Json$Decode$at,
+	_List_fromArray(
+		['target', 'value']),
+	$elm$json$Json$Decode$string);
+var $elm$html$Html$Events$onInput = function (tagger) {
+	return A2(
+		$elm$html$Html$Events$stopPropagationOn,
+		'input',
+		A2(
+			$elm$json$Json$Decode$map,
+			$elm$html$Html$Events$alwaysStop,
+			A2($elm$json$Json$Decode$map, tagger, $elm$html$Html$Events$targetValue)));
+};
+var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
+var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
+var $elm$html$Html$Attributes$type_ = $elm$html$Html$Attributes$stringProperty('type');
+var $elm$html$Html$Attributes$value = $elm$html$Html$Attributes$stringProperty('value');
+var $author$project$Main$viewImplantConfiguration = function (model) {
+	return A2(
+		$elm$html$Html$fieldset,
+		_List_Nil,
+		_List_fromArray(
+			[
+				A2(
+				$elm$html$Html$legend,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text('Implant')
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$input,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$type_('radio'),
+								$elm$html$Html$Attributes$id('no_implant'),
+								$elm$html$Html$Attributes$name('implant'),
+								$elm$html$Html$Attributes$value('no_implant'),
+								$elm$html$Html$Events$onInput(
+								function (_v0) {
+									return $author$project$Main$SetImplant(0);
+								}),
+								$elm$html$Html$Attributes$checked(!model.implant)
+							]),
+						_List_Nil),
+						A2(
+						$elm$html$Html$label,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$for('no_implant')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('No implant')
+							]))
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$input,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$type_('radio'),
+								$elm$html$Html$Attributes$id('one_implant'),
+								$elm$html$Html$Attributes$name('implant'),
+								$elm$html$Html$Attributes$value('one_implant'),
+								$elm$html$Html$Events$onInput(
+								function (_v1) {
+									return $author$project$Main$SetImplant(1);
+								}),
+								$elm$html$Html$Attributes$checked(model.implant === 1)
+							]),
+						_List_Nil),
+						A2(
+						$elm$html$Html$label,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$for('one_implant')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('1% Implant')
+							]))
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$input,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$type_('radio'),
+								$elm$html$Html$Attributes$id('two_implant'),
+								$elm$html$Html$Attributes$name('implant'),
+								$elm$html$Html$Attributes$value('two_implant'),
+								$elm$html$Html$Events$onInput(
+								function (_v2) {
+									return $author$project$Main$SetImplant(2);
+								}),
+								$elm$html$Html$Attributes$checked(model.implant === 2)
+							]),
+						_List_Nil),
+						A2(
+						$elm$html$Html$label,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$for('two_implant')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('2% Implant')
+							]))
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$input,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$type_('radio'),
+								$elm$html$Html$Attributes$id('four_implant'),
+								$elm$html$Html$Attributes$name('implant'),
+								$elm$html$Html$Attributes$value('four_implant'),
+								$elm$html$Html$Events$onInput(
+								function (_v3) {
+									return $author$project$Main$SetImplant(4);
+								}),
+								$elm$html$Html$Attributes$checked(model.implant === 4)
+							]),
+						_List_Nil),
+						A2(
+						$elm$html$Html$label,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$for('four_implant')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('4% Implant')
+							]))
+					]))
+			]));
+};
+var $author$project$Main$Failure = {$: 'Failure'};
+var $author$project$Main$ProductSelection = function (a) {
+	return {$: 'ProductSelection', a: a};
+};
+var $author$project$Main$UpdatePrice = function (a) {
+	return {$: 'UpdatePrice', a: a};
+};
+var $elm$core$Basics$composeL = F3(
+	function (g, f, x) {
+		return g(
+			f(x));
+	});
+var $elm$core$String$fromFloat = _String_fromNumber;
 var $elm$core$Dict$get = F2(
 	function (targetKey, dict) {
 		get:
@@ -5532,6 +5723,1085 @@ var $elm$core$Dict$get = F2(
 				}
 			}
 		}
+	});
+var $elm$html$Html$h1 = _VirtualDom_node('h1');
+var $elm$core$Maybe$map = F2(
+	function (f, maybe) {
+		if (maybe.$ === 'Just') {
+			var value = maybe.a;
+			return $elm$core$Maybe$Just(
+				f(value));
+		} else {
+			return $elm$core$Maybe$Nothing;
+		}
+	});
+var $elm$virtual_dom$VirtualDom$Normal = function (a) {
+	return {$: 'Normal', a: a};
+};
+var $elm$html$Html$Events$on = F2(
+	function (event, decoder) {
+		return A2(
+			$elm$virtual_dom$VirtualDom$on,
+			event,
+			$elm$virtual_dom$VirtualDom$Normal(decoder));
+	});
+var $elm$html$Html$Events$onClick = function (msg) {
+	return A2(
+		$elm$html$Html$Events$on,
+		'click',
+		$elm$json$Json$Decode$succeed(msg));
+};
+var $elm$html$Html$option = _VirtualDom_node('option');
+var $elm$html$Html$p = _VirtualDom_node('p');
+var $elm$html$Html$select = _VirtualDom_node('select');
+var $elm$html$Html$Attributes$selected = $elm$html$Html$Attributes$boolProperty('selected');
+var $elm$core$String$toFloat = _String_toFloat;
+var $elm$html$Html$Attributes$placeholder = $elm$html$Html$Attributes$stringProperty('placeholder');
+var $elm$html$Html$Attributes$step = function (n) {
+	return A2($elm$html$Html$Attributes$stringProperty, 'step', n);
+};
+var $author$project$Main$viewNumberInput = F4(
+	function (t, p, v, toMsg) {
+		return A2(
+			$elm$html$Html$input,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$type_(t),
+					$elm$html$Html$Attributes$placeholder(p),
+					$elm$html$Html$Attributes$step('0.01'),
+					$elm$html$Html$Attributes$value(v),
+					$elm$html$Html$Events$onInput(toMsg)
+				]),
+			_List_Nil);
+	});
+var $elm$core$Maybe$withDefault = F2(
+	function (_default, maybe) {
+		if (maybe.$ === 'Just') {
+			var value = maybe.a;
+			return value;
+		} else {
+			return _default;
+		}
+	});
+var $author$project$Main$viewPricesConfiguration = function (model) {
+	return A2(
+		$elm$html$Html$div,
+		_List_Nil,
+		_List_fromArray(
+			[
+				A2(
+				$elm$html$Html$h1,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text('Refine Product Prices')
+					])),
+				A2(
+				$elm$html$Html$select,
+				_List_Nil,
+				A2(
+					$elm$core$List$map,
+					function (x) {
+						return A2(
+							$elm$html$Html$option,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$value(x),
+									$elm$html$Html$Events$onClick(
+									$author$project$Main$ProductSelection(x)),
+									$elm$html$Html$Attributes$selected(
+									_Utils_eq(model.product, x))
+								]),
+							_List_fromArray(
+								[
+									$elm$html$Html$text(x)
+								]));
+					},
+					$elm$core$Dict$keys(model.productPrices))),
+				function () {
+				var _v0 = A2($elm$core$Dict$get, model.product, model.productPrices);
+				if (_v0.$ === 'Just') {
+					var price = _v0.a;
+					return A4(
+						$author$project$Main$viewNumberInput,
+						'number',
+						'Price',
+						$elm$core$String$fromFloat(price),
+						A2(
+							$elm$core$Basics$composeL,
+							A2(
+								$elm$core$Basics$composeL,
+								$elm$core$Maybe$withDefault($author$project$Main$Failure),
+								$elm$core$Maybe$map($author$project$Main$UpdatePrice)),
+							$elm$core$String$toFloat));
+				} else {
+					return A2(
+						$elm$html$Html$p,
+						_List_Nil,
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Failed to get selected refine product price.')
+							]));
+				}
+			}()
+			]));
+};
+var $author$project$Main$SkillSelection = function (a) {
+	return {$: 'SkillSelection', a: a};
+};
+var $author$project$Main$UpdateSkill = function (a) {
+	return {$: 'UpdateSkill', a: a};
+};
+var $elm$html$Html$Attributes$max = $elm$html$Html$Attributes$stringProperty('max');
+var $elm$html$Html$Attributes$min = $elm$html$Html$Attributes$stringProperty('min');
+var $author$project$Main$viewSkillsConfiguration = function (model) {
+	return A2(
+		$elm$html$Html$div,
+		_List_Nil,
+		_List_fromArray(
+			[
+				A2(
+				$elm$html$Html$h1,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text('Reprocessing Skills')
+					])),
+				A2(
+				$elm$html$Html$select,
+				_List_Nil,
+				A2(
+					$elm$core$List$map,
+					function (x) {
+						return A2(
+							$elm$html$Html$option,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$value(x),
+									$elm$html$Html$Events$onClick(
+									$author$project$Main$SkillSelection(x)),
+									$elm$html$Html$Attributes$selected(
+									_Utils_eq(model.skillSelection, x))
+								]),
+							_List_fromArray(
+								[
+									$elm$html$Html$text(x)
+								]));
+					},
+					$elm$core$Dict$keys(model.skills))),
+				function () {
+				var _v0 = A2($elm$core$Dict$get, model.skillSelection, model.skills);
+				if (_v0.$ === 'Just') {
+					var level = _v0.a;
+					return A2(
+						$elm$html$Html$input,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$type_('number'),
+								$elm$html$Html$Attributes$placeholder('Level'),
+								$elm$html$Html$Attributes$min('0'),
+								$elm$html$Html$Attributes$max('5'),
+								$elm$html$Html$Attributes$value(
+								$elm$core$String$fromInt(level)),
+								$elm$html$Html$Events$onInput(
+								A2(
+									$elm$core$Basics$composeL,
+									A2(
+										$elm$core$Basics$composeL,
+										$elm$core$Maybe$withDefault($author$project$Main$Failure),
+										$elm$core$Maybe$map($author$project$Main$UpdateSkill)),
+									$elm$core$String$toInt))
+							]),
+						_List_Nil);
+				} else {
+					return A2(
+						$elm$html$Html$p,
+						_List_Nil,
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Failed to get selected skill level.')
+							]));
+				}
+			}()
+			]));
+};
+var $author$project$Main$Athanor = {$: 'Athanor'};
+var $author$project$Main$Low = {$: 'Low'};
+var $author$project$Main$Null = {$: 'Null'};
+var $author$project$Main$SetNPC = {$: 'SetNPC'};
+var $author$project$Main$SetRig = function (a) {
+	return {$: 'SetRig', a: a};
+};
+var $author$project$Main$SetSecurityStatus = function (a) {
+	return {$: 'SetSecurityStatus', a: a};
+};
+var $author$project$Main$SetUpwell = function (a) {
+	return {$: 'SetUpwell', a: a};
+};
+var $author$project$Main$Tatara = {$: 'Tatara'};
+var $author$project$Main$viewStationConfiguration = function (model) {
+	return A2(
+		$elm$html$Html$div,
+		_List_Nil,
+		_List_fromArray(
+			[
+				A2(
+				$elm$html$Html$h1,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text('Station Attributes')
+					])),
+				A2(
+				$elm$html$Html$fieldset,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$legend,
+						_List_Nil,
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Station Type')
+							])),
+						A2(
+						$elm$html$Html$div,
+						_List_Nil,
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$input,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$type_('radio'),
+										$elm$html$Html$Attributes$id('npc'),
+										$elm$html$Html$Attributes$name('station_type'),
+										$elm$html$Html$Attributes$value('npc'),
+										$elm$html$Html$Events$onInput(
+										function (_v0) {
+											return $author$project$Main$SetNPC;
+										}),
+										$elm$html$Html$Attributes$checked(model.stationAttributes.npc)
+									]),
+								_List_Nil),
+								A2(
+								$elm$html$Html$label,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$for('npc')
+									]),
+								_List_fromArray(
+									[
+										$elm$html$Html$text('NPC')
+									]))
+							])),
+						A2(
+						$elm$html$Html$div,
+						_List_Nil,
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$input,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$type_('radio'),
+										$elm$html$Html$Attributes$id('other'),
+										$elm$html$Html$Attributes$name('station_type'),
+										$elm$html$Html$Attributes$value('other'),
+										$elm$html$Html$Events$onInput(
+										function (_v1) {
+											return $author$project$Main$SetUpwell($author$project$Main$Other);
+										}),
+										$elm$html$Html$Attributes$checked(
+										_Utils_eq(model.stationAttributes.upwellType, $author$project$Main$Other) && (!model.stationAttributes.npc))
+									]),
+								_List_Nil),
+								A2(
+								$elm$html$Html$label,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$for('other')
+									]),
+								_List_fromArray(
+									[
+										$elm$html$Html$text('Other')
+									]))
+							])),
+						A2(
+						$elm$html$Html$div,
+						_List_Nil,
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$input,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$type_('radio'),
+										$elm$html$Html$Attributes$id('athanor'),
+										$elm$html$Html$Attributes$name('station_type'),
+										$elm$html$Html$Attributes$value('athanor'),
+										$elm$html$Html$Events$onInput(
+										function (_v2) {
+											return $author$project$Main$SetUpwell($author$project$Main$Athanor);
+										}),
+										$elm$html$Html$Attributes$checked(
+										_Utils_eq(model.stationAttributes.upwellType, $author$project$Main$Athanor) && (!model.stationAttributes.npc))
+									]),
+								_List_Nil),
+								A2(
+								$elm$html$Html$label,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$for('athanor')
+									]),
+								_List_fromArray(
+									[
+										$elm$html$Html$text('Athanor')
+									]))
+							])),
+						A2(
+						$elm$html$Html$div,
+						_List_Nil,
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$input,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$type_('radio'),
+										$elm$html$Html$Attributes$id('tatara'),
+										$elm$html$Html$Attributes$name('station_type'),
+										$elm$html$Html$Attributes$value('tatara'),
+										$elm$html$Html$Events$onInput(
+										function (_v3) {
+											return $author$project$Main$SetUpwell($author$project$Main$Tatara);
+										}),
+										$elm$html$Html$Attributes$checked(
+										_Utils_eq(model.stationAttributes.upwellType, $author$project$Main$Tatara) && (!model.stationAttributes.npc))
+									]),
+								_List_Nil),
+								A2(
+								$elm$html$Html$label,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$for('tatara')
+									]),
+								_List_fromArray(
+									[
+										$elm$html$Html$text('Tatara')
+									]))
+							]))
+					])),
+				A2(
+				$elm$html$Html$fieldset,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$legend,
+						_List_Nil,
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Security Status')
+							])),
+						A2(
+						$elm$html$Html$div,
+						_List_Nil,
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$input,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$type_('radio'),
+										$elm$html$Html$Attributes$id('high'),
+										$elm$html$Html$Attributes$name('security_status'),
+										$elm$html$Html$Attributes$value('high'),
+										$elm$html$Html$Events$onInput(
+										function (_v4) {
+											return $author$project$Main$SetSecurityStatus($author$project$Main$High);
+										}),
+										$elm$html$Html$Attributes$checked(
+										_Utils_eq(model.stationAttributes.securityStatus, $author$project$Main$High))
+									]),
+								_List_Nil),
+								A2(
+								$elm$html$Html$label,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$for('high')
+									]),
+								_List_fromArray(
+									[
+										$elm$html$Html$text('High')
+									]))
+							])),
+						A2(
+						$elm$html$Html$div,
+						_List_Nil,
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$input,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$type_('radio'),
+										$elm$html$Html$Attributes$id('low'),
+										$elm$html$Html$Attributes$name('security_status'),
+										$elm$html$Html$Attributes$value('low'),
+										$elm$html$Html$Events$onInput(
+										function (_v5) {
+											return $author$project$Main$SetSecurityStatus($author$project$Main$Low);
+										}),
+										$elm$html$Html$Attributes$checked(
+										_Utils_eq(model.stationAttributes.securityStatus, $author$project$Main$Low))
+									]),
+								_List_Nil),
+								A2(
+								$elm$html$Html$label,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$for('low')
+									]),
+								_List_fromArray(
+									[
+										$elm$html$Html$text('Low')
+									]))
+							])),
+						A2(
+						$elm$html$Html$div,
+						_List_Nil,
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$input,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$type_('radio'),
+										$elm$html$Html$Attributes$id('null'),
+										$elm$html$Html$Attributes$name('security_status'),
+										$elm$html$Html$Attributes$value('null'),
+										$elm$html$Html$Events$onInput(
+										function (_v6) {
+											return $author$project$Main$SetSecurityStatus($author$project$Main$Null);
+										}),
+										$elm$html$Html$Attributes$checked(
+										_Utils_eq(model.stationAttributes.securityStatus, $author$project$Main$Null))
+									]),
+								_List_Nil),
+								A2(
+								$elm$html$Html$label,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$for('null')
+									]),
+								_List_fromArray(
+									[
+										$elm$html$Html$text('Null')
+									]))
+							]))
+					])),
+				A2(
+				$elm$html$Html$fieldset,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$legend,
+						_List_Nil,
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Rig')
+							])),
+						A2(
+						$elm$html$Html$div,
+						_List_Nil,
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$input,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$type_('radio'),
+										$elm$html$Html$Attributes$id('none'),
+										$elm$html$Html$Attributes$name('rig'),
+										$elm$html$Html$Attributes$value('none'),
+										$elm$html$Html$Events$onInput(
+										function (_v7) {
+											return $author$project$Main$SetRig(0);
+										}),
+										$elm$html$Html$Attributes$checked(!model.stationAttributes.rig)
+									]),
+								_List_Nil),
+								A2(
+								$elm$html$Html$label,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$for('none')
+									]),
+								_List_fromArray(
+									[
+										$elm$html$Html$text('No Rig')
+									]))
+							])),
+						A2(
+						$elm$html$Html$div,
+						_List_Nil,
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$input,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$type_('radio'),
+										$elm$html$Html$Attributes$id('t1'),
+										$elm$html$Html$Attributes$name('rig'),
+										$elm$html$Html$Attributes$value('t1'),
+										$elm$html$Html$Events$onInput(
+										function (_v8) {
+											return $author$project$Main$SetRig(1);
+										}),
+										$elm$html$Html$Attributes$checked(model.stationAttributes.rig === 1)
+									]),
+								_List_Nil),
+								A2(
+								$elm$html$Html$label,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$for('t1')
+									]),
+								_List_fromArray(
+									[
+										$elm$html$Html$text('T1')
+									]))
+							])),
+						A2(
+						$elm$html$Html$div,
+						_List_Nil,
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$input,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$type_('radio'),
+										$elm$html$Html$Attributes$id('t2'),
+										$elm$html$Html$Attributes$name('rig'),
+										$elm$html$Html$Attributes$value('t2'),
+										$elm$html$Html$Events$onInput(
+										function (_v9) {
+											return $author$project$Main$SetRig(2);
+										}),
+										$elm$html$Html$Attributes$checked(model.stationAttributes.rig === 2)
+									]),
+								_List_Nil),
+								A2(
+								$elm$html$Html$label,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$for('t2')
+									]),
+								_List_fromArray(
+									[
+										$elm$html$Html$text('T2')
+									]))
+							]))
+					]))
+			]));
+};
+var $author$project$Main$viewConfiguration = function (model) {
+	return A2(
+		$elm$html$Html$div,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$id('configuration'),
+				A2($elm$html$Html$Attributes$style, 'float', 'left')
+			]),
+		_List_fromArray(
+			[
+				$author$project$Main$viewPricesConfiguration(model),
+				$author$project$Main$viewSkillsConfiguration(model),
+				$author$project$Main$viewStationConfiguration(model),
+				$author$project$Main$viewImplantConfiguration(model)
+			]));
+};
+var $cuducos$elm_format_number$FormatNumber$Locales$Exact = function (a) {
+	return {$: 'Exact', a: a};
+};
+var $author$project$Main$F = function (a) {
+	return {$: 'F', a: a};
+};
+var $author$project$Main$OreData = F5(
+	function (name, ppu, ppuLarge, ppm, ppmLarge) {
+		return {name: name, ppm: ppm, ppmLarge: ppmLarge, ppu: ppu, ppuLarge: ppuLarge};
+	});
+var $author$project$Main$SortField = function (a) {
+	return {$: 'SortField', a: a};
+};
+var $elm$virtual_dom$VirtualDom$attribute = F2(
+	function (key, value) {
+		return A2(
+			_VirtualDom_attribute,
+			_VirtualDom_noOnOrFormAction(key),
+			_VirtualDom_noJavaScriptOrHtmlUri(value));
+	});
+var $elm$html$Html$Attributes$attribute = $elm$virtual_dom$VirtualDom$attribute;
+var $elm$html$Html$caption = _VirtualDom_node('caption');
+var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
+var $elm$html$Html$col = _VirtualDom_node('col');
+var $elm$html$Html$colgroup = _VirtualDom_node('colgroup');
+var $cuducos$elm_format_number$Parser$FormattedNumber = F5(
+	function (original, integers, decimals, prefix, suffix) {
+		return {decimals: decimals, integers: integers, original: original, prefix: prefix, suffix: suffix};
+	});
+var $cuducos$elm_format_number$Parser$Negative = {$: 'Negative'};
+var $cuducos$elm_format_number$Parser$Positive = {$: 'Positive'};
+var $cuducos$elm_format_number$Parser$Zero = {$: 'Zero'};
+var $elm$core$List$append = F2(
+	function (xs, ys) {
+		if (!ys.b) {
+			return xs;
+		} else {
+			return A3($elm$core$List$foldr, $elm$core$List$cons, ys, xs);
+		}
+	});
+var $elm$core$String$concat = function (strings) {
+	return A2($elm$core$String$join, '', strings);
+};
+var $elm$core$List$singleton = function (value) {
+	return _List_fromArray(
+		[value]);
+};
+var $cuducos$elm_format_number$Parser$classify = function (formatted) {
+	var onlyZeros = A2(
+		$elm$core$String$all,
+		function (_char) {
+			return _Utils_eq(
+				_char,
+				_Utils_chr('0'));
+		},
+		$elm$core$String$concat(
+			A2(
+				$elm$core$List$append,
+				formatted.integers,
+				$elm$core$List$singleton(formatted.decimals))));
+	return onlyZeros ? $cuducos$elm_format_number$Parser$Zero : ((formatted.original < 0) ? $cuducos$elm_format_number$Parser$Negative : $cuducos$elm_format_number$Parser$Positive);
+};
+var $elm$core$String$filter = _String_filter;
+var $elm$core$Basics$negate = function (n) {
+	return -n;
+};
+var $elm$core$Basics$abs = function (n) {
+	return (n < 0) ? (-n) : n;
+};
+var $elm$core$Bitwise$and = _Bitwise_and;
+var $elm$core$Bitwise$shiftRightBy = _Bitwise_shiftRightBy;
+var $elm$core$String$repeatHelp = F3(
+	function (n, chunk, result) {
+		return (n <= 0) ? result : A3(
+			$elm$core$String$repeatHelp,
+			n >> 1,
+			_Utils_ap(chunk, chunk),
+			(!(n & 1)) ? result : _Utils_ap(result, chunk));
+	});
+var $elm$core$String$repeat = F2(
+	function (n, chunk) {
+		return A3($elm$core$String$repeatHelp, n, chunk, '');
+	});
+var $cuducos$elm_format_number$Parser$addZerosToFit = F2(
+	function (desiredLength, value) {
+		var length = $elm$core$String$length(value);
+		var missing = (_Utils_cmp(length, desiredLength) < 0) ? $elm$core$Basics$abs(desiredLength - length) : 0;
+		return _Utils_ap(
+			value,
+			A2($elm$core$String$repeat, missing, '0'));
+	});
+var $elm$core$String$dropRight = F2(
+	function (n, string) {
+		return (n < 1) ? string : A3($elm$core$String$slice, 0, -n, string);
+	});
+var $elm$core$Basics$neq = _Utils_notEqual;
+var $elm$core$String$right = F2(
+	function (n, string) {
+		return (n < 1) ? '' : A3(
+			$elm$core$String$slice,
+			-n,
+			$elm$core$String$length(string),
+			string);
+	});
+var $cuducos$elm_format_number$Parser$removeZeros = function (decimals) {
+	return (A2($elm$core$String$right, 1, decimals) !== '0') ? decimals : $cuducos$elm_format_number$Parser$removeZeros(
+		A2($elm$core$String$dropRight, 1, decimals));
+};
+var $cuducos$elm_format_number$Parser$getDecimals = F2(
+	function (locale, digits) {
+		var _v0 = locale.decimals;
+		switch (_v0.$) {
+			case 'Max':
+				return $cuducos$elm_format_number$Parser$removeZeros(digits);
+			case 'Exact':
+				return digits;
+			default:
+				var min = _v0.a;
+				return A2($cuducos$elm_format_number$Parser$addZerosToFit, min, digits);
+		}
+	});
+var $elm$core$Tuple$second = function (_v0) {
+	var y = _v0.b;
+	return y;
+};
+var $elm$core$List$head = function (list) {
+	if (list.b) {
+		var x = list.a;
+		var xs = list.b;
+		return $elm$core$Maybe$Just(x);
+	} else {
+		return $elm$core$Maybe$Nothing;
+	}
+};
+var $elm$core$Basics$ge = _Utils_ge;
+var $elm$core$Basics$not = _Basics_not;
+var $elm$core$List$any = F2(
+	function (isOkay, list) {
+		any:
+		while (true) {
+			if (!list.b) {
+				return false;
+			} else {
+				var x = list.a;
+				var xs = list.b;
+				if (isOkay(x)) {
+					return true;
+				} else {
+					var $temp$isOkay = isOkay,
+						$temp$list = xs;
+					isOkay = $temp$isOkay;
+					list = $temp$list;
+					continue any;
+				}
+			}
+		}
+	});
+var $elm$core$String$foldr = _String_foldr;
+var $elm$core$String$toList = function (string) {
+	return A3($elm$core$String$foldr, $elm$core$List$cons, _List_Nil, string);
+};
+var $myrho$elm_round$Round$addSign = F2(
+	function (signed, str) {
+		var isNotZero = A2(
+			$elm$core$List$any,
+			function (c) {
+				return (!_Utils_eq(
+					c,
+					_Utils_chr('0'))) && (!_Utils_eq(
+					c,
+					_Utils_chr('.')));
+			},
+			$elm$core$String$toList(str));
+		return _Utils_ap(
+			(signed && isNotZero) ? '-' : '',
+			str);
+	});
+var $elm$core$String$cons = _String_cons;
+var $elm$core$Char$fromCode = _Char_fromCode;
+var $myrho$elm_round$Round$increaseNum = function (_v0) {
+	var head = _v0.a;
+	var tail = _v0.b;
+	if (_Utils_eq(
+		head,
+		_Utils_chr('9'))) {
+		var _v1 = $elm$core$String$uncons(tail);
+		if (_v1.$ === 'Nothing') {
+			return '01';
+		} else {
+			var headtail = _v1.a;
+			return A2(
+				$elm$core$String$cons,
+				_Utils_chr('0'),
+				$myrho$elm_round$Round$increaseNum(headtail));
+		}
+	} else {
+		var c = $elm$core$Char$toCode(head);
+		return ((c >= 48) && (c < 57)) ? A2(
+			$elm$core$String$cons,
+			$elm$core$Char$fromCode(c + 1),
+			tail) : '0';
+	}
+};
+var $elm$core$Basics$isInfinite = _Basics_isInfinite;
+var $elm$core$Basics$isNaN = _Basics_isNaN;
+var $elm$core$String$fromChar = function (_char) {
+	return A2($elm$core$String$cons, _char, '');
+};
+var $elm$core$String$padRight = F3(
+	function (n, _char, string) {
+		return _Utils_ap(
+			string,
+			A2(
+				$elm$core$String$repeat,
+				n - $elm$core$String$length(string),
+				$elm$core$String$fromChar(_char)));
+	});
+var $elm$core$String$reverse = _String_reverse;
+var $myrho$elm_round$Round$splitComma = function (str) {
+	var _v0 = A2($elm$core$String$split, '.', str);
+	if (_v0.b) {
+		if (_v0.b.b) {
+			var before = _v0.a;
+			var _v1 = _v0.b;
+			var after = _v1.a;
+			return _Utils_Tuple2(before, after);
+		} else {
+			var before = _v0.a;
+			return _Utils_Tuple2(before, '0');
+		}
+	} else {
+		return _Utils_Tuple2('0', '0');
+	}
+};
+var $elm$core$Tuple$mapFirst = F2(
+	function (func, _v0) {
+		var x = _v0.a;
+		var y = _v0.b;
+		return _Utils_Tuple2(
+			func(x),
+			y);
+	});
+var $myrho$elm_round$Round$toDecimal = function (fl) {
+	var _v0 = A2(
+		$elm$core$String$split,
+		'e',
+		$elm$core$String$fromFloat(
+			$elm$core$Basics$abs(fl)));
+	if (_v0.b) {
+		if (_v0.b.b) {
+			var num = _v0.a;
+			var _v1 = _v0.b;
+			var exp = _v1.a;
+			var e = A2(
+				$elm$core$Maybe$withDefault,
+				0,
+				$elm$core$String$toInt(
+					A2($elm$core$String$startsWith, '+', exp) ? A2($elm$core$String$dropLeft, 1, exp) : exp));
+			var _v2 = $myrho$elm_round$Round$splitComma(num);
+			var before = _v2.a;
+			var after = _v2.b;
+			var total = _Utils_ap(before, after);
+			var zeroed = (e < 0) ? A2(
+				$elm$core$Maybe$withDefault,
+				'0',
+				A2(
+					$elm$core$Maybe$map,
+					function (_v3) {
+						var a = _v3.a;
+						var b = _v3.b;
+						return a + ('.' + b);
+					},
+					A2(
+						$elm$core$Maybe$map,
+						$elm$core$Tuple$mapFirst($elm$core$String$fromChar),
+						$elm$core$String$uncons(
+							_Utils_ap(
+								A2(
+									$elm$core$String$repeat,
+									$elm$core$Basics$abs(e),
+									'0'),
+								total))))) : A3(
+				$elm$core$String$padRight,
+				e + 1,
+				_Utils_chr('0'),
+				total);
+			return _Utils_ap(
+				(fl < 0) ? '-' : '',
+				zeroed);
+		} else {
+			var num = _v0.a;
+			return _Utils_ap(
+				(fl < 0) ? '-' : '',
+				num);
+		}
+	} else {
+		return '';
+	}
+};
+var $myrho$elm_round$Round$roundFun = F3(
+	function (functor, s, fl) {
+		if ($elm$core$Basics$isInfinite(fl) || $elm$core$Basics$isNaN(fl)) {
+			return $elm$core$String$fromFloat(fl);
+		} else {
+			var signed = fl < 0;
+			var _v0 = $myrho$elm_round$Round$splitComma(
+				$myrho$elm_round$Round$toDecimal(
+					$elm$core$Basics$abs(fl)));
+			var before = _v0.a;
+			var after = _v0.b;
+			var r = $elm$core$String$length(before) + s;
+			var normalized = _Utils_ap(
+				A2($elm$core$String$repeat, (-r) + 1, '0'),
+				A3(
+					$elm$core$String$padRight,
+					r,
+					_Utils_chr('0'),
+					_Utils_ap(before, after)));
+			var totalLen = $elm$core$String$length(normalized);
+			var roundDigitIndex = A2($elm$core$Basics$max, 1, r);
+			var increase = A2(
+				functor,
+				signed,
+				A3($elm$core$String$slice, roundDigitIndex, totalLen, normalized));
+			var remains = A3($elm$core$String$slice, 0, roundDigitIndex, normalized);
+			var num = increase ? $elm$core$String$reverse(
+				A2(
+					$elm$core$Maybe$withDefault,
+					'1',
+					A2(
+						$elm$core$Maybe$map,
+						$myrho$elm_round$Round$increaseNum,
+						$elm$core$String$uncons(
+							$elm$core$String$reverse(remains))))) : remains;
+			var numLen = $elm$core$String$length(num);
+			var numZeroed = (num === '0') ? num : ((s <= 0) ? _Utils_ap(
+				num,
+				A2(
+					$elm$core$String$repeat,
+					$elm$core$Basics$abs(s),
+					'0')) : ((_Utils_cmp(
+				s,
+				$elm$core$String$length(after)) < 0) ? (A3($elm$core$String$slice, 0, numLen - s, num) + ('.' + A3($elm$core$String$slice, numLen - s, numLen, num))) : _Utils_ap(
+				before + '.',
+				A3(
+					$elm$core$String$padRight,
+					s,
+					_Utils_chr('0'),
+					after))));
+			return A2($myrho$elm_round$Round$addSign, signed, numZeroed);
+		}
+	});
+var $myrho$elm_round$Round$round = $myrho$elm_round$Round$roundFun(
+	F2(
+		function (signed, str) {
+			var _v0 = $elm$core$String$uncons(str);
+			if (_v0.$ === 'Nothing') {
+				return false;
+			} else {
+				if ('5' === _v0.a.a.valueOf()) {
+					if (_v0.a.b === '') {
+						var _v1 = _v0.a;
+						return !signed;
+					} else {
+						var _v2 = _v0.a;
+						return true;
+					}
+				} else {
+					var _v3 = _v0.a;
+					var _int = _v3.a;
+					return function (i) {
+						return ((i > 53) && signed) || ((i >= 53) && (!signed));
+					}(
+						$elm$core$Char$toCode(_int));
+				}
+			}
+		}));
+var $elm$core$List$tail = function (list) {
+	if (list.b) {
+		var x = list.a;
+		var xs = list.b;
+		return $elm$core$Maybe$Just(xs);
+	} else {
+		return $elm$core$Maybe$Nothing;
+	}
+};
+var $cuducos$elm_format_number$Parser$splitInParts = F2(
+	function (locale, value) {
+		var toString = function () {
+			var _v1 = locale.decimals;
+			switch (_v1.$) {
+				case 'Max':
+					var max = _v1.a;
+					return $myrho$elm_round$Round$round(max);
+				case 'Min':
+					return $elm$core$String$fromFloat;
+				default:
+					var exact = _v1.a;
+					return $myrho$elm_round$Round$round(exact);
+			}
+		}();
+		var asList = A2(
+			$elm$core$String$split,
+			'.',
+			toString(value));
+		var decimals = function () {
+			var _v0 = $elm$core$List$tail(asList);
+			if (_v0.$ === 'Just') {
+				var values = _v0.a;
+				return A2(
+					$elm$core$Maybe$withDefault,
+					'',
+					$elm$core$List$head(values));
+			} else {
+				return '';
+			}
+		}();
+		var integers = A2(
+			$elm$core$Maybe$withDefault,
+			'',
+			$elm$core$List$head(asList));
+		return _Utils_Tuple2(integers, decimals);
+	});
+var $cuducos$elm_format_number$Parser$splitThousands = function (integers) {
+	var reversedSplitThousands = function (value) {
+		return ($elm$core$String$length(value) > 3) ? A2(
+			$elm$core$List$cons,
+			A2($elm$core$String$right, 3, value),
+			reversedSplitThousands(
+				A2($elm$core$String$dropRight, 3, value))) : _List_fromArray(
+			[value]);
+	};
+	return $elm$core$List$reverse(
+		reversedSplitThousands(integers));
+};
+var $cuducos$elm_format_number$Parser$parse = F2(
+	function (locale, original) {
+		var parts = A2($cuducos$elm_format_number$Parser$splitInParts, locale, original);
+		var integers = $cuducos$elm_format_number$Parser$splitThousands(
+			A2($elm$core$String$filter, $elm$core$Char$isDigit, parts.a));
+		var decimals = A2($cuducos$elm_format_number$Parser$getDecimals, locale, parts.b);
+		var partial = A5($cuducos$elm_format_number$Parser$FormattedNumber, original, integers, decimals, '', '');
+		var _v0 = $cuducos$elm_format_number$Parser$classify(partial);
+		switch (_v0.$) {
+			case 'Negative':
+				return _Utils_update(
+					partial,
+					{prefix: locale.negativePrefix, suffix: locale.negativeSuffix});
+			case 'Positive':
+				return _Utils_update(
+					partial,
+					{prefix: locale.positivePrefix, suffix: locale.positiveSuffix});
+			default:
+				return _Utils_update(
+					partial,
+					{prefix: locale.zeroPrefix, suffix: locale.zeroSuffix});
+		}
+	});
+var $cuducos$elm_format_number$Stringfy$formatDecimals = F2(
+	function (locale, decimals) {
+		return (decimals === '') ? '' : _Utils_ap(locale.decimalSeparator, decimals);
+	});
+var $cuducos$elm_format_number$Stringfy$stringfy = F2(
+	function (locale, formatted) {
+		var stringfyDecimals = $cuducos$elm_format_number$Stringfy$formatDecimals(locale);
+		var integers = A2($elm$core$String$join, locale.thousandSeparator, formatted.integers);
+		var decimals = stringfyDecimals(formatted.decimals);
+		return $elm$core$String$concat(
+			_List_fromArray(
+				[formatted.prefix, integers, decimals, formatted.suffix]));
+	});
+var $cuducos$elm_format_number$FormatNumber$format = F2(
+	function (locale, number_) {
+		return A2(
+			$cuducos$elm_format_number$Stringfy$stringfy,
+			locale,
+			A2($cuducos$elm_format_number$Parser$parse, locale, number_));
 	});
 var $author$project$Main$ores = $elm$core$Dict$fromList(
 	_List_fromArray(
@@ -6467,1348 +7737,6 @@ var $author$project$Main$ores = $elm$core$Dict$fromList(
 				volume: 0.1
 			})
 		]));
-var $elm$core$Maybe$withDefault = F2(
-	function (_default, maybe) {
-		if (maybe.$ === 'Just') {
-			var value = maybe.a;
-			return value;
-		} else {
-			return _default;
-		}
-	});
-var $author$project$Main$reprocessingPercentage = F2(
-	function (model, ore) {
-		var structure_mod = function () {
-			var _v1 = model.stationAttributes.upwellType;
-			switch (_v1.$) {
-				case 'Other':
-					return 0.0;
-				case 'Athanor':
-					return 0.02;
-				default:
-					return 0.04;
-			}
-		}();
-		var security_mod = function () {
-			var _v0 = model.stationAttributes.securityStatus;
-			switch (_v0.$) {
-				case 'High':
-					return 0.0;
-				case 'Low':
-					return 0.06;
-				default:
-					return 0.12;
-			}
-		}();
-		var reprocessing_efficiency = A3(
-			$elm$core$Basics$composeL,
-			$elm$core$Basics$toFloat,
-			$elm$core$Maybe$withDefault(0),
-			A2($elm$core$Dict$get, 'Reprocessing Efficiency', model.skills));
-		var reprocessing = A3(
-			$elm$core$Basics$composeL,
-			$elm$core$Basics$toFloat,
-			$elm$core$Maybe$withDefault(0),
-			A2($elm$core$Dict$get, 'Reprocessing', model.skills));
-		var ore_skill_level = A3(
-			$elm$core$Basics$composeL,
-			A2(
-				$elm$core$Basics$composeL,
-				$elm$core$Basics$toFloat,
-				$elm$core$Maybe$withDefault(0)),
-			$elm$core$Maybe$andThen(
-				A2(
-					$elm$core$Basics$composeL,
-					A2(
-						F3(
-							function (f, b, a) {
-								return A2(f, a, b);
-							}),
-						$elm$core$Dict$get,
-						model.skills),
-					function (x) {
-						return x.skill;
-					})),
-			A2($elm$core$Dict$get, ore, $author$project$Main$ores));
-		var implant = 0.01 * model.implant;
-		return (((((1 + (0.03 * reprocessing)) * (1 + (0.02 * reprocessing_efficiency))) * (1 + (0.02 * ore_skill_level))) * (1 + implant)) * (model.stationAttributes.npc ? 50 : (((50 + model.stationAttributes.rig) * (1 + structure_mod)) * (1 + security_mod)))) / 100;
-	});
-var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
-var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
-var $author$project$Main$SetImplant = function (a) {
-	return {$: 'SetImplant', a: a};
-};
-var $elm$json$Json$Encode$bool = _Json_wrap;
-var $elm$html$Html$Attributes$boolProperty = F2(
-	function (key, bool) {
-		return A2(
-			_VirtualDom_property,
-			key,
-			$elm$json$Json$Encode$bool(bool));
-	});
-var $elm$html$Html$Attributes$checked = $elm$html$Html$Attributes$boolProperty('checked');
-var $elm$html$Html$Attributes$for = $elm$html$Html$Attributes$stringProperty('htmlFor');
-var $elm$html$Html$h1 = _VirtualDom_node('h1');
-var $elm$html$Html$input = _VirtualDom_node('input');
-var $elm$html$Html$label = _VirtualDom_node('label');
-var $elm$html$Html$Attributes$name = $elm$html$Html$Attributes$stringProperty('name');
-var $elm$html$Html$Events$alwaysStop = function (x) {
-	return _Utils_Tuple2(x, true);
-};
-var $elm$virtual_dom$VirtualDom$MayStopPropagation = function (a) {
-	return {$: 'MayStopPropagation', a: a};
-};
-var $elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
-var $elm$html$Html$Events$stopPropagationOn = F2(
-	function (event, decoder) {
-		return A2(
-			$elm$virtual_dom$VirtualDom$on,
-			event,
-			$elm$virtual_dom$VirtualDom$MayStopPropagation(decoder));
-	});
-var $elm$json$Json$Decode$field = _Json_decodeField;
-var $elm$json$Json$Decode$at = F2(
-	function (fields, decoder) {
-		return A3($elm$core$List$foldr, $elm$json$Json$Decode$field, decoder, fields);
-	});
-var $elm$json$Json$Decode$string = _Json_decodeString;
-var $elm$html$Html$Events$targetValue = A2(
-	$elm$json$Json$Decode$at,
-	_List_fromArray(
-		['target', 'value']),
-	$elm$json$Json$Decode$string);
-var $elm$html$Html$Events$onInput = function (tagger) {
-	return A2(
-		$elm$html$Html$Events$stopPropagationOn,
-		'input',
-		A2(
-			$elm$json$Json$Decode$map,
-			$elm$html$Html$Events$alwaysStop,
-			A2($elm$json$Json$Decode$map, tagger, $elm$html$Html$Events$targetValue)));
-};
-var $elm$html$Html$Attributes$type_ = $elm$html$Html$Attributes$stringProperty('type');
-var $elm$html$Html$Attributes$value = $elm$html$Html$Attributes$stringProperty('value');
-var $author$project$Main$viewImplantConfiguration = function (model) {
-	return A2(
-		$elm$html$Html$div,
-		_List_Nil,
-		_List_fromArray(
-			[
-				A2(
-				$elm$html$Html$h1,
-				_List_Nil,
-				_List_fromArray(
-					[
-						$elm$html$Html$text('Implant')
-					])),
-				A2(
-				$elm$html$Html$div,
-				_List_Nil,
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$input,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$type_('radio'),
-								$elm$html$Html$Attributes$id('no_implant'),
-								$elm$html$Html$Attributes$name('implant'),
-								$elm$html$Html$Attributes$value('no_implant'),
-								$elm$html$Html$Events$onInput(
-								function (_v0) {
-									return $author$project$Main$SetImplant(0);
-								}),
-								$elm$html$Html$Attributes$checked(!model.implant)
-							]),
-						_List_Nil),
-						A2(
-						$elm$html$Html$label,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$for('no_implant')
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('No implant')
-							]))
-					])),
-				A2(
-				$elm$html$Html$div,
-				_List_Nil,
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$input,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$type_('radio'),
-								$elm$html$Html$Attributes$id('one_implant'),
-								$elm$html$Html$Attributes$name('implant'),
-								$elm$html$Html$Attributes$value('one_implant'),
-								$elm$html$Html$Events$onInput(
-								function (_v1) {
-									return $author$project$Main$SetImplant(1);
-								}),
-								$elm$html$Html$Attributes$checked(model.implant === 1)
-							]),
-						_List_Nil),
-						A2(
-						$elm$html$Html$label,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$for('one_implant')
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('1% Implant')
-							]))
-					])),
-				A2(
-				$elm$html$Html$div,
-				_List_Nil,
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$input,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$type_('radio'),
-								$elm$html$Html$Attributes$id('two_implant'),
-								$elm$html$Html$Attributes$name('implant'),
-								$elm$html$Html$Attributes$value('two_implant'),
-								$elm$html$Html$Events$onInput(
-								function (_v2) {
-									return $author$project$Main$SetImplant(2);
-								}),
-								$elm$html$Html$Attributes$checked(model.implant === 2)
-							]),
-						_List_Nil),
-						A2(
-						$elm$html$Html$label,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$for('two_implant')
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('2% Implant')
-							]))
-					])),
-				A2(
-				$elm$html$Html$div,
-				_List_Nil,
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$input,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$type_('radio'),
-								$elm$html$Html$Attributes$id('four_implant'),
-								$elm$html$Html$Attributes$name('implant'),
-								$elm$html$Html$Attributes$value('four_implant'),
-								$elm$html$Html$Events$onInput(
-								function (_v3) {
-									return $author$project$Main$SetImplant(4);
-								}),
-								$elm$html$Html$Attributes$checked(model.implant === 4)
-							]),
-						_List_Nil),
-						A2(
-						$elm$html$Html$label,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$for('four_implant')
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('4% Implant')
-							]))
-					]))
-			]));
-};
-var $author$project$Main$Failure = {$: 'Failure'};
-var $author$project$Main$ProductSelection = function (a) {
-	return {$: 'ProductSelection', a: a};
-};
-var $author$project$Main$UpdatePrice = function (a) {
-	return {$: 'UpdatePrice', a: a};
-};
-var $elm$core$Maybe$map = F2(
-	function (f, maybe) {
-		if (maybe.$ === 'Just') {
-			var value = maybe.a;
-			return $elm$core$Maybe$Just(
-				f(value));
-		} else {
-			return $elm$core$Maybe$Nothing;
-		}
-	});
-var $elm$virtual_dom$VirtualDom$Normal = function (a) {
-	return {$: 'Normal', a: a};
-};
-var $elm$html$Html$Events$on = F2(
-	function (event, decoder) {
-		return A2(
-			$elm$virtual_dom$VirtualDom$on,
-			event,
-			$elm$virtual_dom$VirtualDom$Normal(decoder));
-	});
-var $elm$html$Html$Events$onClick = function (msg) {
-	return A2(
-		$elm$html$Html$Events$on,
-		'click',
-		$elm$json$Json$Decode$succeed(msg));
-};
-var $elm$html$Html$option = _VirtualDom_node('option');
-var $elm$html$Html$select = _VirtualDom_node('select');
-var $elm$html$Html$Attributes$selected = $elm$html$Html$Attributes$boolProperty('selected');
-var $elm$core$String$toFloat = _String_toFloat;
-var $elm$html$Html$Attributes$placeholder = $elm$html$Html$Attributes$stringProperty('placeholder');
-var $elm$html$Html$Attributes$step = function (n) {
-	return A2($elm$html$Html$Attributes$stringProperty, 'step', n);
-};
-var $author$project$Main$viewNumberInput = F4(
-	function (t, p, v, toMsg) {
-		return A2(
-			$elm$html$Html$input,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$type_(t),
-					$elm$html$Html$Attributes$placeholder(p),
-					$elm$html$Html$Attributes$step('0.01'),
-					$elm$html$Html$Attributes$value(v),
-					$elm$html$Html$Events$onInput(toMsg)
-				]),
-			_List_Nil);
-	});
-var $author$project$Main$viewPricesConfiguration = function (model) {
-	return A2(
-		$elm$html$Html$div,
-		_List_Nil,
-		_List_fromArray(
-			[
-				A2(
-				$elm$html$Html$h1,
-				_List_Nil,
-				_List_fromArray(
-					[
-						$elm$html$Html$text('Refine Product Prices')
-					])),
-				A2(
-				$elm$html$Html$select,
-				_List_Nil,
-				A2(
-					$elm$core$List$map,
-					function (x) {
-						return A2(
-							$elm$html$Html$option,
-							_List_fromArray(
-								[
-									$elm$html$Html$Attributes$value(x),
-									$elm$html$Html$Events$onClick(
-									$author$project$Main$ProductSelection(x)),
-									$elm$html$Html$Attributes$selected(
-									_Utils_eq(model.product, x))
-								]),
-							_List_fromArray(
-								[
-									$elm$html$Html$text(x)
-								]));
-					},
-					$elm$core$Dict$keys(model.productPrices))),
-				function () {
-				var _v0 = A2($elm$core$Dict$get, model.product, model.productPrices);
-				if (_v0.$ === 'Just') {
-					var price = _v0.a;
-					return A4(
-						$author$project$Main$viewNumberInput,
-						'number',
-						'Price',
-						$elm$core$String$fromFloat(price),
-						A2(
-							$elm$core$Basics$composeL,
-							A2(
-								$elm$core$Basics$composeL,
-								$elm$core$Maybe$withDefault($author$project$Main$Failure),
-								$elm$core$Maybe$map($author$project$Main$UpdatePrice)),
-							$elm$core$String$toFloat));
-				} else {
-					return A2(
-						$elm$html$Html$p,
-						_List_Nil,
-						_List_fromArray(
-							[
-								$elm$html$Html$text('Failed to get selected refine product price.')
-							]));
-				}
-			}()
-			]));
-};
-var $author$project$Main$SkillSelection = function (a) {
-	return {$: 'SkillSelection', a: a};
-};
-var $author$project$Main$UpdateSkill = function (a) {
-	return {$: 'UpdateSkill', a: a};
-};
-var $elm$html$Html$Attributes$max = $elm$html$Html$Attributes$stringProperty('max');
-var $elm$html$Html$Attributes$min = $elm$html$Html$Attributes$stringProperty('min');
-var $author$project$Main$viewSkillsConfiguration = function (model) {
-	return A2(
-		$elm$html$Html$div,
-		_List_Nil,
-		_List_fromArray(
-			[
-				A2(
-				$elm$html$Html$h1,
-				_List_Nil,
-				_List_fromArray(
-					[
-						$elm$html$Html$text('Reprocessing Skills')
-					])),
-				A2(
-				$elm$html$Html$select,
-				_List_Nil,
-				A2(
-					$elm$core$List$map,
-					function (x) {
-						return A2(
-							$elm$html$Html$option,
-							_List_fromArray(
-								[
-									$elm$html$Html$Attributes$value(x),
-									$elm$html$Html$Events$onClick(
-									$author$project$Main$SkillSelection(x)),
-									$elm$html$Html$Attributes$selected(
-									_Utils_eq(model.skillSelection, x))
-								]),
-							_List_fromArray(
-								[
-									$elm$html$Html$text(x)
-								]));
-					},
-					$elm$core$Dict$keys(model.skills))),
-				function () {
-				var _v0 = A2($elm$core$Dict$get, model.skillSelection, model.skills);
-				if (_v0.$ === 'Just') {
-					var level = _v0.a;
-					return A2(
-						$elm$html$Html$input,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$type_('number'),
-								$elm$html$Html$Attributes$placeholder('Level'),
-								$elm$html$Html$Attributes$min('0'),
-								$elm$html$Html$Attributes$max('5'),
-								$elm$html$Html$Attributes$value(
-								$elm$core$String$fromInt(level)),
-								$elm$html$Html$Events$onInput(
-								A2(
-									$elm$core$Basics$composeL,
-									A2(
-										$elm$core$Basics$composeL,
-										$elm$core$Maybe$withDefault($author$project$Main$Failure),
-										$elm$core$Maybe$map($author$project$Main$UpdateSkill)),
-									$elm$core$String$toInt))
-							]),
-						_List_Nil);
-				} else {
-					return A2(
-						$elm$html$Html$p,
-						_List_Nil,
-						_List_fromArray(
-							[
-								$elm$html$Html$text('Failed to get selected skill level.')
-							]));
-				}
-			}()
-			]));
-};
-var $author$project$Main$Athanor = {$: 'Athanor'};
-var $author$project$Main$Low = {$: 'Low'};
-var $author$project$Main$Null = {$: 'Null'};
-var $author$project$Main$SetNPC = {$: 'SetNPC'};
-var $author$project$Main$SetRig = function (a) {
-	return {$: 'SetRig', a: a};
-};
-var $author$project$Main$SetSecurityStatus = function (a) {
-	return {$: 'SetSecurityStatus', a: a};
-};
-var $author$project$Main$SetUpwell = function (a) {
-	return {$: 'SetUpwell', a: a};
-};
-var $author$project$Main$Tatara = {$: 'Tatara'};
-var $elm$html$Html$h2 = _VirtualDom_node('h2');
-var $author$project$Main$viewStationConfiguration = function (model) {
-	return A2(
-		$elm$html$Html$div,
-		_List_Nil,
-		_List_fromArray(
-			[
-				A2(
-				$elm$html$Html$h1,
-				_List_Nil,
-				_List_fromArray(
-					[
-						$elm$html$Html$text('Station Attributes')
-					])),
-				A2(
-				$elm$html$Html$h2,
-				_List_Nil,
-				_List_fromArray(
-					[
-						$elm$html$Html$text('Station Type')
-					])),
-				A2(
-				$elm$html$Html$div,
-				_List_Nil,
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$input,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$type_('radio'),
-								$elm$html$Html$Attributes$id('npc'),
-								$elm$html$Html$Attributes$name('station_type'),
-								$elm$html$Html$Attributes$value('npc'),
-								$elm$html$Html$Events$onInput(
-								function (_v0) {
-									return $author$project$Main$SetNPC;
-								}),
-								$elm$html$Html$Attributes$checked(model.stationAttributes.npc)
-							]),
-						_List_Nil),
-						A2(
-						$elm$html$Html$label,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$for('npc')
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('NPC')
-							]))
-					])),
-				A2(
-				$elm$html$Html$div,
-				_List_Nil,
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$input,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$type_('radio'),
-								$elm$html$Html$Attributes$id('other'),
-								$elm$html$Html$Attributes$name('station_type'),
-								$elm$html$Html$Attributes$value('other'),
-								$elm$html$Html$Events$onInput(
-								function (_v1) {
-									return $author$project$Main$SetUpwell($author$project$Main$Other);
-								}),
-								$elm$html$Html$Attributes$checked(
-								_Utils_eq(model.stationAttributes.upwellType, $author$project$Main$Other) && (!model.stationAttributes.npc))
-							]),
-						_List_Nil),
-						A2(
-						$elm$html$Html$label,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$for('other')
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('Other')
-							]))
-					])),
-				A2(
-				$elm$html$Html$div,
-				_List_Nil,
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$input,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$type_('radio'),
-								$elm$html$Html$Attributes$id('athanor'),
-								$elm$html$Html$Attributes$name('station_type'),
-								$elm$html$Html$Attributes$value('athanor'),
-								$elm$html$Html$Events$onInput(
-								function (_v2) {
-									return $author$project$Main$SetUpwell($author$project$Main$Athanor);
-								}),
-								$elm$html$Html$Attributes$checked(
-								_Utils_eq(model.stationAttributes.upwellType, $author$project$Main$Athanor) && (!model.stationAttributes.npc))
-							]),
-						_List_Nil),
-						A2(
-						$elm$html$Html$label,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$for('athanor')
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('Athanor')
-							]))
-					])),
-				A2(
-				$elm$html$Html$div,
-				_List_Nil,
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$input,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$type_('radio'),
-								$elm$html$Html$Attributes$id('tatara'),
-								$elm$html$Html$Attributes$name('station_type'),
-								$elm$html$Html$Attributes$value('tatara'),
-								$elm$html$Html$Events$onInput(
-								function (_v3) {
-									return $author$project$Main$SetUpwell($author$project$Main$Tatara);
-								}),
-								$elm$html$Html$Attributes$checked(
-								_Utils_eq(model.stationAttributes.upwellType, $author$project$Main$Tatara) && (!model.stationAttributes.npc))
-							]),
-						_List_Nil),
-						A2(
-						$elm$html$Html$label,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$for('tatara')
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('Tatara')
-							]))
-					])),
-				A2(
-				$elm$html$Html$h2,
-				_List_Nil,
-				_List_fromArray(
-					[
-						$elm$html$Html$text('Security Status')
-					])),
-				A2(
-				$elm$html$Html$div,
-				_List_Nil,
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$input,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$type_('radio'),
-								$elm$html$Html$Attributes$id('high'),
-								$elm$html$Html$Attributes$name('security_status'),
-								$elm$html$Html$Attributes$value('high'),
-								$elm$html$Html$Events$onInput(
-								function (_v4) {
-									return $author$project$Main$SetSecurityStatus($author$project$Main$High);
-								}),
-								$elm$html$Html$Attributes$checked(
-								_Utils_eq(model.stationAttributes.securityStatus, $author$project$Main$High))
-							]),
-						_List_Nil),
-						A2(
-						$elm$html$Html$label,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$for('high')
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('High')
-							]))
-					])),
-				A2(
-				$elm$html$Html$div,
-				_List_Nil,
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$input,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$type_('radio'),
-								$elm$html$Html$Attributes$id('low'),
-								$elm$html$Html$Attributes$name('security_status'),
-								$elm$html$Html$Attributes$value('low'),
-								$elm$html$Html$Events$onInput(
-								function (_v5) {
-									return $author$project$Main$SetSecurityStatus($author$project$Main$Low);
-								}),
-								$elm$html$Html$Attributes$checked(
-								_Utils_eq(model.stationAttributes.securityStatus, $author$project$Main$Low))
-							]),
-						_List_Nil),
-						A2(
-						$elm$html$Html$label,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$for('low')
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('Low')
-							]))
-					])),
-				A2(
-				$elm$html$Html$div,
-				_List_Nil,
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$input,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$type_('radio'),
-								$elm$html$Html$Attributes$id('null'),
-								$elm$html$Html$Attributes$name('security_status'),
-								$elm$html$Html$Attributes$value('null'),
-								$elm$html$Html$Events$onInput(
-								function (_v6) {
-									return $author$project$Main$SetSecurityStatus($author$project$Main$Null);
-								}),
-								$elm$html$Html$Attributes$checked(
-								_Utils_eq(model.stationAttributes.securityStatus, $author$project$Main$Null))
-							]),
-						_List_Nil),
-						A2(
-						$elm$html$Html$label,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$for('null')
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('Null')
-							]))
-					])),
-				A2(
-				$elm$html$Html$h2,
-				_List_Nil,
-				_List_fromArray(
-					[
-						$elm$html$Html$text('Rig')
-					])),
-				A2(
-				$elm$html$Html$div,
-				_List_Nil,
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$input,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$type_('radio'),
-								$elm$html$Html$Attributes$id('none'),
-								$elm$html$Html$Attributes$name('rig'),
-								$elm$html$Html$Attributes$value('none'),
-								$elm$html$Html$Events$onInput(
-								function (_v7) {
-									return $author$project$Main$SetRig(0);
-								}),
-								$elm$html$Html$Attributes$checked(!model.stationAttributes.rig)
-							]),
-						_List_Nil),
-						A2(
-						$elm$html$Html$label,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$for('none')
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('No Rig')
-							]))
-					])),
-				A2(
-				$elm$html$Html$div,
-				_List_Nil,
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$input,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$type_('radio'),
-								$elm$html$Html$Attributes$id('t1'),
-								$elm$html$Html$Attributes$name('rig'),
-								$elm$html$Html$Attributes$value('t1'),
-								$elm$html$Html$Events$onInput(
-								function (_v8) {
-									return $author$project$Main$SetRig(1);
-								}),
-								$elm$html$Html$Attributes$checked(model.stationAttributes.rig === 1)
-							]),
-						_List_Nil),
-						A2(
-						$elm$html$Html$label,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$for('t1')
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('T1')
-							]))
-					])),
-				A2(
-				$elm$html$Html$div,
-				_List_Nil,
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$input,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$type_('radio'),
-								$elm$html$Html$Attributes$id('t2'),
-								$elm$html$Html$Attributes$name('rig'),
-								$elm$html$Html$Attributes$value('t2'),
-								$elm$html$Html$Events$onInput(
-								function (_v9) {
-									return $author$project$Main$SetRig(2);
-								}),
-								$elm$html$Html$Attributes$checked(model.stationAttributes.rig === 2)
-							]),
-						_List_Nil),
-						A2(
-						$elm$html$Html$label,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$for('t2')
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('T2')
-							]))
-					]))
-			]));
-};
-var $author$project$Main$viewConfiguration = function (model) {
-	return A2(
-		$elm$html$Html$div,
-		_List_fromArray(
-			[
-				$elm$html$Html$Attributes$id('configuration'),
-				A2($elm$html$Html$Attributes$style, 'float', 'left')
-			]),
-		_List_fromArray(
-			[
-				$author$project$Main$viewPricesConfiguration(model),
-				$author$project$Main$viewSkillsConfiguration(model),
-				$author$project$Main$viewStationConfiguration(model),
-				$author$project$Main$viewImplantConfiguration(model),
-				A2(
-				$elm$html$Html$div,
-				_List_Nil,
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$h4,
-						_List_Nil,
-						_List_fromArray(
-							[
-								$elm$html$Html$text('Test Reprocessing Percentage')
-							])),
-						A2(
-						$elm$html$Html$p,
-						_List_Nil,
-						_List_fromArray(
-							[
-								A3(
-								$elm$core$Basics$composeL,
-								$elm$html$Html$text,
-								$elm$core$String$fromFloat,
-								A2($author$project$Main$reprocessingPercentage, model, 'Veldspar'))
-							]))
-					]))
-			]));
-};
-var $cuducos$elm_format_number$FormatNumber$Locales$Exact = function (a) {
-	return {$: 'Exact', a: a};
-};
-var $author$project$Main$F = function (a) {
-	return {$: 'F', a: a};
-};
-var $author$project$Main$OreData = F5(
-	function (name, ppu, ppuLarge, ppm, ppmLarge) {
-		return {name: name, ppm: ppm, ppmLarge: ppmLarge, ppu: ppu, ppuLarge: ppuLarge};
-	});
-var $author$project$Main$SortField = function (a) {
-	return {$: 'SortField', a: a};
-};
-var $elm$virtual_dom$VirtualDom$attribute = F2(
-	function (key, value) {
-		return A2(
-			_VirtualDom_attribute,
-			_VirtualDom_noOnOrFormAction(key),
-			_VirtualDom_noJavaScriptOrHtmlUri(value));
-	});
-var $elm$html$Html$Attributes$attribute = $elm$virtual_dom$VirtualDom$attribute;
-var $elm$html$Html$caption = _VirtualDom_node('caption');
-var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
-var $elm$html$Html$col = _VirtualDom_node('col');
-var $elm$html$Html$colgroup = _VirtualDom_node('colgroup');
-var $cuducos$elm_format_number$Parser$FormattedNumber = F5(
-	function (original, integers, decimals, prefix, suffix) {
-		return {decimals: decimals, integers: integers, original: original, prefix: prefix, suffix: suffix};
-	});
-var $cuducos$elm_format_number$Parser$Negative = {$: 'Negative'};
-var $cuducos$elm_format_number$Parser$Positive = {$: 'Positive'};
-var $cuducos$elm_format_number$Parser$Zero = {$: 'Zero'};
-var $elm$core$List$append = F2(
-	function (xs, ys) {
-		if (!ys.b) {
-			return xs;
-		} else {
-			return A3($elm$core$List$foldr, $elm$core$List$cons, ys, xs);
-		}
-	});
-var $elm$core$String$concat = function (strings) {
-	return A2($elm$core$String$join, '', strings);
-};
-var $elm$core$List$singleton = function (value) {
-	return _List_fromArray(
-		[value]);
-};
-var $cuducos$elm_format_number$Parser$classify = function (formatted) {
-	var onlyZeros = A2(
-		$elm$core$String$all,
-		function (_char) {
-			return _Utils_eq(
-				_char,
-				_Utils_chr('0'));
-		},
-		$elm$core$String$concat(
-			A2(
-				$elm$core$List$append,
-				formatted.integers,
-				$elm$core$List$singleton(formatted.decimals))));
-	return onlyZeros ? $cuducos$elm_format_number$Parser$Zero : ((formatted.original < 0) ? $cuducos$elm_format_number$Parser$Negative : $cuducos$elm_format_number$Parser$Positive);
-};
-var $elm$core$String$filter = _String_filter;
-var $elm$core$Basics$negate = function (n) {
-	return -n;
-};
-var $elm$core$Basics$abs = function (n) {
-	return (n < 0) ? (-n) : n;
-};
-var $elm$core$Bitwise$and = _Bitwise_and;
-var $elm$core$Bitwise$shiftRightBy = _Bitwise_shiftRightBy;
-var $elm$core$String$repeatHelp = F3(
-	function (n, chunk, result) {
-		return (n <= 0) ? result : A3(
-			$elm$core$String$repeatHelp,
-			n >> 1,
-			_Utils_ap(chunk, chunk),
-			(!(n & 1)) ? result : _Utils_ap(result, chunk));
-	});
-var $elm$core$String$repeat = F2(
-	function (n, chunk) {
-		return A3($elm$core$String$repeatHelp, n, chunk, '');
-	});
-var $cuducos$elm_format_number$Parser$addZerosToFit = F2(
-	function (desiredLength, value) {
-		var length = $elm$core$String$length(value);
-		var missing = (_Utils_cmp(length, desiredLength) < 0) ? $elm$core$Basics$abs(desiredLength - length) : 0;
-		return _Utils_ap(
-			value,
-			A2($elm$core$String$repeat, missing, '0'));
-	});
-var $elm$core$String$dropRight = F2(
-	function (n, string) {
-		return (n < 1) ? string : A3($elm$core$String$slice, 0, -n, string);
-	});
-var $elm$core$Basics$neq = _Utils_notEqual;
-var $elm$core$String$right = F2(
-	function (n, string) {
-		return (n < 1) ? '' : A3(
-			$elm$core$String$slice,
-			-n,
-			$elm$core$String$length(string),
-			string);
-	});
-var $cuducos$elm_format_number$Parser$removeZeros = function (decimals) {
-	return (A2($elm$core$String$right, 1, decimals) !== '0') ? decimals : $cuducos$elm_format_number$Parser$removeZeros(
-		A2($elm$core$String$dropRight, 1, decimals));
-};
-var $cuducos$elm_format_number$Parser$getDecimals = F2(
-	function (locale, digits) {
-		var _v0 = locale.decimals;
-		switch (_v0.$) {
-			case 'Max':
-				return $cuducos$elm_format_number$Parser$removeZeros(digits);
-			case 'Exact':
-				return digits;
-			default:
-				var min = _v0.a;
-				return A2($cuducos$elm_format_number$Parser$addZerosToFit, min, digits);
-		}
-	});
-var $elm$core$Tuple$second = function (_v0) {
-	var y = _v0.b;
-	return y;
-};
-var $elm$core$List$head = function (list) {
-	if (list.b) {
-		var x = list.a;
-		var xs = list.b;
-		return $elm$core$Maybe$Just(x);
-	} else {
-		return $elm$core$Maybe$Nothing;
-	}
-};
-var $elm$core$Basics$ge = _Utils_ge;
-var $elm$core$Basics$not = _Basics_not;
-var $elm$core$List$any = F2(
-	function (isOkay, list) {
-		any:
-		while (true) {
-			if (!list.b) {
-				return false;
-			} else {
-				var x = list.a;
-				var xs = list.b;
-				if (isOkay(x)) {
-					return true;
-				} else {
-					var $temp$isOkay = isOkay,
-						$temp$list = xs;
-					isOkay = $temp$isOkay;
-					list = $temp$list;
-					continue any;
-				}
-			}
-		}
-	});
-var $elm$core$String$foldr = _String_foldr;
-var $elm$core$String$toList = function (string) {
-	return A3($elm$core$String$foldr, $elm$core$List$cons, _List_Nil, string);
-};
-var $myrho$elm_round$Round$addSign = F2(
-	function (signed, str) {
-		var isNotZero = A2(
-			$elm$core$List$any,
-			function (c) {
-				return (!_Utils_eq(
-					c,
-					_Utils_chr('0'))) && (!_Utils_eq(
-					c,
-					_Utils_chr('.')));
-			},
-			$elm$core$String$toList(str));
-		return _Utils_ap(
-			(signed && isNotZero) ? '-' : '',
-			str);
-	});
-var $elm$core$String$cons = _String_cons;
-var $elm$core$Char$fromCode = _Char_fromCode;
-var $myrho$elm_round$Round$increaseNum = function (_v0) {
-	var head = _v0.a;
-	var tail = _v0.b;
-	if (_Utils_eq(
-		head,
-		_Utils_chr('9'))) {
-		var _v1 = $elm$core$String$uncons(tail);
-		if (_v1.$ === 'Nothing') {
-			return '01';
-		} else {
-			var headtail = _v1.a;
-			return A2(
-				$elm$core$String$cons,
-				_Utils_chr('0'),
-				$myrho$elm_round$Round$increaseNum(headtail));
-		}
-	} else {
-		var c = $elm$core$Char$toCode(head);
-		return ((c >= 48) && (c < 57)) ? A2(
-			$elm$core$String$cons,
-			$elm$core$Char$fromCode(c + 1),
-			tail) : '0';
-	}
-};
-var $elm$core$Basics$isInfinite = _Basics_isInfinite;
-var $elm$core$Basics$isNaN = _Basics_isNaN;
-var $elm$core$String$fromChar = function (_char) {
-	return A2($elm$core$String$cons, _char, '');
-};
-var $elm$core$String$padRight = F3(
-	function (n, _char, string) {
-		return _Utils_ap(
-			string,
-			A2(
-				$elm$core$String$repeat,
-				n - $elm$core$String$length(string),
-				$elm$core$String$fromChar(_char)));
-	});
-var $elm$core$String$reverse = _String_reverse;
-var $myrho$elm_round$Round$splitComma = function (str) {
-	var _v0 = A2($elm$core$String$split, '.', str);
-	if (_v0.b) {
-		if (_v0.b.b) {
-			var before = _v0.a;
-			var _v1 = _v0.b;
-			var after = _v1.a;
-			return _Utils_Tuple2(before, after);
-		} else {
-			var before = _v0.a;
-			return _Utils_Tuple2(before, '0');
-		}
-	} else {
-		return _Utils_Tuple2('0', '0');
-	}
-};
-var $elm$core$Tuple$mapFirst = F2(
-	function (func, _v0) {
-		var x = _v0.a;
-		var y = _v0.b;
-		return _Utils_Tuple2(
-			func(x),
-			y);
-	});
-var $myrho$elm_round$Round$toDecimal = function (fl) {
-	var _v0 = A2(
-		$elm$core$String$split,
-		'e',
-		$elm$core$String$fromFloat(
-			$elm$core$Basics$abs(fl)));
-	if (_v0.b) {
-		if (_v0.b.b) {
-			var num = _v0.a;
-			var _v1 = _v0.b;
-			var exp = _v1.a;
-			var e = A2(
-				$elm$core$Maybe$withDefault,
-				0,
-				$elm$core$String$toInt(
-					A2($elm$core$String$startsWith, '+', exp) ? A2($elm$core$String$dropLeft, 1, exp) : exp));
-			var _v2 = $myrho$elm_round$Round$splitComma(num);
-			var before = _v2.a;
-			var after = _v2.b;
-			var total = _Utils_ap(before, after);
-			var zeroed = (e < 0) ? A2(
-				$elm$core$Maybe$withDefault,
-				'0',
-				A2(
-					$elm$core$Maybe$map,
-					function (_v3) {
-						var a = _v3.a;
-						var b = _v3.b;
-						return a + ('.' + b);
-					},
-					A2(
-						$elm$core$Maybe$map,
-						$elm$core$Tuple$mapFirst($elm$core$String$fromChar),
-						$elm$core$String$uncons(
-							_Utils_ap(
-								A2(
-									$elm$core$String$repeat,
-									$elm$core$Basics$abs(e),
-									'0'),
-								total))))) : A3(
-				$elm$core$String$padRight,
-				e + 1,
-				_Utils_chr('0'),
-				total);
-			return _Utils_ap(
-				(fl < 0) ? '-' : '',
-				zeroed);
-		} else {
-			var num = _v0.a;
-			return _Utils_ap(
-				(fl < 0) ? '-' : '',
-				num);
-		}
-	} else {
-		return '';
-	}
-};
-var $myrho$elm_round$Round$roundFun = F3(
-	function (functor, s, fl) {
-		if ($elm$core$Basics$isInfinite(fl) || $elm$core$Basics$isNaN(fl)) {
-			return $elm$core$String$fromFloat(fl);
-		} else {
-			var signed = fl < 0;
-			var _v0 = $myrho$elm_round$Round$splitComma(
-				$myrho$elm_round$Round$toDecimal(
-					$elm$core$Basics$abs(fl)));
-			var before = _v0.a;
-			var after = _v0.b;
-			var r = $elm$core$String$length(before) + s;
-			var normalized = _Utils_ap(
-				A2($elm$core$String$repeat, (-r) + 1, '0'),
-				A3(
-					$elm$core$String$padRight,
-					r,
-					_Utils_chr('0'),
-					_Utils_ap(before, after)));
-			var totalLen = $elm$core$String$length(normalized);
-			var roundDigitIndex = A2($elm$core$Basics$max, 1, r);
-			var increase = A2(
-				functor,
-				signed,
-				A3($elm$core$String$slice, roundDigitIndex, totalLen, normalized));
-			var remains = A3($elm$core$String$slice, 0, roundDigitIndex, normalized);
-			var num = increase ? $elm$core$String$reverse(
-				A2(
-					$elm$core$Maybe$withDefault,
-					'1',
-					A2(
-						$elm$core$Maybe$map,
-						$myrho$elm_round$Round$increaseNum,
-						$elm$core$String$uncons(
-							$elm$core$String$reverse(remains))))) : remains;
-			var numLen = $elm$core$String$length(num);
-			var numZeroed = (num === '0') ? num : ((s <= 0) ? _Utils_ap(
-				num,
-				A2(
-					$elm$core$String$repeat,
-					$elm$core$Basics$abs(s),
-					'0')) : ((_Utils_cmp(
-				s,
-				$elm$core$String$length(after)) < 0) ? (A3($elm$core$String$slice, 0, numLen - s, num) + ('.' + A3($elm$core$String$slice, numLen - s, numLen, num))) : _Utils_ap(
-				before + '.',
-				A3(
-					$elm$core$String$padRight,
-					s,
-					_Utils_chr('0'),
-					after))));
-			return A2($myrho$elm_round$Round$addSign, signed, numZeroed);
-		}
-	});
-var $myrho$elm_round$Round$round = $myrho$elm_round$Round$roundFun(
-	F2(
-		function (signed, str) {
-			var _v0 = $elm$core$String$uncons(str);
-			if (_v0.$ === 'Nothing') {
-				return false;
-			} else {
-				if ('5' === _v0.a.a.valueOf()) {
-					if (_v0.a.b === '') {
-						var _v1 = _v0.a;
-						return !signed;
-					} else {
-						var _v2 = _v0.a;
-						return true;
-					}
-				} else {
-					var _v3 = _v0.a;
-					var _int = _v3.a;
-					return function (i) {
-						return ((i > 53) && signed) || ((i >= 53) && (!signed));
-					}(
-						$elm$core$Char$toCode(_int));
-				}
-			}
-		}));
-var $elm$core$List$tail = function (list) {
-	if (list.b) {
-		var x = list.a;
-		var xs = list.b;
-		return $elm$core$Maybe$Just(xs);
-	} else {
-		return $elm$core$Maybe$Nothing;
-	}
-};
-var $cuducos$elm_format_number$Parser$splitInParts = F2(
-	function (locale, value) {
-		var toString = function () {
-			var _v1 = locale.decimals;
-			switch (_v1.$) {
-				case 'Max':
-					var max = _v1.a;
-					return $myrho$elm_round$Round$round(max);
-				case 'Min':
-					return $elm$core$String$fromFloat;
-				default:
-					var exact = _v1.a;
-					return $myrho$elm_round$Round$round(exact);
-			}
-		}();
-		var asList = A2(
-			$elm$core$String$split,
-			'.',
-			toString(value));
-		var decimals = function () {
-			var _v0 = $elm$core$List$tail(asList);
-			if (_v0.$ === 'Just') {
-				var values = _v0.a;
-				return A2(
-					$elm$core$Maybe$withDefault,
-					'',
-					$elm$core$List$head(values));
-			} else {
-				return '';
-			}
-		}();
-		var integers = A2(
-			$elm$core$Maybe$withDefault,
-			'',
-			$elm$core$List$head(asList));
-		return _Utils_Tuple2(integers, decimals);
-	});
-var $cuducos$elm_format_number$Parser$splitThousands = function (integers) {
-	var reversedSplitThousands = function (value) {
-		return ($elm$core$String$length(value) > 3) ? A2(
-			$elm$core$List$cons,
-			A2($elm$core$String$right, 3, value),
-			reversedSplitThousands(
-				A2($elm$core$String$dropRight, 3, value))) : _List_fromArray(
-			[value]);
-	};
-	return $elm$core$List$reverse(
-		reversedSplitThousands(integers));
-};
-var $cuducos$elm_format_number$Parser$parse = F2(
-	function (locale, original) {
-		var parts = A2($cuducos$elm_format_number$Parser$splitInParts, locale, original);
-		var integers = $cuducos$elm_format_number$Parser$splitThousands(
-			A2($elm$core$String$filter, $elm$core$Char$isDigit, parts.a));
-		var decimals = A2($cuducos$elm_format_number$Parser$getDecimals, locale, parts.b);
-		var partial = A5($cuducos$elm_format_number$Parser$FormattedNumber, original, integers, decimals, '', '');
-		var _v0 = $cuducos$elm_format_number$Parser$classify(partial);
-		switch (_v0.$) {
-			case 'Negative':
-				return _Utils_update(
-					partial,
-					{prefix: locale.negativePrefix, suffix: locale.negativeSuffix});
-			case 'Positive':
-				return _Utils_update(
-					partial,
-					{prefix: locale.positivePrefix, suffix: locale.positiveSuffix});
-			default:
-				return _Utils_update(
-					partial,
-					{prefix: locale.zeroPrefix, suffix: locale.zeroSuffix});
-		}
-	});
-var $cuducos$elm_format_number$Stringfy$formatDecimals = F2(
-	function (locale, decimals) {
-		return (decimals === '') ? '' : _Utils_ap(locale.decimalSeparator, decimals);
-	});
-var $cuducos$elm_format_number$Stringfy$stringfy = F2(
-	function (locale, formatted) {
-		var stringfyDecimals = $cuducos$elm_format_number$Stringfy$formatDecimals(locale);
-		var integers = A2($elm$core$String$join, locale.thousandSeparator, formatted.integers);
-		var decimals = stringfyDecimals(formatted.decimals);
-		return $elm$core$String$concat(
-			_List_fromArray(
-				[formatted.prefix, integers, decimals, formatted.suffix]));
-	});
-var $cuducos$elm_format_number$FormatNumber$format = F2(
-	function (locale, number_) {
-		return A2(
-			$cuducos$elm_format_number$Stringfy$stringfy,
-			locale,
-			A2($cuducos$elm_format_number$Parser$parse, locale, number_));
-	});
 var $elm$core$Basics$round = _Basics_round;
 var $author$project$Main$roundHundredths = function (n) {
 	return A3(
@@ -7892,6 +7820,72 @@ var $elm$core$Result$andThen = F2(
 			var msg = result.a;
 			return $elm$core$Result$Err(msg);
 		}
+	});
+var $elm$core$Maybe$andThen = F2(
+	function (callback, maybeValue) {
+		if (maybeValue.$ === 'Just') {
+			var value = maybeValue.a;
+			return callback(value);
+		} else {
+			return $elm$core$Maybe$Nothing;
+		}
+	});
+var $author$project$Main$reprocessingPercentage = F2(
+	function (model, ore) {
+		var structure_mod = function () {
+			var _v1 = model.stationAttributes.upwellType;
+			switch (_v1.$) {
+				case 'Other':
+					return 0.0;
+				case 'Athanor':
+					return 0.02;
+				default:
+					return 0.04;
+			}
+		}();
+		var security_mod = function () {
+			var _v0 = model.stationAttributes.securityStatus;
+			switch (_v0.$) {
+				case 'High':
+					return 0.0;
+				case 'Low':
+					return 0.06;
+				default:
+					return 0.12;
+			}
+		}();
+		var reprocessing_efficiency = A3(
+			$elm$core$Basics$composeL,
+			$elm$core$Basics$toFloat,
+			$elm$core$Maybe$withDefault(0),
+			A2($elm$core$Dict$get, 'Reprocessing Efficiency', model.skills));
+		var reprocessing = A3(
+			$elm$core$Basics$composeL,
+			$elm$core$Basics$toFloat,
+			$elm$core$Maybe$withDefault(0),
+			A2($elm$core$Dict$get, 'Reprocessing', model.skills));
+		var ore_skill_level = A3(
+			$elm$core$Basics$composeL,
+			A2(
+				$elm$core$Basics$composeL,
+				$elm$core$Basics$toFloat,
+				$elm$core$Maybe$withDefault(0)),
+			$elm$core$Maybe$andThen(
+				A2(
+					$elm$core$Basics$composeL,
+					A2(
+						F3(
+							function (f, b, a) {
+								return A2(f, a, b);
+							}),
+						$elm$core$Dict$get,
+						model.skills),
+					function (x) {
+						return x.skill;
+					})),
+			A2($elm$core$Dict$get, ore, $author$project$Main$ores));
+		var implant = 0.01 * model.implant;
+		return (((((1 + (0.03 * reprocessing)) * (1 + (0.02 * reprocessing_efficiency))) * (1 + (0.02 * ore_skill_level))) * (1 + implant)) * (model.stationAttributes.npc ? 50 : (((50 + model.stationAttributes.rig) * (1 + structure_mod)) * (1 + security_mod)))) / 100;
 	});
 var $author$project$Main$refinedProducts = F3(
 	function (model, ore_name, total_ore_quantity) {
